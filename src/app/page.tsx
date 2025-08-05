@@ -29,12 +29,35 @@ export default function Home() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simular envío a API
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubmitted(true);
-    setIsLoading(false);
-    setEmail("");
+    try {
+      const response = await fetch('https://sheetdb.io/api/v1/yfkufv4o2cp14', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customer: email,
+          Fecha: new Date().toLocaleDateString('es-ES', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+          }) // Formato DD-MM-YYYY
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setEmail("");
+      } else {
+        throw new Error('Error al enviar datos');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Opcional: mostrar mensaje de error al usuario
+      alert('Hubo un error al enviar tu email. Por favor, intenta nuevamente.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const toggleMobileMenu = () => {
