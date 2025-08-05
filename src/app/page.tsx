@@ -503,7 +503,7 @@ export default function Home() {
           
           <div className="flex justify-center space-x-6 mb-6">
             <a 
-              href="#" 
+              href="https://www.instagram.com/witu.app/" 
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="Instagram"
             >
@@ -517,7 +517,7 @@ export default function Home() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a 
-              href="mailto:hola@witu.com" 
+              href="mailto:wituapp@gmail.com" 
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="Email"
             >
@@ -532,13 +532,13 @@ export default function Home() {
             <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
               Términos y condiciones
             </a>
-            <a href="mailto:hola@witu.com" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a href="mailto:wituapp@gmail.com" className="text-gray-600 hover:text-gray-900 transition-colors">
               Contacto
             </a>
           </div>
           
           <p className="text-gray-600 text-sm">
-            © 2024 Wit Ü. Todos los derechos reservados.
+            © 2025 Wit Ü. Todos los derechos reservados.
           </p>
         </div>
       </footer>
