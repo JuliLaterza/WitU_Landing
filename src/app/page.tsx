@@ -2,14 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { 
   Music, 
-  Wine, 
-  Users, 
   Heart, 
-  Star, 
-  X,
-  ArrowRight, 
   CheckCircle,
   Instagram,
   Linkedin,
@@ -57,9 +53,11 @@ export default function Home() {
           <nav className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <img 
+              <Image 
                 src="/assets/images/logo_witu.png" 
                 alt="Wit Ü Logo" 
+                width={96}
+                height={32}
                 className="w-24 h-8"
               />
               {/*<span className="text-xl font-bold text-gray-900">Wit Ü</span>*/}
@@ -210,9 +208,11 @@ export default function Home() {
               viewport={{ once: true }}
               className="max-w-md mx-auto mb-12"
             >
-              <img 
+              <Image 
                 src="/assets/images/filosofia.png" 
                 alt="Filosofía Wit Ü: You + Happy + People = Bond/Connection" 
+                width={400}
+                height={200}
                 className="w-full h-auto rounded-2xl shadow-lg"
               />
             </motion.div>
@@ -421,7 +421,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-gray-700 mb-4 italic">
-                      "{testimonial.quote}"
+                      &ldquo;{testimonial.quote}&rdquo;
                     </p>
                     <p className="text-sm font-semibold text-gray-900">
                       {testimonial.author}
@@ -491,9 +491,11 @@ export default function Home() {
       <footer className="py-12 px-4 border-t border-gray-200">
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-6">
-            <img 
+            <Image 
               src="/assets/images/logo_witu.png" 
               alt="Wit Ü Logo" 
+              width={96}
+              height={32}
               className="w-24 h-8"
             />
             {/*<span className="text-xl font-bold text-gray-900">Wit Ü</span>*/}
