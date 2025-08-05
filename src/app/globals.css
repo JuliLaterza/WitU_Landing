@@ -1,26 +1,109 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 48 100% 50%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 48 100% 95%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 48 100% 95%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 48 100% 95%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 48 100% 90%;
+    --input: 48 100% 90%;
+    --ring: 48 100% 50%;
+    --radius: 0.5rem;
+    
+    /* Colores amarillos personalizados */
+    --yellow-primary: 48 100% 50%; /* #FFD600 */
+    --yellow-light: 48 100% 77%; /* #FFF38B */
+    --yellow-dark: 48 100% 40%; /* #FFA000 */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 48 100% 50%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 48 100% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 48 100% 20%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 48 100% 20%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 48 100% 20%;
+    --input: 48 100% 20%;
+    --ring: 48 100% 50%;
+    
+    /* Colores amarillos personalizados para dark mode */
+    --yellow-primary: 48 100% 50%;
+    --yellow-light: 48 100% 30%;
+    --yellow-dark: 48 100% 60%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Clases personalizadas para los colores amarillos */
+  .bg-yellow-primary {
+    background-color: hsl(var(--yellow-primary));
+  }
+  
+  .bg-yellow-light {
+    background-color: hsl(var(--yellow-light));
+  }
+  
+  .bg-yellow-dark {
+    background-color: hsl(var(--yellow-dark));
+  }
+  
+  .text-yellow-primary {
+    color: hsl(var(--yellow-primary));
+  }
+  
+  .text-yellow-dark {
+    color: hsl(var(--yellow-dark));
+  }
+  
+  /* Degradés personalizados */
+  .bg-gradient-yellow {
+    background: linear-gradient(135deg, #FFD600 0%, #FFA000 100%);
+  }
+  
+  .bg-gradient-yellow-reverse {
+    background: linear-gradient(135deg, #FFA000 0%, #FFD600 100%);
+  }
+  
+  .bg-gradient-yellow-light {
+    background: linear-gradient(135deg, #FFF38B 0%, #FFD600 100%);
+  }
 }
