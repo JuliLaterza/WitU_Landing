@@ -114,7 +114,7 @@ export default function Home() {
                 }}
                 className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 cursor-pointer"
               >
-                Unite a la waitlist
+                Unite a la Waitlist
               </a>
             </div>
 
@@ -175,7 +175,7 @@ export default function Home() {
                     }}
                     className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 text-center cursor-pointer"
                   >
-                    Unite a la waitlist
+                    Unite a la Waitlist
                   </a>
                 </div>
               </motion.div>
@@ -207,7 +207,7 @@ export default function Home() {
             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-gradient-yellow text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer"
           >
-            Unite a la waitlist
+            Unite a la Waitlist
           </motion.button>
 
           {/* Mockup del app - placeholder visual */}
@@ -496,7 +496,7 @@ export default function Home() {
                     disabled={isLoading}
                     className="bg-gradient-yellow text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {isLoading ? "Enviando..." : "Unite a la waitlist"}
+                    {isLoading ? "Enviando..." : "Unite a la Waitlist"}
                   </button>
                 </div>
               </form>
