@@ -30,19 +30,23 @@ export default function Home() {
     setIsLoading(true);
     
     try {
+      const dataToSend = {
+        Customers: email,
+        Fecha: new Date().toLocaleDateString('es-ES', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+        }) // Formato DD/MM/YYYY
+      };
+      
+      console.log('Enviando datos:', dataToSend);
+      
       const response = await fetch('https://sheetdb.io/api/v1/gcv8c1517k9ow', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          customer: email,
-          Fecha: new Date().toLocaleDateString('es-ES', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-          }) // Formato DD-MM-YYYY
-        })
+        body: JSON.stringify(dataToSend)
       });
 
       if (response.ok) {
