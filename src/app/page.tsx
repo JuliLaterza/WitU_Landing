@@ -445,7 +445,7 @@ export default function Home() {
             className="text-center"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Sumate a la comunidad que quiere volver a conectar en el mundo real
+              Sumate a la comunidad que quiere volver a conectar en el mundo real.
             </h2>
             
             {!isSubmitted ? (
