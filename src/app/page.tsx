@@ -30,7 +30,7 @@ export default function Home() {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://sheetdb.io/api/v1/yfkufv4o2cp14', {
+      const response = await fetch('https://sheetdb.io/api/v1/gcv8c1517k9ow', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +108,11 @@ export default function Home() {
               </a>
               <a 
                 href="#waitlist" 
-                className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 cursor-pointer"
               >
                 Unite a la waitlist
               </a>
@@ -164,8 +168,12 @@ export default function Home() {
                   </a>
                   <a 
                     href="#waitlist" 
-                    onClick={closeMobileMenu}
-                    className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 text-center"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeMobileMenu();
+                      document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 text-center cursor-pointer"
                   >
                     Unite a la waitlist
                   </a>
@@ -196,7 +204,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-gradient-yellow text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-gradient-yellow text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer"
           >
             Unite a la waitlist
           </motion.button>
@@ -458,7 +467,7 @@ export default function Home() {
       </section>
 
       {/* 6. Llamado a la acción final */}
-      <section className="py-20 px-4 bg-yellow-light">
+      <section id="waitlist" className="py-20 px-4 bg-yellow-light">
         <div className="container mx-auto max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
