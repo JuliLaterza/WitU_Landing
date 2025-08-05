@@ -515,7 +515,7 @@ export default function Home() {
                   ¡Gracias por unirte!
                 </h3>
                 <p className="text-green-700">
-                  Te mantendremos informado sobre el próximo evento
+                  Te avisaremos cuando lancemos la app 🫶🏼.
                 </p>
               </motion.div>
             )}
