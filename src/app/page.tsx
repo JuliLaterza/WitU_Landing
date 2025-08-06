@@ -76,45 +76,45 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden w-full">
       {/* Header con navegación centrada */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
-        <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200 overflow-hidden">
+        <div className="container mx-auto px-4 py-4 w-full">
+          <nav className="flex items-center justify-between w-full">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 flex-shrink-0">
               <Image 
                 src="/assets/images/logo_witu.png" 
                 alt="Wit Ü Logo" 
                 width={96}
                 height={32}
-                className="w-24 h-8"
+                className="w-20 sm:w-24 h-6 sm:h-8"
               />
             </div>
 
             {/* Navegación desktop */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-shrink-0">
               <a 
                 href="#que-es" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
+                className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
                 ¿Qué es?
               </a>
               <a 
                 href="#eventos" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
+                className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
                 Eventos
               </a>
               <a 
                 href="#como-funciona" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
+                className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
                 ¿Cómo funciona?
               </a>
               <a 
                 href="#por-que" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
+                className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
                 ¿Por qué Wit Ü?
               </a>
@@ -124,7 +124,7 @@ export default function Home() {
                   e.preventDefault();
                   document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 cursor-pointer"
+                className="bg-gradient-yellow text-gray-900 px-3 lg:px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 cursor-pointer text-sm lg:text-base whitespace-nowrap"
               >
                 Unite a la Waitlist
               </a>
@@ -204,22 +204,22 @@ export default function Home() {
       </header>
 
       {/* 1. Hero Section - Pantalla completa al inicio */}
-      <section className="h-screen flex items-center justify-center px-4 pt-20">
+      <section className="min-h-screen flex items-center justify-center px-4 pt-20 pb-8 overflow-hidden">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
+          className="text-center max-w-4xl mx-auto w-full"
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight px-2">
             Conectá con personas antes, durante y después del evento.
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             Wit Ü te ayuda a salir de la pantalla y encontrarte en la vida real.
           </p>
 
-          <p className="text-lg text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto px-2">
             Elegí un plan, mirá quién va y coordiná para compartirlo.
           </p>
 
@@ -228,7 +228,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-yellow text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer"
+            className="bg-gradient-yellow text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer w-full sm:w-auto"
           >
             Unite a la Waitlist
           </motion.button>
@@ -236,32 +236,32 @@ export default function Home() {
       </section>
 
       {/* 2. ¿Qué es Wit Ü? */}
-      <section id="que-es" className="py-20 px-4 bg-yellow-light">
+      <section id="que-es" className="py-12 sm:py-16 md:py-20 px-4 bg-yellow-light">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
               ¿Qué es Wit Ü?
             </h2>
           </motion.div>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-left"
+              className="text-left order-2 lg:order-1"
             >
-              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-4 sm:mb-6">
                 Es una red social para conocer gente nueva, conectar con quienes viven tus mismos planes y comparten tus intereses.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
                 Combina eventos reales con tecnología inteligente para crear conexiones auténticas.
               </p>
               
@@ -271,28 +271,28 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
-                className="max-w-md"
+                className="max-w-sm sm:max-w-md"
               >
-                <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 border border-gray-100">
                   {/* Fórmula principal */}
-                  <div className="flex items-center justify-center space-x-4 mb-6">
+                  <div className="flex items-center justify-center space-x-1 sm:space-x-2 lg:space-x-4 mb-4 sm:mb-6">
                     <div className="text-center flex flex-col items-center">
-                      <div className="text-2xl font-bold text-gray-800 mb-1">U</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-1">U</div>
                       <div className="text-xs text-gray-600 h-4 flex items-center">You</div>
                     </div>
-                    <div className="text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
                     <div className="text-center flex flex-col items-center">
-                      <div className="text-2xl font-bold text-yellow-500 mb-1">:)</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-yellow-500 mb-1">:)</div>
                       <div className="text-xs text-gray-600 h-4 flex items-center">Alegría</div>
                     </div>
-                    <div className="text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
                     <div className="text-center flex flex-col items-center">
-                      <div className="text-2xl font-bold text-gray-800 mb-1">i i</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-1">i i</div>
                       <div className="text-xs text-gray-600 h-4 flex items-center">Personas</div>
                     </div>
-                    <div className="text-3xl font-bold text-gray-400 flex items-center h-full">=</div>
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400 flex items-center h-full">=</div>
                     <div className="text-center flex flex-col items-center">
-                      <div className="text-3xl font-bold text-yellow-400 mb-1">Ü</div>
+                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-400 mb-1">Ü</div>
                       <div className="text-xs text-gray-600 h-4 flex items-center">Wit Ü</div>
                     </div>
                   </div>
@@ -306,37 +306,37 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative order-1 lg:order-2 mb-8 lg:mb-0"
             >
-              <div className="bg-white rounded-3xl p-8 shadow-xl">
-                <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                      <Users2 className="w-8 h-8 text-gray-900" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-yellow rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                      <Users2 className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Conexiones Reales</h3>
-                    <p className="text-sm text-gray-600">Personas con intereses similares</p>
+                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">Conexiones Reales</h3>
+                    <p className="text-xs sm:text-sm text-gray-600">Personas con intereses similares</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                      <Calendar className="w-8 h-8 text-gray-900" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-yellow rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                      <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Eventos Auténticos</h3>
-                    <p className="text-sm text-gray-600">Experiencias en el mundo real</p>
+                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">Eventos Auténticos</h3>
+                    <p className="text-xs sm:text-sm text-gray-600">Experiencias en el mundo real</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                      <Brain className="w-8 h-8 text-gray-900" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-yellow rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                      <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">IA Inteligente</h3>
-                    <p className="text-sm text-gray-600">Matches precisos</p>
+                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">IA Inteligente</h3>
+                    <p className="text-xs sm:text-sm text-gray-600">Matches precisos</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
-                      <Heart className="w-8 h-8 text-gray-900" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-yellow rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mx-auto">
+                      <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />
                     </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Afinidades</h3>
-                    <p className="text-sm text-gray-600">Gustos compartidos</p>
+                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">Afinidades</h3>
+                    <p className="text-xs sm:text-sm text-gray-600">Gustos compartidos</p>
                   </div>
                 </div>
               </div>
@@ -346,24 +346,24 @@ export default function Home() {
       </section>
 
       {/* 3. Tipos de eventos */}
-      <section id="eventos" className="py-20 px-4">
+      <section id="eventos" className="py-12 sm:py-16 md:py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-8 sm:mb-12 md:mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
               ¿Qué tipos de eventos podés encontrar?
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-12 px-2">
               En la app vas a encontrar planes para todos los gustos y momentos:
             </p>
           </motion.div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {[
               {
                 icon: Music,
@@ -390,25 +390,25 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center gap-12`}
+                className={`flex flex-col lg:flex-row ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-6 lg:gap-12`}
               >
-                <div className="flex-1">
-                  <div className={`w-24 h-24 bg-gradient-to-r ${event.color} rounded-3xl flex items-center justify-center mb-6 shadow-lg`}>
-                    <event.icon className="w-12 h-12 text-white" />
+                <div className="flex-1 text-center lg:text-left">
+                  <div className={`w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-r ${event.color} rounded-xl sm:rounded-2xl lg:rounded-3xl flex items-center justify-center mb-4 sm:mb-6 shadow-lg mx-auto lg:mx-0`}>
+                    <event.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
                     {event.title}
                   </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                     {event.description}
                   </p>
                 </div>
                 
-                <div className="flex-1">
-                  <div className="bg-gray-100 rounded-3xl h-64 flex items-center justify-center">
+                <div className="flex-1 w-full lg:w-auto">
+                  <div className="bg-gray-100 rounded-2xl sm:rounded-3xl h-48 sm:h-64 flex items-center justify-center">
                     <div className="text-center text-gray-400">
-                      <event.icon className="w-16 h-16 mx-auto mb-4 opacity-20" />
-                      <p className="text-sm">Visualización del evento</p>
+                      <event.icon className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 opacity-20" />
+                      <p className="text-xs sm:text-sm">Visualización del evento</p>
                     </div>
                   </div>
                 </div>
