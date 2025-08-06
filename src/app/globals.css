@@ -65,6 +65,22 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Mejoras específicas para Inter */
+  h1, h2, h3, h4, h5, h6 {
+    font-feature-settings: 'liga' 1, 'calt' 1;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+  
+  /* Mejor legibilidad para textos largos */
+  p {
+    font-feature-settings: 'liga' 1, 'kern' 1;
+    line-height: 1.6;
   }
 }
 

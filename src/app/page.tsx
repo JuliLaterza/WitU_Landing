@@ -16,7 +16,10 @@ import {
   Brain,
   Calendar,
   User,
-  Users2
+  Users2,
+  Star,
+  Shield,
+  Bell
 } from "lucide-react";
 
 export default function Home() {
@@ -87,7 +90,6 @@ export default function Home() {
                 height={32}
                 className="w-24 h-8"
               />
-              {/*<span className="text-xl font-bold text-gray-900">Wit Ü</span>*/}
             </div>
 
             {/* Navegación desktop */}
@@ -97,6 +99,12 @@ export default function Home() {
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
               >
                 ¿Qué es?
+              </a>
+              <a 
+                href="#eventos" 
+                className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
+              >
+                Eventos
               </a>
               <a 
                 href="#como-funciona" 
@@ -157,6 +165,13 @@ export default function Home() {
                     ¿Qué es?
                   </a>
                   <a 
+                    href="#eventos" 
+                    onClick={closeMobileMenu}
+                    className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
+                  >
+                    Eventos
+                  </a>
+                  <a 
                     href="#como-funciona" 
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
@@ -200,8 +215,12 @@ export default function Home() {
             Conectá con personas antes, durante y después del evento.
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
-            Wit Ü transforma tu experiencia social: descubrí afinidades reales, en eventos reales.
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+            Wit Ü te ayuda a salir de la pantalla y encontrarte en la vida real.
+          </p>
+
+          <p className="text-lg text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+            Elegí un plan, mirá quién va y coordiná para compartirlo.
           </p>
 
           <motion.button
@@ -213,15 +232,12 @@ export default function Home() {
           >
             Unite a la Waitlist
           </motion.button>
-
-          {/* Mockup del app - placeholder visual */}
-
         </motion.div>
       </section>
 
       {/* 2. ¿Qué es Wit Ü? */}
       <section id="que-es" className="py-20 px-4 bg-yellow-light">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -232,77 +248,179 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
               ¿Qué es Wit Ü?
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-              Es el puente entre lo digital y lo real.
-            </p>
-            
-            {/* Imagen de filosofía */}
+          </motion.div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="max-w-md mx-auto mb-12"
+              className="text-left"
             >
-              <Image 
-                src="/assets/images/filosofia.png" 
-                alt="Filosofía Wit Ü: You + Happy + People = Bond/Connection" 
-                width={400}
-                height={200}
-                className="w-full h-auto rounded-2xl shadow-lg"
-              />
+              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                Es una red social para conocer gente nueva, conectar con quienes viven tus mismos planes y comparten tus intereses.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Combina eventos reales con tecnología inteligente para crear conexiones auténticas.
+              </p>
+              
+              {/* Filosofía Wit Ü recreada con código */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="max-w-md"
+              >
+                <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                  {/* Fórmula principal */}
+                  <div className="flex items-center justify-center space-x-4 mb-6">
+                    <div className="text-center flex flex-col items-center">
+                      <div className="text-2xl font-bold text-gray-800 mb-1">U</div>
+                      <div className="text-xs text-gray-600 h-4 flex items-center">You</div>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
+                    <div className="text-center flex flex-col items-center">
+                      <div className="text-2xl font-bold text-yellow-500 mb-1">:)</div>
+                      <div className="text-xs text-gray-600 h-4 flex items-center">Alegría</div>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
+                    <div className="text-center flex flex-col items-center">
+                      <div className="text-2xl font-bold text-gray-800 mb-1">i i</div>
+                      <div className="text-xs text-gray-600 h-4 flex items-center">Personas</div>
+                    </div>
+                    <div className="text-3xl font-bold text-gray-400 flex items-center h-full">=</div>
+                    <div className="text-center flex flex-col items-center">
+                      <div className="text-3xl font-bold text-yellow-400 mb-1">Ü</div>
+                      <div className="text-xs text-gray-600 h-4 flex items-center">Wit Ü</div>
+                    </div>
+                  </div>
+                  
+                </div>
+              </motion.div>
             </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="bg-white rounded-3xl p-8 shadow-xl">
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                      <Users2 className="w-8 h-8 text-gray-900" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Conexiones Reales</h3>
+                    <p className="text-sm text-gray-600">Personas con intereses similares</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                      <Calendar className="w-8 h-8 text-gray-900" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Eventos Auténticos</h3>
+                    <p className="text-sm text-gray-600">Experiencias en el mundo real</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                      <Brain className="w-8 h-8 text-gray-900" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">IA Inteligente</h3>
+                    <p className="text-sm text-gray-600">Matches precisos</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-gradient-yellow rounded-2xl flex items-center justify-center mb-4 mx-auto">
+                      <Heart className="w-8 h-8 text-gray-900" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Afinidades</h3>
+                    <p className="text-sm text-gray-600">Gustos compartidos</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Tipos de eventos */}
+      <section id="eventos" className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-8">
+              ¿Qué tipos de eventos podés encontrar?
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
+              En la app vas a encontrar planes para todos los gustos y momentos:
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="space-y-12">
             {[
               {
-                icon: Calendar,
-                title: "🎉 Eventos y actividades sociales reales",
-                description: "Conectá en lugares y momentos específicos"
+                icon: Music,
+                title: "Fiestas y boliches",
+                description: "Bailá y divertite con gente que comparte tu música",
+                color: "from-yellow-400 to-yellow-600"
               },
               {
-                icon: Heart,
-                title: "💫 Afinidades auténticas",
-                description: "Descubrí personas con gustos similares"
+                icon: Calendar,
+                title: "Recitales",
+                description: "Viví la música en vivo con personas que aman los mismos artistas",
+                color: "from-yellow-500 to-orange-500"
               },
               {
                 icon: MapPin,
-                title: "📍 Conexiones geolocalizadas",
-                description: "Encuentros en tu zona y eventos cercanos"
-              },
-              {
-                icon: Brain,
-                title: "🧠 Algoritmo social",
-                description: "Inteligencia que entiende tus preferencias"
+                title: "Deportes y actividades al aire libre",
+                description: "Ejercitate y explorá la naturaleza con compañía",
+                color: "from-orange-400 to-yellow-500"
               }
-            ].map((item, index) => (
+            ].map((event, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="text-center"
+                className={`flex ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} items-center gap-12`}
               >
-                <div className="w-16 h-16 bg-gradient-yellow rounded-full flex items-center justify-center mb-6 mx-auto">
-                  <item.icon className="w-8 h-8 text-gray-900" />
+                <div className="flex-1">
+                  <div className={`w-24 h-24 bg-gradient-to-r ${event.color} rounded-3xl flex items-center justify-center mb-6 shadow-lg`}>
+                    <event.icon className="w-12 h-12 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    {event.title}
+                  </h3>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    {event.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {item.description}
-                </p>
+                
+                <div className="flex-1">
+                  <div className="bg-gray-100 rounded-3xl h-64 flex items-center justify-center">
+                    <div className="text-center text-gray-400">
+                      <event.icon className="w-16 h-16 mx-auto mb-4 opacity-20" />
+                      <p className="text-sm">Visualización del evento</p>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. ¿Cómo funciona? */}
-      <section id="como-funciona" className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
+      {/* 4. ¿Cómo funciona? */}
+      <section id="como-funciona" className="py-20 px-4 bg-yellow-light">
+        <div className="container mx-auto max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -313,56 +431,80 @@ export default function Home() {
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
               ¿Cómo funciona?
             </h2>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
+              Cuatro simples pasos para transformar tu forma de conocer personas y crear conexiones
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                step: "1",
-                title: "Completá tu perfil",
-                description: "Mostrale al mundo quien sos, tus gustos, tus preferencias, tus actividades favoritas, etc."
-              },
-              {
-                step: "2",
-                title: "Elegí tu evento o actividad social",
-                description: "Selecciona dentro del catalogo de eventos y actividades sociales que tenemos para vos"
-              },
-              {
-                step: "3",
-                title: "Descubrí personas compatibles",
-                description: "Recibí matches basados en afinidades reales"
-              },
-              {
-                step: "4",
-                title: "¡Conectá antes de que empiece!",
-                description: "Chateá y rompe el hielo antes de asistir"
-              }
-            ].map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-gradient-yellow rounded-full flex items-center justify-center mb-6 mx-auto text-2xl font-bold text-gray-900">
-                  {step.step}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {step.description}
-                </p>
-              </motion.div>
-            ))}
+          <div className="relative">
+            {/* Línea de conexión */}
+            <div className="absolute left-1/2 transform -translate-x-px top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600 hidden lg:block"></div>
+            
+            <div className="space-y-12">
+              {[
+                {
+                  step: "1",
+                  title: "Crea tu perfil",
+                  description: "Contanos sobre vos, tus gustos, intereses y qué tipo de conexiones buscas.",
+                  icon: User
+                },
+                {
+                  step: "2",
+                  title: "Elegí el evento o actividad social",
+                  description: "Selecciona dentro del catálogo de eventos y actividades sociales que tenemos para vos",
+                  icon: Calendar
+                },
+                {
+                  step: "3",
+                  title: "Explora perfiles compatibles",
+                  description: "Descubrí los perfiles de las personas que tienen intereses y gustos similares a los tuyos",
+                  icon: Users2
+                },
+                {
+                  step: "4",
+                  title: "¡Conecta antes de que empiece!",
+                  description: "Chatea y rompe el hielo antes de asistir.",
+                  icon: Heart
+                }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className={`flex items-center gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                >
+                  <div className="flex-1">
+                    <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 bg-gradient-yellow rounded-xl flex items-center justify-center text-xl font-bold text-gray-900">
+                          {step.step}
+                        </div>
+                        <step.icon className="w-6 h-6 text-gray-600" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="hidden lg:block w-16 h-16 bg-gradient-yellow rounded-full flex items-center justify-center text-2xl font-bold text-gray-900 relative z-10">
+                  </div>
+                  
+                  <div className="flex-1"></div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. ¿Por qué Wit Ü? */}
-      <section id="por-que" className="py-20 px-4 bg-yellow-light">
+      {/* 5. ¿Por qué elegir Wit Ü? */}
+      <section id="por-que" className="py-20 px-4">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -372,26 +514,32 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              ¿Por qué Wit Ü?
+              ¿Por qué elegir Wit Ü?
             </h2>
+            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
+              Somos la evolución de las conexiones sociales, donde la tecnología se encuentra con experiencias reales.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             {[
               {
                 icon: Heart,
-                title: "🫂 Conexiones genuinas",
-                description: "No swipes sin sentido, solo personas con intereses reales"
+                title: "Conexiones auténticas",
+                description: "Conexiones genuinas basadas en afinidades reales",
+                features: ["Verificación de perfiles", "Eventos reales"]
               },
               {
-                icon: Music,
-                title: "🥂 Compartís más que una foto",
-                description: "Música, gustos, momento - todo cuenta para conectar"
+                icon: Star,
+                title: "Experiencias únicas",
+                description: "Cada evento es una oportunidad de vivir algo nuevo",
+                features: ["Eventos exclusivos", "Experiencias memorables", "Comunidad activa"]
               },
               {
-                icon: Users2,
-                title: "🧍‍♂️🧍‍♀️ Ideal si vas solo/a",
-                description: "Querés conocer nuevas personas? Nosotros te ayudamos a encontrar a quienes te interesan"
+                icon: Brain,
+                title: "Algoritmo inteligente",
+                description: "IA que aprende tus preferencias para sugerir matches perfectos",
+                features: ["Matches precisos", "Recomendaciones personalizadas", "Aprendizaje continuo"]
               }
             ].map((benefit, index) => (
               <motion.div
@@ -408,62 +556,17 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 mb-4">
                   {benefit.description}
                 </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Testimonios */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Lo que dicen nuestros usuarios
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                quote: "Conocí a mi mejor amiga en un evento usando Wit Ü",
-                author: "María, 25 años"
-              },
-              {
-                quote: "Fui solo y terminé conociendo gente con gustos similares.",
-                author: "Carlos, 28 años"
-              }
-            ].map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-yellow-light rounded-2xl p-8"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-yellow rounded-full flex items-center justify-center flex-shrink-0">
-                    <User className="w-6 h-6 text-gray-900" />
-                  </div>
-                  <div>
-                    <p className="text-gray-700 mb-4 italic">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </p>
-                    <p className="text-sm font-semibold text-gray-900">
-                      {testimonial.author}
-                    </p>
-                  </div>
-                </div>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  {benefit.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center justify-center">
+                      <span className="mr-2">•</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -481,8 +584,12 @@ export default function Home() {
             className="text-center"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Sumate a la comunidad que quiere volver a conectar en el mundo real
+              Unite a la Waitlist
             </h2>
+            
+            <p className="text-xl text-gray-600 mb-8">
+              Sé de los primeros en vivir la experiencia Wit Ü. Te notificaremos cuando estemos listos para lanzar la app.
+            </p>
             
             {!isSubmitted ? (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -519,6 +626,21 @@ export default function Home() {
                 </p>
               </motion.div>
             )}
+
+            <div className="flex flex-wrap justify-center gap-8 mt-8">
+              <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <Bell className="w-4 h-4 text-black-500" />
+                <span>🚀 Lanzamiento estimado: Próximas semanas</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <Mail className="w-4 h-4 text-black-500" />
+                <span>📧 Te enviaremos actualizaciones importantes</span>
+              </div>
+              <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <Shield className="w-4 h-4 text-black-500" />
+                <span>🔒 Tu información está completamente segura</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -534,7 +656,6 @@ export default function Home() {
               height={32}
               className="w-24 h-8"
             />
-            {/*<span className="text-xl font-bold text-gray-900">Wit Ü</span>*/}
           </div>
           
           <div className="flex justify-center space-x-6 mb-6">
