@@ -573,7 +573,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Llamado a la acción final */}
+
+
+      {/* 7. Llamado a la acción final */}
       <section id="waitlist" className="py-20 px-4 bg-yellow-light">
         <div className="container mx-auto max-w-2xl">
           <motion.div
