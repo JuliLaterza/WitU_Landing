@@ -29,6 +29,13 @@
     --yellow-primary: 48 100% 50%; /* #FFD600 */
     --yellow-light: 48 100% 77%; /* #FFF38B */
     --yellow-dark: 48 100% 40%; /* #FFA000 */
+    
+    /* Variables para la trama del hero - AJUSTA ESTOS VALORES */
+    --trama-image: url('/assets/images/trama.png');    /* Ruta de la imagen */
+    --trama-size: auto;                                /* Tamaño: auto, 100px 100px, cover, contain */
+    --trama-repeat: repeat;                            /* Repetir: repeat, no-repeat, repeat-x, repeat-y */
+    --trama-position: top left;                        /* Posición: top left, center, bottom right, etc. */
+    --trama-opacity: 1;                               /* Opacidad: 0.1 a 1 */
   }
 
   .dark {
@@ -128,5 +135,24 @@
   
   .bg-gradient-yellow-light {
     background: linear-gradient(135deg, #FFF38B 0%, #FFD600 100%);
+  }
+  
+  /* Clase para la trama del hero */
+  .hero-trama {
+    background-image: var(--trama-image);
+    background-size: var(--trama-size);
+    background-repeat: var(--trama-repeat);
+    background-position: var(--trama-position);
+    opacity: var(--trama-opacity);
+  }
+  
+  /* Clase para ocultar scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
