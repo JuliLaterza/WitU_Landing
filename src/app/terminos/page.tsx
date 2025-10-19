@@ -150,7 +150,7 @@ export default function TerminosPage() {
                 8. Limitación de Responsabilidad
               </h2>
               <p className="text-gray-700 leading-relaxed">
-                Wit Ü se proporciona "tal como está" sin garantías de ningún tipo. No seremos 
+                Wit Ü se proporciona tal como está sin garantías de ningún tipo. No seremos 
                 responsables por daños directos, indirectos, incidentales o consecuenciales 
                 que resulten del uso de nuestra aplicación.
               </p>
