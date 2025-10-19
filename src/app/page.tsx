@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { 
@@ -14,9 +14,7 @@ import {
   X as CloseIcon,
   MapPin,
   Calendar,
-  User,
   Users2,
-  Users,
   Globe,
   Star,
   ChevronLeft,
@@ -41,7 +39,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -429,7 +426,7 @@ export default function Home() {
               
               <div className="bg-yellow-100 rounded-xl p-4 mb-6 sm:mb-8">
                 <p className="text-lg font-semibold text-gray-800 text-center">
-                  "Lo digital te acerca, Wit Ü te encuentra."
+                  Lo digital te acerca, Wit Ü te encuentra.
                 </p>
               </div>
               
@@ -633,13 +630,13 @@ export default function Home() {
               {[
                 {
                   step: "1️⃣",
-                  title: "Elegí un plan que te interese",
-                  description: "Un evento, una salida, un lugar que te guste."
+                  title: "Elegí un evento que te interese",
+                  description: "Una fiesta, un recital, una salida o un lugar que te guste."
                 },
                 {
                   step: "2️⃣",
                   title: "Conectá con personas que también van",
-                  description: "Descubrí a quienes comparten tus intereses y van al mismo plan."
+                  description: "Descubrí a quienes comparten tus intereses y van al mismo lugar."
                 },
                 {
                   step: "3️⃣",
