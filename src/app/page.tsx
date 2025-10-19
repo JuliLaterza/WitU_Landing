@@ -631,7 +631,7 @@ export default function Home() {
                 {
                   step: "1️⃣",
                   title: "Elegí un evento que te interese",
-                  description: "Una fiesta, un recital, una salida o un lugar que te guste."
+                  description: "Una fiesta, un recital, una salida o un lugar que te guste"
                 },
                 {
                   step: "2️⃣",
