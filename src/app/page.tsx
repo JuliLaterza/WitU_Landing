@@ -158,10 +158,10 @@ export default function Home() {
     },
     {
       icon: MapPin,
-      title: "Plazas y actividades al aire libre",
-      description: "Naturaleza, mates, musica o ejercitación",
+      title: "Planes en plazas",
+      description: "Mates, música, naturaleza y correr o entrenar.",
       color: "from-orange-400 to-yellow-500",
-      image: "/assets/images/rosedal3.png"
+      image: "/assets/images/parqueny.jpeg"
     }
   ];
 
