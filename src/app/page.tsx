@@ -776,7 +776,7 @@ export default function Home() {
               {
                 icon: Globe,
                 title: "Compromiso social",
-                description: "Estamos comprometidos con la problemática social: menos scroll, más miradas reales",
+                description: "Estamos comprometidos con la problemática social: menos scroll, más miradas",
                 features: ["Encuentros cara a cara", "Menos tiempo en pantalla", "Más experiencias auténticas"]
               }
             ].map((benefit, index) => (
