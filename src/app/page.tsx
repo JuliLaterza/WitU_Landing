@@ -555,7 +555,7 @@ export default function Home() {
               >
                 {events.map((event, index) => (
                   <div key={index} className="w-full flex-shrink-0">
-                    <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-gray-100 mx-2">
+                    <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-100 mx-2">
                       {/* Contenido del evento */}
                       <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
                         <div className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-to-r ${event.color} rounded-xl sm:rounded-2xl lg:rounded-3xl flex items-center justify-center mb-6 shadow-lg mx-auto lg:mx-0`}>
