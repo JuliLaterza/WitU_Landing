@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   Music, 
   Heart, 
@@ -900,7 +901,7 @@ export default function Home() {
               <TikTokIcon className="w-6 h-6" />
             </a>
             <a 
-              href="#" 
+              href="https://linkedin.com/company/witu-app" 
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="LinkedIn"
             >
@@ -916,12 +917,12 @@ export default function Home() {
           </div>
           
           <div className="flex justify-center space-x-6 mb-4 text-sm">
-            <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">
               Política de privacidad
-            </a>
-            <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+            </Link>
+            <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">
               Términos y condiciones
-            </a>
+            </Link>
             <a href="mailto:wituapp@gmail.com" className="text-gray-600 hover:text-gray-900 transition-colors">
               Contacto
             </a>
