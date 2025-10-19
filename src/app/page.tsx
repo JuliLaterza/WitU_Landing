@@ -13,13 +13,12 @@ import {
   Menu,
   X as CloseIcon,
   MapPin,
-  Brain,
   Calendar,
   User,
   Users2,
-  Star,
-  Shield,
-  Bell
+  Users,
+  Globe,
+  Star
 } from "lucide-react";
 
 export default function Home() {
@@ -28,8 +27,56 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Componente widget de agradecimiento reutilizable
+  const ThankYouWidget = ({ className = "" }: { className?: string }) => (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className={`bg-white border-2 border-green-200 rounded-2xl p-6 sm:p-8 shadow-xl ${className}`}
+    >
+      <div className="text-center">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+          <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
+        </div>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
+          ¡Ya estás en lista! 🎉
+        </h3>
+        <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4 sm:mb-6 inline-block">
+          ✅ Estás en la waitlist de Wit Ü
+        </div>
+        <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+          Serás de los primeros en conocer la app cuando la lancemos.
+        </p>
+        <div className="bg-green-50 rounded-xl p-4 sm:p-5">
+          <p className="text-sm sm:text-base text-green-800 font-medium mb-2">
+            ¿Qué sigue ahora?
+          </p>
+          <ul className="text-sm text-green-700 space-y-1 text-left max-w-sm mx-auto">
+            <li className="flex items-center">
+              <span className="mr-2">📧</span>
+              Te enviaremos actualizaciones importantes
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2">🚀</span>
+              Acceso temprano a la app
+            </li>
+            <li className="flex items-center">
+              <span className="mr-2">🎁</span>
+              Beneficios exclusivos para early users
+            </li>
+          </ul>
+        </div>
+      </div>
+    </motion.div>
+  );
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    
+    if (!email.trim()) {
+      return;
+    }
+    
     setIsLoading(true);
     
     try {
@@ -223,15 +270,43 @@ export default function Home() {
             Elegí un plan, mirá quién va y coordiná para compartirlo.
           </p>
 
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-yellow text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer w-full sm:w-auto"
-          >
-            Unite a la Waitlist
-          </motion.button>
+          {!isSubmitted ? (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto w-full"
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    handleSubmit();
+                  }
+                }}
+                placeholder="Tu email"
+                className="flex-1 px-6 py-3 sm:py-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent text-base placeholder:text-gray-500"
+              />
+              <button
+                onClick={handleSubmit}
+                disabled={isLoading}
+                className="bg-gradient-yellow text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none whitespace-nowrap"
+              >
+                {isLoading ? "Enviando..." : "Unite a la Waitlist"}
+              </button>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-2xl mx-auto"
+            >
+              <ThankYouWidget />
+            </motion.div>
+          )}
         </motion.div>
       </section>
 
@@ -262,7 +337,7 @@ export default function Home() {
                 Es una red social para conocer gente nueva, conectar con quienes viven tus mismos planes y comparten tus intereses.
               </p>
               <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
-                Combina eventos reales con tecnología inteligente para crear conexiones auténticas.
+                Combina eventos reales con tecnología avanzada para crear conexiones auténticas.
               </p>
               
               {/* Filosofía Wit Ü recreada con código */}
@@ -309,7 +384,7 @@ export default function Home() {
               className="relative order-1 lg:order-2 mb-8 lg:mb-0"
             >
               <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl">
-                <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   <div className="text-center">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-yellow rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mx-auto">
                       <Users2 className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />
@@ -323,13 +398,6 @@ export default function Home() {
                     </div>
                     <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">Eventos Auténticos</h3>
                     <p className="text-xs sm:text-sm text-gray-600">Experiencias en el mundo real</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-yellow rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mx-auto">
-                      <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-gray-900" />
-                    </div>
-                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">IA Inteligente</h3>
-                    <p className="text-xs sm:text-sm text-gray-600">Matches precisos</p>
                   </div>
                   <div className="text-center">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-yellow rounded-xl sm:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 mx-auto">
@@ -383,7 +451,8 @@ export default function Home() {
                 icon: MapPin,
                 title: "Plazas y actividades al aire libre",
                 description: "Naturaleza, mates, musica o ejercitación",
-                color: "from-orange-400 to-yellow-500"
+                color: "from-orange-400 to-yellow-500",
+                image: "/assets/images/rosedal3.png"
               }
             ].map((event, index) => (
               <motion.div
@@ -550,10 +619,10 @@ export default function Home() {
                 features: ["Eventos exclusivos", "Experiencias memorables", "Comunidad activa"]
               },
               {
-                icon: Brain,
-                title: "Algoritmo inteligente",
-                description: "IA que aprende tus preferencias para sugerir matches perfectos",
-                features: ["Matches precisos", "Recomendaciones personalizadas", "Aprendizaje continuo"]
+                icon: Globe,
+                title: "Compromiso social",
+                description: "Estamos comprometidos con una problemática social: menos scroll, más miradas",
+                features: ["Conexiones reales", "Bienestar digital", "Impacto positivo", "Comunidad consciente"]
               }
             ].map((benefit, index) => (
               <motion.div
@@ -628,32 +697,17 @@ export default function Home() {
                 </div>
               </form>
             ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-green-50 border border-green-200 rounded-2xl p-8"
-              >
-                <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold text-green-800 mb-2">
-                  ¡Gracias por unirte!
-                </h3>
-                <p className="text-green-700">
-                  Te avisaremos cuando lancemos la app 🫶🏼.
-                </p>
-              </motion.div>
+              <ThankYouWidget className="max-w-2xl mx-auto" />
             )}
 
             <div className="flex flex-wrap justify-center gap-8 mt-8">
               <div className="flex items-center space-x-2 text-sm text-gray-600">
-                <Bell className="w-4 h-4 text-black-500" />
                 <span>🚀 Lanzamiento estimado: Próximas semanas</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-600">
-                <Mail className="w-4 h-4 text-black-500" />
                 <span>📧 Te enviaremos actualizaciones importantes</span>
               </div>
               <div className="flex items-center space-x-2 text-sm text-gray-600">
-                <Shield className="w-4 h-4 text-black-500" />
                 <span>🔒 Tu información está completamente segura</span>
               </div>
             </div>
