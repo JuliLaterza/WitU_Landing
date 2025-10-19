@@ -369,18 +369,20 @@ export default function Home() {
                 icon: Music,
                 title: "Fiestas y boliches",
                 description: "Bailá y divertite con gente que comparte tu música",
-                color: "from-yellow-400 to-yellow-600"
+                color: "from-yellow-400 to-yellow-600",
+                image: "/assets/images/amigos-boliches.jpg"
               },
               {
                 icon: Calendar,
                 title: "Recitales",
                 description: "Viví la música en vivo con personas que aman los mismos artistas",
-                color: "from-yellow-500 to-orange-500"
+                color: "from-yellow-500 to-orange-500",
+                image: "/assets/images/recitales.jpg"
               },
               {
                 icon: MapPin,
-                title: "Deportes y actividades al aire libre",
-                description: "Ejercitate y explorá la naturaleza con compañía",
+                title: "Plazas y actividades al aire libre",
+                description: "Naturaleza, mates, musica o ejercitación",
                 color: "from-orange-400 to-yellow-500"
               }
             ].map((event, index) => (
@@ -405,11 +407,23 @@ export default function Home() {
                 </div>
                 
                 <div className="flex-1 w-full lg:w-auto">
-                  <div className="bg-gray-100 rounded-2xl sm:rounded-3xl h-48 sm:h-64 flex items-center justify-center">
-                    <div className="text-center text-gray-400">
-                      <event.icon className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 opacity-20" />
-                      <p className="text-xs sm:text-sm">Visualización del evento</p>
-                    </div>
+                  <div className="bg-gray-100 rounded-2xl sm:rounded-3xl h-48 sm:h-64 overflow-hidden">
+                    {event.image ? (
+                      <Image 
+                        src={event.image}
+                        alt={event.title}
+                        width={400}
+                        height={256}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-center text-gray-400">
+                          <event.icon className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 opacity-20" />
+                          <p className="text-xs sm:text-sm">Visualización del evento</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>

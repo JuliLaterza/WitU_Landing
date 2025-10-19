@@ -13,6 +13,13 @@ export const metadata: Metadata = {
   description: "Wit Ü es la app que conecta personas a través de eventos. Únete a nuestra waitlist y sé el primero en experimentar la nueva forma de conectar.",
   keywords: "eventos, conexión, app, waitlist, networking, social",
   authors: [{ name: "Wit Ü Team" }],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: "Wit Ü - Conecta a través de eventos",
     description: "Únete a nuestra waitlist y sé el primero en experimentar la nueva forma de conectar.",
