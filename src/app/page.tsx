@@ -420,10 +420,12 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-left order-2 lg:order-1"
             >
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-4 sm:mb-6">
-                En un mundo donde todos están conectados, pero pocos se conocen de verdad, nació Wit Ü:
-                una app pensada para que vuelvas a hacer planes y conocer gente con tus mismos intereses.
-              </p>
+              <div className="text-center">
+                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-4 sm:mb-6">
+                  En un mundo donde todos están conectados, pero pocos se conocen de verdad, nació Wit Ü:
+                  una app pensada para que vuelvas a hacer planes y conocer gente con tus mismos intereses.
+                </p>
+              </div>
               
               <div className="bg-yellow-100 rounded-xl p-4 mb-6 sm:mb-8">
                 <p className="text-lg font-semibold text-gray-800 text-center">
@@ -753,7 +755,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              ¿Por qué elegir Wit Ü?
+              ¿Todavía no te sumaste a Wit Ü?
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
               Somos la evolución de las conexiones sociales, donde la tecnología se encuentra con experiencias reales.
