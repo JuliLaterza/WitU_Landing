@@ -925,6 +925,9 @@ export default function Home() {
             <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">
               Términos y condiciones
             </Link>
+            <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">
+              Eliminar cuenta
+            </Link>
             <a href="mailto:wituapp@gmail.com" className="text-gray-600 hover:text-gray-900 transition-colors">
               Contacto
             </a>

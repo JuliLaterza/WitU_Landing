@@ -206,12 +206,15 @@ export default function PrivacidadPage() {
                   className="w-20 h-6"
                 />
               </div>
-              <div className="flex space-x-6 text-sm">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
                 <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">
                   Política de privacidad
                 </Link>
                 <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">
                   Términos y condiciones
+                </Link>
+                <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Eliminar cuenta
                 </Link>
               </div>
             </div>
