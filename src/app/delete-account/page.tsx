@@ -62,10 +62,10 @@ export default function DeleteAccountPage() {
                 <ol className="list-decimal pl-6 text-gray-700 space-y-2">
                   <li>Abre la aplicación Wit Ü</li>
                   <li>Ve a tu perfil (toca tu foto de perfil en la esquina superior)</li>
-                  <li>Selecciona "Configuración" o "Ajustes"</li>
-                  <li>Desplázate hasta encontrar la opción "Eliminar cuenta"</li>
+                  <li>Selecciona &quot;Configuración&quot; o &quot;Ajustes&quot;</li>
+                  <li>Desplázate hasta encontrar la opción &quot;Eliminar cuenta&quot;</li>
                   <li>Confirma que deseas eliminar tu cuenta</li>
-                  <li>Escribe "ELIMINAR" para confirmar la acción</li>
+                  <li>Escribe &quot;ELIMINAR&quot; para confirmar la acción</li>
                 </ol>
               </div>
             </section>
