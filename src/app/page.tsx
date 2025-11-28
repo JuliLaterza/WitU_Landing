@@ -243,6 +243,12 @@ export default function Home() {
               >
                 ¿Por qué Wit Ü?
               </a>
+              <Link 
+                href="/safety" 
+                className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
+              >
+                Seguridad
+              </Link>
               <a 
                 href="#waitlist" 
                 onClick={(e) => {
@@ -310,6 +316,13 @@ export default function Home() {
                   >
                     ¿Por qué Wit Ü?
                   </a>
+                  <Link 
+                    href="/safety" 
+                    onClick={closeMobileMenu}
+                    className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
+                  >
+                    Seguridad
+                  </Link>
                   <a 
                     href="#waitlist" 
                     onClick={(e) => {
@@ -924,6 +937,9 @@ export default function Home() {
             </Link>
             <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">
               Términos y condiciones
+            </Link>
+            <Link href="/safety" className="text-gray-600 hover:text-gray-900 transition-colors">
+              Seguridad
             </Link>
             <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">
               Eliminar cuenta
