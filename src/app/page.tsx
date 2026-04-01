@@ -409,6 +409,46 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Nos apoyan */}
+      <section className="py-8 sm:py-10 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+              Nos apoyan
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 lg:gap-16">
+              <Image
+                src="/assets/images/sponsors/uade-logo.svg-2.png"
+                alt="UADE"
+                width={140}
+                height={56}
+                className="h-9 sm:h-11 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+              <Image
+                src="/assets/images/sponsors/Emprelatam-logo-azul.png"
+                alt="Emprelatam"
+                width={180}
+                height={56}
+                className="h-10 sm:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+              <Image
+                src="/assets/images/sponsors/aws-startups.png"
+                alt="AWS Startup Programs"
+                width={160}
+                height={56}
+                className="h-9 sm:h-11 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 2. ¿Qué es Wit Ü? */}
       <section id="que-es" className="py-12 sm:py-16 md:py-20 px-4 bg-yellow-light">
         <div className="container mx-auto max-w-6xl">
@@ -420,7 +460,6 @@ export default function Home() {
             className="text-center mb-8 sm:mb-12 md:mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
-              No somos una app de citas.<br />
               Somos la red social que se vive en la vida real.
             </h2>
           </motion.div>
@@ -950,7 +989,7 @@ export default function Home() {
           </div>
           
           <p className="text-gray-600 text-sm">
-            © 2025 Wit Ü. Todos los derechos reservados.
+            © 2026 Wit Ü. Todos los derechos reservados.
           </p>
         </div>
       </footer>
