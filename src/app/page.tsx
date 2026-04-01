@@ -708,9 +708,7 @@ export default function Home() {
                   className="relative"
                 >
                   {/* Línea conectora entre pasos */}
-                  {index < 2 && (
-                    <div className="absolute left-1/2 transform -translate-x-1/2 top-16 sm:top-20 w-0.5 h-8 sm:h-12 bg-gradient-to-b from-yellow-300 to-yellow-500 z-0"></div>
-                  )}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 top-16 sm:top-20 w-0.5 h-8 sm:h-12 bg-gradient-to-b from-yellow-300 to-yellow-500 z-0"></div>
                   
                   <div className="text-center relative z-10">
                     {/* Número de paso grande centrado */}
