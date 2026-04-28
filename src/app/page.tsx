@@ -243,14 +243,15 @@ export default function Home() {
               >
                 ¿Por qué Wit Ü?
               </a>
-              <Link 
-                href="/safety" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
+              
+              <Link
+                href="/sumar-evento"
+                className="bg-gray-900 text-white px-3 lg:px-5 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm lg:text-base whitespace-nowrap"
               >
-                Seguridad
+                Quiero sumar mi evento
               </Link>
-              <a 
-                href="#waitlist" 
+              <a
+                href="#waitlist"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
@@ -323,8 +324,15 @@ export default function Home() {
                   >
                     Seguridad
                   </Link>
-                  <a 
-                    href="#waitlist" 
+                  <Link
+                    href="/sumar-evento"
+                    onClick={closeMobileMenu}
+                    className="bg-gray-900 text-white px-4 py-3 rounded-full font-semibold shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300 text-center"
+                  >
+                    Quiero sumar mi evento
+                  </Link>
+                  <a
+                    href="#waitlist"
                     onClick={(e) => {
                       e.preventDefault();
                       closeMobileMenu();
