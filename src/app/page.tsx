@@ -349,109 +349,186 @@ export default function Home() {
         </div>
       </header>
 
-      {/* 1. Hero Section - Pantalla completa al inicio */}
-      <section 
-        className="min-h-screen flex items-center justify-center px-4 pt-20 pb-8 overflow-hidden relative hero-trama"
-      >
-        {/* Overlay sutil para mejor legibilidad del texto */}
-        <div className="absolute inset-0 bg-white/20"></div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto w-full relative z-10"
-        >
-          {/* Fondo sólido detrás del contenido */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/50">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 drop-shadow-lg">
-            Conectá con personas que viven lo mismo que vos
-          </h1>
-          
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 sm:mb-8 leading-relaxed max-w-3xl mx-auto px-2 drop-shadow-md">
-            Desconectá de la pantalla y volvé a conectar en la vida real.
-          </p>
+      {/* 1. Hero Section - Rebranding moderno */}
+      <section className="relative overflow-hidden px-4 pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 bg-gradient-to-b from-white via-[#FFFCF4] to-white">
+        <div className="absolute -top-20 -left-14 w-72 h-72 bg-yellow-200/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 -right-20 w-80 h-80 bg-orange-200/30 rounded-full blur-3xl pointer-events-none" />
 
-          <p className="text-base sm:text-lg text-gray-600 mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto px-2 drop-shadow-md">
-            Porque los mejores planes no pasan online.
-          </p>
-
-          {!isSubmitted ? (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto w-full"
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') {
-                    handleSubmit();
-                  }
-                }}
-                placeholder="Tu email"
-                className="flex-1 px-6 py-3 sm:py-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent text-base placeholder:text-gray-500 bg-white/95 backdrop-blur-sm shadow-lg"
-              />
-              <button
-                onClick={handleSubmit}
-                disabled={isLoading}
-                className="bg-gradient-yellow text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gradient-yellow-reverse shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none whitespace-nowrap"
-              >
-                {isLoading ? "Enviando..." : "Unite a la comunidad"}
-              </button>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="max-w-2xl mx-auto"
-            >
-              <ThankYouWidget />
-            </motion.div>
-          )}
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Nos apoyan */}
-      <section className="py-8 sm:py-10 px-4">
-        <div className="container mx-auto max-w-3xl">
+        <div className="container mx-auto max-w-6xl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="grid lg:grid-cols-2 gap-10 xl:gap-14 items-center"
           >
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
-              Nos apoyan
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 lg:gap-16">
-              <Image
-                src="/assets/images/sponsors/uade-logo.svg-2.png"
-                alt="UADE"
-                width={140}
-                height={56}
-                className="h-9 sm:h-11 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-              />
-              <Image
-                src="/assets/images/sponsors/Emprelatam-logo-azul.png"
-                alt="Emprelatam"
-                width={180}
-                height={56}
-                className="h-10 sm:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-              />
-              <Image
-                src="/assets/images/sponsors/aws-startups.png"
-                alt="AWS Startup Programs"
-                width={160}
-                height={56}
-                className="h-9 sm:h-11 w-auto opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-              />
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center rounded-full bg-yellow-100 text-yellow-900 px-4 py-1.5 text-sm font-semibold mb-6 border border-yellow-200">
+                ✨ La vida pasa afuera
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold text-gray-900 leading-[1.03] mb-6">
+                Conectá con personas que viven
+                <span className="block italic bg-gradient-to-r from-gray-900 via-gray-800 to-yellow-700 bg-clip-text text-transparent">
+                  lo mismo que vos
+                </span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-2 max-w-xl">
+                Volvé a conectar en la vida real. Porque los mejores planes no pasan online.
+              </p>
+              <p className="text-base sm:text-lg text-gray-500 leading-relaxed mb-8 max-w-xl">
+                
+              </p>
+
+              {!isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="bg-white/85 backdrop-blur-md border border-gray-100 rounded-2xl p-3 sm:p-4 shadow-xl max-w-2xl"
+                >
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          handleSubmit();
+                        }
+                      }}
+                      placeholder="Tu email principal"
+                      className="flex-1 px-5 py-3.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent text-base placeholder:text-gray-400 bg-white"
+                    />
+                    <button
+                      onClick={handleSubmit}
+                      disabled={isLoading}
+                      className="bg-gradient-yellow text-gray-900 px-6 py-3.5 rounded-xl font-semibold text-base hover:bg-gradient-yellow-reverse shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                    >
+                      {isLoading ? "Enviando..." : "Unite a la comunidad"}
+                    </button>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-3 px-1">
+                    Acceso anticipado, eventos curados y beneficios para early users.
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="max-w-2xl"
+                >
+                  <ThankYouWidget />
+                </motion.div>
+              )}
+
+              <div className="mt-7 bg-white/90 backdrop-blur-md border border-gray-100 rounded-2xl p-4 sm:p-5 shadow-lg max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+                  Nos apoyan
+                </p>
+                <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+                  <Image
+                    src="/assets/images/sponsors/uade-logo.svg-2.png"
+                    alt="UADE"
+                    width={120}
+                    height={40}
+                    className="h-7 sm:h-8 w-auto opacity-80"
+                  />
+                  <Image
+                    src="/assets/images/sponsors/Emprelatam-logo-azul.png"
+                    alt="Emprelatam"
+                    width={150}
+                    height={40}
+                    className="h-8 sm:h-9 w-auto opacity-80"
+                  />
+                  <Image
+                    src="/assets/images/sponsors/aws-startups.png"
+                    alt="AWS Startup Programs"
+                    width={130}
+                    height={40}
+                    className="h-7 sm:h-8 w-auto opacity-80"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <div className="relative max-w-[560px] mx-auto">
+                <div className="grid grid-cols-2 gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.7, delay: 0.15 }}
+                    className="col-span-2 relative rounded-3xl overflow-hidden shadow-2xl border border-white/70"
+                  >
+                    <Image
+                      src="/assets/images/amigos-boliches.jpg"
+                      alt="Amigos brindando en una fiesta"
+                      width={820}
+                      height={520}
+                      className="w-full h-52 sm:h-64 object-cover"
+                      priority
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-black/65 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Fiestas
+                      </span>
+                    </div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.25 }}
+                    className="relative rounded-3xl overflow-hidden shadow-xl border border-white/70"
+                  >
+                    <Image
+                      src="/assets/images/juntadas_parque.jpeg"
+                      alt="Personas en un encuentro al aire libre"
+                      width={420}
+                      height={420}
+                      className="w-full h-44 sm:h-52 object-cover"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-white/85 text-gray-900 text-xs font-semibold px-2.5 py-1 rounded-full">
+                        Juntadas
+                      </span>
+                    </div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.35 }}
+                    className="relative rounded-3xl overflow-hidden shadow-xl border border-white/70"
+                  >
+                    <Image
+                      src="/assets/images/recitales.jpg"
+                      alt="Personas disfrutando un recital"
+                      width={420}
+                      height={420}
+                      className="w-full h-44 sm:h-52 object-cover"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-white/85 text-gray-900 text-xs font-semibold px-2.5 py-1 rounded-full">
+                        Recitales
+                      </span>
+                    </div>
+                  </motion.div>
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.45 }}
+                  className="absolute -bottom-7 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl px-4 py-3 shadow-xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                    <p className="text-sm font-semibold text-gray-900">Recital</p>
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">150 personas asistiendo ahora</p>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
