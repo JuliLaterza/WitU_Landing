@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { 
-  Music, 
   Heart, 
   CheckCircle,
   Instagram,
@@ -13,13 +12,10 @@ import {
   Mail,
   Menu,
   X as CloseIcon,
-  MapPin,
   Calendar,
   Users2,
   Globe,
-  Star,
-  ChevronLeft,
-  ChevronRight
+  Star
 } from "lucide-react";
 
 // Custom TikTok Icon Component
@@ -39,9 +35,6 @@ export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentEventIndex, setCurrentEventIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Componente widget de agradecimiento reutilizable
   const ThankYouWidget = ({ className = "" }: { className?: string }) => (
@@ -138,66 +131,28 @@ export default function Home() {
     setIsMobileMenuOpen(false);
   };
 
-  // Datos de eventos para el carrusel
-  const events = [
+  const eventCategories = [
     {
-      icon: Music,
-      title: "Fiestas y boliches",
-      description: "Bailá y divertite con gente que comparte tu música",
-      color: "from-yellow-400 to-yellow-600",
-      image: "/assets/images/amigos-boliches.jpg"
+      category: "Fiestas",
+      title: "Boliches",
+      image: "/assets/images/amigos-boliches.jpg",
     },
     {
-      icon: Calendar,
-      title: "Recitales",
-      description: "Viví la música en vivo con personas que aman los mismos artistas",
-      color: "from-yellow-500 to-orange-500",
-      image: "/assets/images/recitales.jpg"
+      category: "Recitales",
+      title: "Festivales y recitales musicales",
+      image: "/assets/images/recitales.jpg",
     },
     {
-      icon: MapPin,
-      title: "Planes en plazas",
-      description: "Mates, música, naturaleza y correr o entrenar.",
-      color: "from-orange-400 to-yellow-500",
-      image: "/assets/images/parqueny.jpeg"
-    }
+      category: "Plazas",
+      title: "Naturaleza y aire libre",
+      image: "/assets/images/juntadas_parque.jpeg",
+    },
+    {
+      category: "Deportes",
+      title: "Clubes de running",
+      image: "/assets/images/runningclub.jpg",
+    },
   ];
-
-  // Funciones de navegación con scroll
-  const nextEvent = () => {
-    setCurrentEventIndex((prev) => (prev + 1) % events.length);
-  };
-
-  const prevEvent = () => {
-    setCurrentEventIndex((prev) => (prev - 1 + events.length) % events.length);
-  };
-
-  // Funciones para manejar el swipe y scroll
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      nextEvent();
-    }
-    if (isRightSwipe) {
-      prevEvent();
-    }
-  };
 
 
   return (
@@ -535,216 +490,111 @@ export default function Home() {
       </section>
 
       {/* 2. ¿Qué es Wit Ü? */}
-      <section id="que-es" className="py-12 sm:py-16 md:py-20 px-4 bg-yellow-light">
+      <section id="que-es" className="py-14 sm:py-16 md:py-20 px-4 bg-[#F8F8F6]">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+            className="text-center mb-10 sm:mb-12 md:mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
-              Somos la red social que se vive en la vida real.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Somos la red social que se vive en la vida real
             </h2>
           </motion.div>
-          
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-left order-2 lg:order-1"
-            >
-              <div className="text-center">
-                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-4 sm:mb-6">
-                  En un mundo donde todos están conectados, pero pocos se conocen de verdad, nació Wit Ü:
-                  una app pensada para que vuelvas a hacer planes y conocer gente con tus mismos intereses.
-                </p>
-              </div>
-              
-              <div className="bg-yellow-100 rounded-xl p-4 mb-6 sm:mb-8">
-                <p className="text-lg font-semibold text-gray-800 text-center">
-                  Lo digital te acerca, Wit Ü te encuentra.
-                </p>
-              </div>
-              
-              {/* Filosofía Wit Ü recreada con código */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="max-w-sm sm:max-w-md"
-              >
-                <div className="bg-white rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8 border border-gray-100">
-                  {/* Fórmula principal */}
-                  <div className="flex items-center justify-center space-x-1 sm:space-x-2 lg:space-x-4 mb-4 sm:mb-6">
-                    <div className="text-center flex flex-col items-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-1">U</div>
-                      <div className="text-xs text-gray-600 h-4 flex items-center">You</div>
-                    </div>
-                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
-                    <div className="text-center flex flex-col items-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-yellow-500 mb-1">:)</div>
-                      <div className="text-xs text-gray-600 h-4 flex items-center">Alegría</div>
-                    </div>
-                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400 flex items-center h-full">+</div>
-                    <div className="text-center flex flex-col items-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-1">i i</div>
-                      <div className="text-xs text-gray-600 h-4 flex items-center">Personas</div>
-                    </div>
-                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400 flex items-center h-full">=</div>
-                    <div className="text-center flex flex-col items-center">
-                      <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-400 mb-1">Ü</div>
-                      <div className="text-xs text-gray-600 h-4 flex items-center">Wit Ü</div>
-                    </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
+            {[
+              {
+                icon: Users2,
+                title: "Conexiones Reales",
+                description:
+                  "Conocé gente con tus mismos intereses en un entorno seguro y relajado.",
+              },
+              {
+                icon: Calendar,
+                title: "Planes",
+                description:
+                  "Fiestas, recitales, juntadas, etc. Siempre hay algo pasando cerca tuyo.",
+              },
+              {
+                icon: Heart,
+                title: "Afinidad Pura",
+                description:
+                  "Nuestro sistema te muestra personas compatibles para poder compartir la experiencia juntos.",
+              },
+            ].map((feature, index) => {
+              const FeatureIcon = feature.icon;
+              return (
+                <motion.article
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="rounded-[28px] border border-gray-200/80 bg-white p-7 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-[#FFF3D4] flex items-center justify-center mb-6">
+                    <FeatureIcon className="w-5 h-5 text-gray-900" />
                   </div>
-                  
-                </div>
-              </motion.div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="relative order-1 lg:order-2 mb-8 lg:mb-0"
-            >
-              <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10">
-                  <div className="text-center">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-yellow rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 mx-auto shadow-lg">
-                      <Users2 className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-gray-900" />
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">Conexiones Reales</h3>
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xs mx-auto">Personas con intereses similares</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-yellow rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 mx-auto shadow-lg">
-                      <Calendar className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-gray-900" />
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">Eventos y Actividades</h3>
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xs mx-auto">Experiencias en el mundo real</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-yellow rounded-2xl sm:rounded-3xl flex items-center justify-center mb-6 mx-auto shadow-lg">
-                      <Heart className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-gray-900" />
-                    </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 leading-tight">Afinidades</h3>
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xs mx-auto">Gustos compartidos</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{feature.title}</h3>
+                  <p className="text-base text-gray-600 leading-relaxed">{feature.description}</p>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* 3. Tipos de eventos */}
-      <section id="eventos" className="py-12 sm:py-16 md:py-20 px-4">
-        <div className="container mx-auto max-w-6xl relative">
+      <section id="eventos" className="py-14 sm:py-16 md:py-20 px-4 bg-[#F7F2E9]">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+            className="mb-8 sm:mb-10 md:mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
-              ¿Qué tipos de eventos podés encontrar?
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-8 sm:mb-12 px-2">
-              En la app vas a encontrar planes para todos los gustos y momentos:
-            </p>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                  ¿Qué tipos de eventos podés encontrar?
+                </h2>
+                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
+                  Explorá categorías diseñadas para que encuentres tu lugar, sin importar tu mood.
+                </p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Carrusel con swipe y scroll */}
-          <div className="relative max-w-4xl mx-auto">
-            {/* Flechitas de navegación para desktop - Posicionadas fuera del carrusel */}
-            <button
-              onClick={prevEvent}
-              className="hidden lg:flex absolute left-[-60px] top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white border border-gray-200 rounded-full items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 opacity-80 hover:opacity-100"
-              aria-label="Evento anterior"
-            >
-              <ChevronLeft className="w-6 h-6 text-gray-700" />
-            </button>
-            
-            <button
-              onClick={nextEvent}
-              className="hidden lg:flex absolute right-[-60px] top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white border border-gray-200 rounded-full items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200 opacity-80 hover:opacity-100"
-              aria-label="Siguiente evento"
-            >
-              <ChevronRight className="w-6 h-6 text-gray-700" />
-            </button>
-
-            {/* Contenedor del carrusel */}
-            <div 
-              className="relative overflow-hidden rounded-2xl sm:rounded-3xl"
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
-            >
-              <motion.div
-                className="flex"
-                animate={{ x: `-${currentEventIndex * 100}%` }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {eventCategories.map((category, index) => (
+              <motion.article
+                key={category.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className={`group relative overflow-hidden rounded-[28px] h-[330px] sm:h-[360px] shadow-lg ${
+                  index % 2 === 1 ? "sm:mt-8 lg:mt-10" : ""
+                }`}
               >
-                {events.map((event, index) => (
-                  <div key={index} className="w-full flex-shrink-0">
-                    <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-12 bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-100 mx-2">
-                      {/* Contenido del evento */}
-                      <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
-                        <div className={`w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-to-r ${event.color} rounded-xl sm:rounded-2xl lg:rounded-3xl flex items-center justify-center mb-6 shadow-lg mx-auto lg:mx-0`}>
-                          {(() => {
-                            const EventIcon = event.icon;
-                            return <EventIcon className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" />;
-                          })()}
-                        </div>
-                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
-                          {event.title}
-                        </h3>
-                        <p className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                          {event.description}
-                        </p>
-                      </div>
-                      
-                      {/* Imagen del evento */}
-                      <div className="flex-1 w-full lg:w-auto order-1 lg:order-2">
-                        <div className="bg-gray-100 rounded-xl sm:rounded-2xl h-64 sm:h-80 lg:h-96 overflow-hidden">
-                          <Image 
-                            src={event.image}
-                            alt={event.title}
-                            width={500}
-                            height={400}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* Indicadores únicamente */}
-            <div className="flex justify-center space-x-2 mt-8">
-              {events.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentEventIndex(index)}
-                  className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-200 ${
-                    index === currentEventIndex
-                      ? 'bg-gradient-yellow scale-125'
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  aria-label={`Ir al evento ${index + 1}`}
+                <Image
+                  src={category.image}
+                  alt={category.title}
+                  width={420}
+                  height={560}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              ))}
-            </div>
-
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <p className="text-white/90 text-sm mb-1">{category.category}</p>
+                  <h3 className="text-white text-3xl font-semibold leading-tight">{category.title}</h3>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
