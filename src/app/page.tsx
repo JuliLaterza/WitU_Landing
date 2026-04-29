@@ -161,7 +161,7 @@ const copy = {
       events: "Events",
       howItWorks: "How it works",
       safety: "Safety",
-      addEvent: "I want to add my event",
+      addEvent: "Add my event",
       waitlist: "Join the Waitlist",
       switchLabel: "Switch language to Spanish",
       switchButton: "🇪🇸 ES",
@@ -920,7 +920,7 @@ export default function Home() {
             </a>
           </div>
           
-          <div className="flex justify-center space-x-6 mb-4 text-sm">
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-x-6 mb-4 px-2 text-sm text-center">
             <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.footer.privacy}
             </Link>
