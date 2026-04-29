@@ -221,7 +221,7 @@ const copy = {
       subtitle: "Three steps to leave your digital comfort zone.",
       steps: [
         { step: "1", title: "Choose your plan", description: "Find the event or activity that matches your interests." },
-        { step: "2", title: "Connect with people", description: "Find your match to share the experience." },
+        { step: "2", title: "Connect with people", description: "Find your mate to share the experience." },
         { step: "3", title: "Break the ice", description: "Send a message before the event." },
       ],
     },
