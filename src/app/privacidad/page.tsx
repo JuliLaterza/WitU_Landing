@@ -1,7 +1,130 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useAppLanguage } from "@/lib/language";
+
+const copy = {
+  es: {
+    back: "Volver al inicio",
+    switch: "🇺🇸 EN",
+    title: "Política de Privacidad",
+    updated: "Última actualización",
+    sections: [
+      {
+        title: "1. Introducción",
+        body: "En Wit Ü respetamos tu privacidad y protegemos tu información personal. Esta política explica cómo recopilamos, usamos, compartimos y resguardamos tu información cuando usás la app.",
+      },
+      {
+        title: "2. Información que recopilamos",
+        body: "Podemos recopilar información de perfil, correo electrónico, preferencias, ubicación (con consentimiento), datos técnicos del dispositivo y actividad dentro de la app.",
+      },
+      {
+        title: "3. Cómo usamos tu información",
+        body: "Usamos estos datos para operar y mejorar el servicio, mostrar contenido relevante, facilitar conexiones, personalizar experiencia, prevenir fraude y cumplir obligaciones legales.",
+      },
+      {
+        title: "4. Compartir información",
+        body: "No vendemos tu información personal. Podemos compartirla con proveedores de servicios, por requerimientos legales o ante procesos corporativos como fusiones o adquisiciones.",
+      },
+      {
+        title: "5. Seguridad de los datos",
+        body: "Aplicamos medidas técnicas, administrativas y físicas para proteger tus datos frente a accesos no autorizados, alteraciones o pérdidas.",
+      },
+      {
+        title: "6. Tus derechos",
+        body: "Podés acceder, corregir o eliminar tus datos, restringir su procesamiento y retirar tu consentimiento. Contactanos a wituapp@gmail.com.",
+      },
+      {
+        title: "7. Retención de datos",
+        body: "Conservamos información solo durante el tiempo necesario para los fines descritos o según lo exija la ley.",
+      },
+      {
+        title: "8. Menores de edad",
+        body: "Wit Ü está destinada a mayores de 18 años y no recopilamos intencionalmente información de menores.",
+      },
+      {
+        title: "9. Cambios en esta política",
+        body: "Podemos actualizar esta política periódicamente y notificaremos cambios relevantes por la app o por correo.",
+      },
+      {
+        title: "10. Contacto",
+        body: "Si tenés dudas sobre esta política, escribinos a wituapp@gmail.com.",
+      },
+    ],
+    footer: {
+      privacy: "Política de privacidad",
+      terms: "Términos y condiciones",
+      delete: "Eliminar cuenta",
+      copyright: "© 2025 Wit Ü. Todos los derechos reservados.",
+    },
+  },
+  en: {
+    back: "Back to home",
+    switch: "🇪🇸 ES",
+    title: "Privacy Policy",
+    updated: "Last updated",
+    sections: [
+      {
+        title: "1. Introduction",
+        body: "At Wit Ü, we respect your privacy and protect your personal information. This policy explains how we collect, use, share, and safeguard your information when you use the app.",
+      },
+      {
+        title: "2. Information we collect",
+        body: "We may collect profile information, email, preferences, location (with consent), technical device data, and in-app activity.",
+      },
+      {
+        title: "3. How we use your information",
+        body: "We use this data to operate and improve the service, show relevant content, enable connections, personalize your experience, prevent fraud, and comply with legal obligations.",
+      },
+      {
+        title: "4. Information sharing",
+        body: "We do not sell personal information. We may share data with service providers, for legal requirements, or in corporate events such as mergers or acquisitions.",
+      },
+      {
+        title: "5. Data security",
+        body: "We apply technical, administrative, and physical safeguards to protect your data from unauthorized access, alteration, or loss.",
+      },
+      {
+        title: "6. Your rights",
+        body: "You may access, correct, or delete your data, restrict processing, and withdraw consent. Contact us at wituapp@gmail.com.",
+      },
+      {
+        title: "7. Data retention",
+        body: "We retain data only for as long as necessary for the purposes described or as required by law.",
+      },
+      {
+        title: "8. Minors",
+        body: "Wit Ü is intended for users 18+ and we do not knowingly collect data from minors.",
+      },
+      {
+        title: "9. Changes to this policy",
+        body: "We may update this policy periodically and notify relevant changes through the app or by email.",
+      },
+      {
+        title: "10. Contact",
+        body: "If you have questions about this policy, contact us at wituapp@gmail.com.",
+      },
+    ],
+    footer: {
+      privacy: "Privacy policy",
+      terms: "Terms and conditions",
+      delete: "Delete account",
+      copyright: "© 2025 Wit Ü. All rights reserved.",
+    },
+  },
+} as const;
 
 export default function PrivacidadPage() {
+  const { language, toggleLanguage } = useAppLanguage();
+  const t = copy[language];
+
+  const formattedDate = new Date().toLocaleDateString(language === "en" ? "en-US" : "es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -17,12 +140,17 @@ export default function PrivacidadPage() {
                 className="w-20 sm:w-24 h-6 sm:h-8"
               />
             </Link>
-            <Link 
-              href="/"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
-            >
-              Volver al inicio
-            </Link>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={toggleLanguage}
+                className="px-3 py-1.5 rounded-full border border-gray-300 text-xs font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                {t.switch}
+              </button>
+              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                {t.back}
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -30,168 +158,19 @@ export default function PrivacidadPage() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="prose prose-lg max-w-none">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">
-            Política de Privacidad
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">{t.title}</h1>
           
           <div className="text-sm text-gray-600 mb-8">
-            <p>Última actualización: {new Date().toLocaleDateString('es-ES', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            })}</p>
+            <p>{t.updated}: {formattedDate}</p>
           </div>
 
           <div className="space-y-8">
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                1. Introducción
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                En Wit Ü, respetamos tu privacidad y nos comprometemos a proteger tu información personal. 
-                Esta Política de Privacidad explica cómo recopilamos, usamos, compartimos y protegemos 
-                tu información cuando utilizas nuestra aplicación.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                2. Información que Recopilamos
-              </h2>
-              
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                2.1 Información que nos proporcionas
-              </h3>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                <li>Información de perfil (nombre, edad, fotos, biografía)</li>
-                <li>Dirección de correo electrónico</li>
-                <li>Preferencias e intereses personales</li>
-                <li>Ubicación (cuando la compartas voluntariamente)</li>
-                <li>Comunicaciones que nos envíes</li>
-              </ul>
-
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                2.2 Información que recopilamos automáticamente
-              </h3>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Información del dispositivo (tipo, sistema operativo, identificadores únicos)</li>
-                <li>Información de uso de la aplicación</li>
-                <li>Datos de ubicación (con tu consentimiento)</li>
-                <li>Cookies y tecnologías similares</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                3. Cómo Usamos tu Información
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Utilizamos la información recopilada para:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Proporcionar y mejorar nuestros servicios</li>
-                <li>Conectarte con personas compatibles con tus intereses</li>
-                <li>Mostrarte eventos y actividades relevantes</li>
-                <li>Comunicarnos contigo sobre la aplicación y eventos</li>
-                <li>Personalizar tu experiencia en la aplicación</li>
-                <li>Garantizar la seguridad y prevenir fraudes</li>
-                <li>Cumplir con obligaciones legales</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                4. Compartir Información
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                No vendemos tu información personal. Podemos compartir tu información en las siguientes circunstancias:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Con otros usuarios de la aplicación (según las configuraciones de tu perfil)</li>
-                <li>Con proveedores de servicios que nos ayudan a operar la aplicación</li>
-                <li>Cuando sea requerido por ley o para proteger nuestros derechos</li>
-                <li>En caso de una fusión, adquisición o venta de activos</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                5. Seguridad de los Datos
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Implementamos medidas de seguridad técnicas, administrativas y físicas apropiadas 
-                para proteger tu información personal contra acceso no autorizado, alteración, 
-                divulgación o destrucción.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                6. Tus Derechos
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Tienes varios derechos respecto a tu información personal:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2">
-                <li>Acceder a tu información personal</li>
-                <li>Corregir información inexacta</li>
-                <li>Eliminar tu información personal</li>
-                <li>Restringir el procesamiento de tu información</li>
-                <li>Portabilidad de datos</li>
-                <li>Retirar tu consentimiento</li>
-              </ul>
-              <p className="text-gray-700 leading-relaxed mt-4">
-                Puedes ejercer estos derechos contactándonos en wituapp@gmail.com
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                7. Retención de Datos
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Conservamos tu información personal durante el tiempo necesario para cumplir 
-                con los propósitos descritos en esta política, a menos que la ley requiera 
-                un período de retención más largo.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                8. Menores de Edad
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Nuestros servicios están dirigidos a usuarios mayores de 18 años. No recopilamos 
-                intencionalmente información personal de menores de edad. Si descubrimos que 
-                hemos recopilado información de un menor, la eliminaremos inmediatamente.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                9. Cambios a esta Política
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Podemos actualizar esta Política de Privacidad ocasionalmente. Te notificaremos 
-                sobre cambios significativos mediante la aplicación o por correo electrónico. 
-                Te recomendamos revisar esta política periódicamente.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                10. Contacto
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos 
-                tu información personal, puedes contactarnos:
-              </p>
-              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                <p className="text-gray-700">
-                  <strong>Email:</strong> wituapp@gmail.com
-                </p>
-              </div>
-            </section>
+            {t.sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">{section.title}</h2>
+                <p className="text-gray-700 leading-relaxed">{section.body}</p>
+              </section>
+            ))}
           </div>
 
           {/* Footer */}
@@ -207,19 +186,13 @@ export default function PrivacidadPage() {
                 />
               </div>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
-                <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Política de privacidad
-                </Link>
-                <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Términos y condiciones
-                </Link>
-                <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Eliminar cuenta
-                </Link>
+                <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.privacy}</Link>
+                <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.terms}</Link>
+                <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.delete}</Link>
               </div>
             </div>
             <p className="text-gray-600 text-sm mt-4 text-center">
-              © 2025 Wit Ü. Todos los derechos reservados.
+              {t.footer.copyright}
             </p>
           </div>
         </div>

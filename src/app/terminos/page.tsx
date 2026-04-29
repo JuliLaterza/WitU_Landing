@@ -1,7 +1,121 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useAppLanguage } from "@/lib/language";
+
+const copy = {
+  es: {
+    back: "Volver al inicio",
+    switch: "🇺🇸 EN",
+    title: "Términos y Condiciones",
+    updated: "Última actualización",
+    sections: [
+      {
+        title: "1. Aceptación de los términos",
+        body: "Al acceder y utilizar Wit Ü, aceptás estos términos de uso. Si no estás de acuerdo, no debés utilizar la aplicación.",
+      },
+      {
+        title: "2. Descripción del servicio",
+        body: "Wit Ü conecta personas a través de eventos y actividades reales para facilitar conexiones auténticas basadas en intereses compartidos.",
+      },
+      {
+        title: "3. Registro y cuenta",
+        body: "Debés proporcionar información precisa y mantener la confidencialidad de tu cuenta. Debés ser mayor de 18 años.",
+      },
+      {
+        title: "4. Uso aceptable",
+        body: "Te comprometés a usar la app de forma legal, respetuosa y sin afectar a otros usuarios ni a la plataforma.",
+      },
+      {
+        title: "5. Contenido del usuario",
+        body: "Conservás tus derechos sobre tu contenido, pero nos autorizás a usarlo para operar y mejorar la plataforma.",
+      },
+      {
+        title: "6. Privacidad",
+        body: "Tu uso también está regido por nuestra Política de Privacidad.",
+      },
+      {
+        title: "7. Modificaciones",
+        body: "Podemos modificar estos términos. El uso continuado de la app implica aceptación de los cambios.",
+      },
+      {
+        title: "8. Limitación de responsabilidad",
+        body: "Wit Ü se ofrece \"tal cual\" y no asumimos responsabilidad por daños derivados del uso de la app.",
+      },
+      {
+        title: "9. Contacto",
+        body: "Si tenés preguntas sobre estos términos, contactanos en wituapp@gmail.com.",
+      },
+    ],
+    footer: {
+      privacy: "Política de privacidad",
+      terms: "Términos y condiciones",
+      delete: "Eliminar cuenta",
+      copyright: "© 2025 Wit Ü. Todos los derechos reservados.",
+    },
+  },
+  en: {
+    back: "Back to home",
+    switch: "🇪🇸 ES",
+    title: "Terms and Conditions",
+    updated: "Last updated",
+    sections: [
+      {
+        title: "1. Acceptance of terms",
+        body: "By accessing and using Wit Ü, you agree to these terms of use. If you disagree, you should not use the application.",
+      },
+      {
+        title: "2. Service description",
+        body: "Wit Ü connects people through real-world events and activities to create authentic connections based on shared interests.",
+      },
+      {
+        title: "3. Registration and account",
+        body: "You must provide accurate information and keep your account credentials secure. You must be 18+ to use the app.",
+      },
+      {
+        title: "4. Acceptable use",
+        body: "You agree to use the app legally, respectfully, and without harming other users or platform operations.",
+      },
+      {
+        title: "5. User content",
+        body: "You retain rights to your content, but grant us permission to use it to operate and improve the platform.",
+      },
+      {
+        title: "6. Privacy",
+        body: "Your use is also governed by our Privacy Policy.",
+      },
+      {
+        title: "7. Changes",
+        body: "We may update these terms. Continued use of the app means acceptance of those changes.",
+      },
+      {
+        title: "8. Limitation of liability",
+        body: "Wit Ü is provided \"as is\" and we are not liable for damages resulting from app usage.",
+      },
+      {
+        title: "9. Contact",
+        body: "If you have questions about these terms, contact us at wituapp@gmail.com.",
+      },
+    ],
+    footer: {
+      privacy: "Privacy policy",
+      terms: "Terms and conditions",
+      delete: "Delete account",
+      copyright: "© 2025 Wit Ü. All rights reserved.",
+    },
+  },
+} as const;
 
 export default function TerminosPage() {
+  const { language, toggleLanguage } = useAppLanguage();
+  const t = copy[language];
+  const formattedDate = new Date().toLocaleDateString(language === "en" ? "en-US" : "es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -17,12 +131,17 @@ export default function TerminosPage() {
                 className="w-20 sm:w-24 h-6 sm:h-8"
               />
             </Link>
-            <Link 
-              href="/"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
-            >
-              Volver al inicio
-            </Link>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={toggleLanguage}
+                className="px-3 py-1.5 rounded-full border border-gray-300 text-xs font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                {t.switch}
+              </button>
+              <Link href="/" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">
+                {t.back}
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -30,145 +149,26 @@ export default function TerminosPage() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="prose prose-lg max-w-none">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">
-            Términos y Condiciones
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">{t.title}</h1>
           
           <div className="text-sm text-gray-600 mb-8">
-            <p>Última actualización: {new Date().toLocaleDateString('es-ES', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            })}</p>
+            <p>{t.updated}: {formattedDate}</p>
           </div>
 
           <div className="space-y-8">
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                1. Aceptación de los Términos
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Al acceder y utilizar la aplicación Wit Ü, aceptas cumplir con estos términos y condiciones 
-                de uso. Si no estás de acuerdo con alguna parte de estos términos, no debes utilizar nuestra 
-                aplicación.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                2. Descripción del Servicio
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Wit Ü es una aplicación móvil que conecta a personas a través de eventos y actividades 
-                en la vida real. Nuestro objetivo es crear conexiones auténticas basadas en intereses 
-                compartidos y experiencias comunes.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                La aplicación te permite:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2 mt-2">
-                <li>Descubrir eventos y actividades en tu área</li>
-                <li>Conectar con personas que comparten tus intereses</li>
-                <li>Participar en eventos y actividades reales</li>
-                <li>Crear y organizar tus propios eventos</li>
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                3. Registro y Cuenta de Usuario
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Para utilizar Wit Ü, deberás crear una cuenta proporcionando información precisa y actual. 
-                Eres responsable de mantener la confidencialidad de tu cuenta y de todas las actividades 
-                que ocurran bajo tu cuenta.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                Debes ser mayor de 18 años para utilizar nuestra aplicación.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                4. Uso Aceptable
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Al utilizar Wit Ü, te comprometes a:
-              </p>
-              <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                <li>Usar la aplicación de manera legal y conforme a estos términos</li>
-                <li>No realizar actividades que puedan dañar, deshabilitar o sobrecargar la aplicación</li>
-                <li>No usar la aplicación para fines comerciales no autorizados</li>
-                <li>Respetar a otros usuarios y mantener un comportamiento apropiado</li>
-                <li>No compartir contenido falso, engañoso o que pueda perjudicar a otros</li>
-              </ul>
-              <p className="text-gray-700 leading-relaxed">
-                Nos reservamos el derecho de suspender o terminar tu cuenta si violas estos términos.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                5. Contenido del Usuario
-              </h2>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                Mantienes todos los derechos sobre el contenido que compartas en Wit Ü. Sin embargo, 
-                nos otorgas una licencia no exclusiva para usar, mostrar y distribuir ese contenido 
-                en relación con el funcionamiento de la aplicación.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                Eres responsable del contenido que compartas y te aseguras de que no infrinja 
-                los derechos de terceros.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                6. Privacidad
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                La protección de tu privacidad es importante para nosotros. Por favor, revisa 
-                nuestra <Link href="/privacidad" className="text-yellow-600 hover:text-yellow-700 underline">Política de Privacidad</Link> 
-                para entender cómo recopilamos, usamos y protegemos tu información.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                7. Modificaciones
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Nos reservamos el derecho de modificar estos términos en cualquier momento. 
-                Las modificaciones entrarán en vigor inmediatamente después de su publicación 
-                en la aplicación. Su uso continuado de la aplicación constituye su aceptación 
-                de los términos modificados.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                8. Limitación de Responsabilidad
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Wit Ü se proporciona tal como está sin garantías de ningún tipo. No seremos 
-                responsables por daños directos, indirectos, incidentales o consecuenciales 
-                que resulten del uso de nuestra aplicación.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                9. Contacto
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                Si tienes preguntas sobre estos términos y condiciones, puedes contactarnos en:
-              </p>
-              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                <p className="text-gray-700">
-                  <strong>Email:</strong> wituapp@gmail.com
+            {t.sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">{section.title}</h2>
+                <p className="text-gray-700 leading-relaxed">
+                  {section.body}{" "}
+                  {section.title.includes("Privacidad") || section.title.includes("Privacy") ? (
+                    <Link href="/privacidad" className="text-yellow-600 hover:text-yellow-700 underline">
+                      {t.footer.privacy}
+                    </Link>
+                  ) : null}
                 </p>
-              </div>
-            </section>
+              </section>
+            ))}
           </div>
 
           {/* Footer */}
@@ -184,19 +184,13 @@ export default function TerminosPage() {
                 />
               </div>
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
-                <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Política de privacidad
-                </Link>
-                <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Términos y condiciones
-                </Link>
-                <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Eliminar cuenta
-                </Link>
+                <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.privacy}</Link>
+                <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.terms}</Link>
+                <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.delete}</Link>
               </div>
             </div>
             <p className="text-gray-600 text-sm mt-4 text-center">
-              © 2025 Wit Ü. Todos los derechos reservados.
+              {t.footer.copyright}
             </p>
           </div>
         </div>

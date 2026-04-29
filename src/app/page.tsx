@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -29,11 +29,246 @@ const TikTokIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+type Language = "es" | "en";
+
+const EUROPE_COUNTRY_CODES = new Set([
+  "AL", "AD", "AM", "AT", "AZ", "BY", "BE", "BA", "BG", "HR", "CY", "CZ", "DK",
+  "EE", "FI", "FR", "GE", "DE", "GR", "HU", "IS", "IE", "IT", "KZ", "XK", "LV",
+  "LI", "LT", "LU", "MT", "MD", "MC", "ME", "NL", "MK", "NO", "PL", "PT", "RO",
+  "RU", "SM", "RS", "SK", "SI", "ES", "SE", "CH", "TR", "UA", "GB", "VA",
+]);
+
+const getRegionFromLocale = (locale: string) => {
+  const match = locale.match(/[-_]([A-Za-z]{2})$/);
+  return match ? match[1].toUpperCase() : null;
+};
+
+const detectDefaultLanguage = (): Language => {
+  if (typeof window === "undefined") return "es";
+
+  const locales = navigator.languages?.length ? navigator.languages : [navigator.language];
+  for (const locale of locales) {
+    const region = getRegionFromLocale(locale);
+    if (!region) continue;
+    if (region === "US" || EUROPE_COUNTRY_CODES.has(region)) return "en";
+    return "es";
+  }
+
+  try {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (timeZone?.startsWith("Europe/")) return "en";
+  } catch {
+    // noop
+  }
+
+  return "es";
+};
+
+const copy = {
+  es: {
+    nav: {
+      whatIs: "¿Qué es?",
+      events: "Eventos",
+      howItWorks: "¿Cómo funciona?",
+      safety: "Seguridad",
+      addEvent: "Quiero sumar mi evento",
+      waitlist: "Unite a la Waitlist",
+      switchLabel: "Cambiar idioma a inglés",
+      switchButton: "🇺🇸 EN",
+    },
+    thankYou: {
+      title: "¡Ya estás en lista! 🎉",
+      badge: "✅ Estás en la waitlist de Wit Ü",
+      description: "Serás de los primeros en conocer la app cuando la lancemos.",
+      next: "¿Qué sigue ahora?",
+      updates: "Te enviaremos actualizaciones importantes",
+      earlyAccess: "Acceso temprano a la app",
+    },
+    hero: {
+      badge: "✨ La vida pasa afuera",
+      titleStart: "Conectá con personas que viven",
+      titleHighlight: "lo mismo que vos",
+      subtitle: "Volvé a conectar en la vida real. Porque los mejores planes no pasan online.",
+      emailPlaceholder: "Tu email principal",
+      submit: "Unite a la comunidad",
+      support: "Nos apoyan",
+      appStoreAria: "Descargar en App Store",
+      playStoreAria: "Descargar en Google Play",
+      appStoreAlt: "Descargar en App Store",
+      playStoreAlt: "Descargar en Google Play",
+      sending: "Enviando...",
+    },
+    queEs: {
+      titleStart: "Somos la red social que se vive en la",
+      titleHighlight: "vida real",
+      cards: [
+        {
+          title: "Conexiones Reales",
+          description: "Conocé gente con tus mismos intereses en un entorno seguro y relajado.",
+        },
+        {
+          title: "Planes",
+          description: "Fiestas, recitales, juntadas, etc. Siempre hay algo pasando cerca tuyo.",
+        },
+        {
+          title: "Afinidad Pura",
+          description: "Nuestro sistema te muestra personas compatibles para poder compartir la experiencia juntos.",
+        },
+      ],
+    },
+    eventos: {
+      title: "¿Qué tipos de eventos podés encontrar?",
+      description: "Explorá categorías diseñadas para que encuentres tu lugar, sin importar tu mood.",
+      categories: [
+        { category: "Fiestas", title: "Boliches", image: "/assets/images/amigos-boliches.jpg" },
+        { category: "Recitales", title: "Festivales y recitales musicales", image: "/assets/images/recitales.jpg" },
+        { category: "Plazas", title: "Naturaleza y aire libre", image: "/assets/images/juntadas_parque.jpeg" },
+        { category: "Deportes", title: "Clubes de running", image: "/assets/images/runningclub.jpg" },
+      ],
+    },
+    comoFunciona: {
+      title: "Así de simple. Así de real.",
+      subtitle: "Tres pasos para salir de tu zona de confort digital.",
+      steps: [
+        { step: "1", title: "Elegí tu plan", description: "Encontrá el evento o actividad que se ajustan a tus intereses." },
+        { step: "2", title: "Conectá con personas", description: "Busca a tu compañer@ para compartir la experiencia." },
+        { step: "3", title: "Rompe el hielo", description: "Envia un mensaje antes del evento." },
+      ],
+    },
+    waitlist: {
+      titleStart: "Lo digital te acerca,",
+      titleHighlight: "Wit Ü te encuentra.",
+      description: "Sumate a los miles de jóvenes que ya están cambiando su forma de socializar. Registrate para recibir acceso anticipado.",
+      emailPlaceholder: "Tu email",
+      submit: "Unite a la Waitlist",
+      sending: "Enviando...",
+    },
+    footer: {
+      privacy: "Política de privacidad",
+      terms: "Términos y condiciones",
+      safety: "Seguridad",
+      deleteAccount: "Eliminar cuenta",
+      contact: "Contacto",
+      copyright: "© 2026 Wit Ü. Todos los derechos reservados.",
+    },
+    errors: {
+      submitFailed: "Hubo un error al enviar tu email. Por favor, intenta nuevamente.",
+    },
+  },
+  en: {
+    nav: {
+      whatIs: "What is it?",
+      events: "Events",
+      howItWorks: "How it works",
+      safety: "Safety",
+      addEvent: "I want to add my event",
+      waitlist: "Join the Waitlist",
+      switchLabel: "Switch language to Spanish",
+      switchButton: "🇪🇸 ES",
+    },
+    thankYou: {
+      title: "You're on the list! 🎉",
+      badge: "✅ You're on the Wit Ü waitlist",
+      description: "You'll be among the first to know when we launch.",
+      next: "What's next?",
+      updates: "We'll send you important updates",
+      earlyAccess: "Early access to the app",
+    },
+    hero: {
+      badge: "✨ Life happens outside",
+      titleStart: "Connect with people who live",
+      titleHighlight: "the same vibe as you",
+      subtitle: "Reconnect in real life. The best plans don't happen online.",
+      emailPlaceholder: "Your main email",
+      submit: "Join the community",
+      support: "Supported by",
+      appStoreAria: "Download on the App Store",
+      playStoreAria: "Download on Google Play",
+      appStoreAlt: "Download on the App Store",
+      playStoreAlt: "Get it on Google Play",
+      sending: "Sending...",
+    },
+    queEs: {
+      titleStart: "We are the social network lived in",
+      titleHighlight: "real life",
+      cards: [
+        {
+          title: "Real Connections",
+          description: "Meet people with similar interests in a safe and relaxed environment.",
+        },
+        {
+          title: "Plans",
+          description: "Parties, concerts, meetups and more. There's always something happening nearby.",
+        },
+        {
+          title: "Pure Affinity",
+          description: "Our system shows compatible people so you can share experiences together.",
+        },
+      ],
+    },
+    eventos: {
+      title: "What kind of events can you find?",
+      description: "Explore categories designed to help you find your place, no matter your mood.",
+      categories: [
+        { category: "Parties", title: "Clubs", image: "/assets/images/amigos-boliches.jpg" },
+        { category: "Concerts", title: "Festivals and live concerts", image: "/assets/images/recitales.jpg" },
+        { category: "Parks", title: "Nature and outdoors", image: "/assets/images/juntadas_parque.jpeg" },
+        { category: "Sports", title: "Running clubs", image: "/assets/images/runningclub.jpg" },
+      ],
+    },
+    comoFunciona: {
+      title: "Simple. Real.",
+      subtitle: "Three steps to leave your digital comfort zone.",
+      steps: [
+        { step: "1", title: "Choose your plan", description: "Find the event or activity that matches your interests." },
+        { step: "2", title: "Connect with people", description: "Find your match to share the experience." },
+        { step: "3", title: "Break the ice", description: "Send a message before the event." },
+      ],
+    },
+    waitlist: {
+      titleStart: "Digital brings you closer,",
+      titleHighlight: "Wit Ü brings you together.",
+      description: "Join thousands of young people already changing how they socialize. Sign up for early access.",
+      emailPlaceholder: "Your email",
+      submit: "Join the Waitlist",
+      sending: "Sending...",
+    },
+    footer: {
+      privacy: "Privacy policy",
+      terms: "Terms and conditions",
+      safety: "Safety",
+      deleteAccount: "Delete account",
+      contact: "Contact",
+      copyright: "© 2026 Wit Ü. All rights reserved.",
+    },
+    errors: {
+      submitFailed: "There was an error sending your email. Please try again.",
+    },
+  },
+} as const;
+
 export default function Home() {
+  const [language, setLanguage] = useState<Language>("es");
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const t = copy[language];
+
+  useEffect(() => {
+    const savedLanguage = window.localStorage.getItem("witu-language");
+    if (savedLanguage === "es" || savedLanguage === "en") {
+      setLanguage(savedLanguage);
+      return;
+    }
+    setLanguage(detectDefaultLanguage());
+  }, []);
+
+  const toggleLanguage = () => {
+    const nextLanguage: Language = language === "es" ? "en" : "es";
+    setLanguage(nextLanguage);
+    window.localStorage.setItem("witu-language", nextLanguage);
+  };
 
   // Componente widget de agradecimiento reutilizable
   const ThankYouWidget = ({ className = "" }: { className?: string }) => (
@@ -47,26 +282,26 @@ export default function Home() {
           <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
         </div>
         <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-          ¡Ya estás en lista! 🎉
+          {t.thankYou.title}
         </h3>
         <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4 sm:mb-6 inline-block">
-          ✅ Estás en la waitlist de Wit Ü
+          {t.thankYou.badge}
         </div>
         <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-          Serás de los primeros en conocer la app cuando la lancemos.
+          {t.thankYou.description}
         </p>
         <div className="bg-green-50 rounded-xl p-4 sm:p-5">
           <p className="text-sm sm:text-base text-green-800 font-medium mb-2">
-            ¿Qué sigue ahora?
+            {t.thankYou.next}
           </p>
           <ul className="text-sm text-green-700 space-y-1 text-left max-w-sm mx-auto">
             <li className="flex items-center">
               <span className="mr-2">📧</span>
-              Te enviaremos actualizaciones importantes
+              {t.thankYou.updates}
             </li>
             <li className="flex items-center">
               <span className="mr-2">🚀</span>
-              Acceso temprano a la app
+              {t.thankYou.earlyAccess}
             </li>
           </ul>
         </div>
@@ -86,7 +321,7 @@ export default function Home() {
     try {
       const dataToSend = {
         Customers: email,
-        Fecha: new Date().toLocaleDateString('es-ES', {
+        Fecha: new Date().toLocaleDateString(language === "en" ? "en-US" : "es-ES", {
           day: '2-digit',
           month: '2-digit',
           year: 'numeric'
@@ -111,8 +346,7 @@ export default function Home() {
       }
     } catch (error) {
       console.error('Error:', error);
-      // Opcional: mostrar mensaje de error al usuario
-      alert('Hubo un error al enviar tu email. Por favor, intenta nuevamente.');
+      alert(t.errors.submitFailed);
     } finally {
       setIsLoading(false);
     }
@@ -126,28 +360,7 @@ export default function Home() {
     setIsMobileMenuOpen(false);
   };
 
-  const eventCategories = [
-    {
-      category: "Fiestas",
-      title: "Boliches",
-      image: "/assets/images/amigos-boliches.jpg",
-    },
-    {
-      category: "Recitales",
-      title: "Festivales y recitales musicales",
-      image: "/assets/images/recitales.jpg",
-    },
-    {
-      category: "Plazas",
-      title: "Naturaleza y aire libre",
-      image: "/assets/images/juntadas_parque.jpeg",
-    },
-    {
-      category: "Deportes",
-      title: "Clubes de running",
-      image: "/assets/images/runningclub.jpg",
-    },
-  ];
+  const eventCategories = t.eventos.categories;
 
 
   return (
@@ -173,25 +386,25 @@ export default function Home() {
                 href="#que-es" 
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
-                ¿Qué es?
+                {t.nav.whatIs}
               </a>
               <a 
                 href="#eventos" 
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
-                Eventos
+                {t.nav.events}
               </a>
               <a 
                 href="#como-funciona" 
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
-                ¿Cómo funciona?
+                {t.nav.howItWorks}
               </a>
               <Link
                 href="/sumar-evento"
                 className="bg-gray-900 text-white px-3 lg:px-5 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm lg:text-base whitespace-nowrap"
               >
-                Quiero sumar mi evento
+                {t.nav.addEvent}
               </Link>
               <a
                 href="#waitlist"
@@ -201,8 +414,15 @@ export default function Home() {
                 }}
                 className="bg-gradient-yellow text-gray-900 px-3 lg:px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 cursor-pointer text-sm lg:text-base whitespace-nowrap"
               >
-                Unite a la Waitlist
+                {t.nav.waitlist}
               </a>
+              <button
+                onClick={toggleLanguage}
+                aria-label={t.nav.switchLabel}
+                className="px-3 py-2 rounded-full border border-gray-300 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                {t.nav.switchButton}
+              </button>
             </div>
 
             {/* Botón menú móvil */}
@@ -237,35 +457,35 @@ export default function Home() {
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
-                    ¿Qué es?
+                    {t.nav.whatIs}
                   </a>
                   <a 
                     href="#eventos" 
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
-                    Eventos
+                    {t.nav.events}
                   </a>
                   <a 
                     href="#como-funciona" 
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
-                    ¿Cómo funciona?
+                    {t.nav.howItWorks}
                   </a>
                   <Link 
                     href="/safety" 
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
-                    Seguridad
+                    {t.nav.safety}
                   </Link>
                   <Link
                     href="/sumar-evento"
                     onClick={closeMobileMenu}
                     className="bg-gray-900 text-white px-4 py-3 rounded-full font-semibold shadow-md hover:bg-gray-700 hover:shadow-lg transition-all duration-300 text-center"
                   >
-                    Quiero sumar mi evento
+                    {t.nav.addEvent}
                   </Link>
                   <a
                     href="#waitlist"
@@ -276,8 +496,17 @@ export default function Home() {
                     }}
                     className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 text-center cursor-pointer"
                   >
-                    Unite a la Waitlist
+                    {t.nav.waitlist}
                   </a>
+                  <button
+                    onClick={() => {
+                      toggleLanguage();
+                      closeMobileMenu();
+                    }}
+                    className="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold text-gray-700 text-center"
+                  >
+                    {t.nav.switchButton}
+                  </button>
                 </div>
               </motion.div>
             )}
@@ -299,18 +528,18 @@ export default function Home() {
           >
             <div className="order-2 lg:order-1">
               <div className="inline-flex items-center rounded-full bg-yellow-100 text-yellow-900 px-4 py-1.5 text-sm font-semibold mb-6 border border-yellow-200">
-                ✨ La vida pasa afuera
+                {t.hero.badge}
               </div>
 
               <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold text-gray-900 leading-[1.03] mb-6">
-                Conectá con personas que viven
+                {t.hero.titleStart}
                 <span className="block italic bg-gradient-to-r from-gray-900 via-gray-800 to-yellow-700 bg-clip-text text-transparent">
-                  lo mismo que vos
+                  {t.hero.titleHighlight}
                 </span>
               </h1>
 
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-2 max-w-xl">
-                Volvé a conectar en la vida real. Porque los mejores planes no pasan online.
+                {t.hero.subtitle}
               </p>
               <p className="text-base sm:text-lg text-gray-500 leading-relaxed mb-8 max-w-xl">
                 
@@ -333,7 +562,7 @@ export default function Home() {
                           handleSubmit();
                         }
                       }}
-                      placeholder="Tu email principal"
+                      placeholder={t.hero.emailPlaceholder}
                       className="flex-1 px-5 py-3.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent text-base placeholder:text-gray-400 bg-white"
                     />
                     <button
@@ -341,7 +570,7 @@ export default function Home() {
                       disabled={isLoading}
                       className="bg-gradient-yellow text-gray-900 px-6 py-3.5 rounded-xl font-semibold text-base hover:bg-gradient-yellow-reverse shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                     >
-                      {isLoading ? "Enviando..." : "Unite a la comunidad"}
+                      {isLoading ? t.hero.sending : t.hero.submit}
                     </button>
                   </div>
                 </motion.div>
@@ -358,7 +587,7 @@ export default function Home() {
 
               <div className="mt-7 bg-white/90 backdrop-blur-md border border-gray-100 rounded-2xl p-4 sm:p-5 shadow-lg max-w-2xl">
                 <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
-                  Nos apoyan
+                  {t.hero.support}
                 </p>
                 <div className="flex flex-wrap items-center gap-6 sm:gap-8">
                   <Image
@@ -416,11 +645,11 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block flex-[5]"
-                      aria-label="Descargar en App Store"
+                      aria-label={t.hero.appStoreAria}
                     >
                       <Image
                         src="/assets/images/AppStore.png"
-                        alt="Disponible en App Store"
+                        alt={t.hero.appStoreAlt}
                         width={500}
                         height={150}
                         className="w-full h-auto"
@@ -431,11 +660,11 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block flex-[6]"
-                      aria-label="Descargar en Google Play"
+                      aria-label={t.hero.playStoreAria}
                     >
                       <Image
                         src="/assets/images/playstore.png"
-                        alt="Disponible en Google Play"
+                        alt={t.hero.playStoreAlt}
                         width={500}
                         height={150}
                         className="w-full h-auto"
@@ -469,34 +698,15 @@ export default function Home() {
           >
             <div className="inline-block bg-black rounded-[48px] px-5 py-3 sm:px-7 sm:py-4 mb-4">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
-                Somos la red social que se vive en la{" "}
-                <span className="italic text-[#fcd517]">vida real</span>
+                {t.queEs.titleStart}{" "}
+                <span className="italic text-[#fcd517]">{t.queEs.titleHighlight}</span>
               </h2>
             </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
-            {[
-              {
-                icon: Users2,
-                title: "Conexiones Reales",
-                description:
-                  "Conocé gente con tus mismos intereses en un entorno seguro y relajado.",
-              },
-              {
-                icon: Calendar,
-                title: "Planes",
-                description:
-                  "Fiestas, recitales, juntadas, etc. Siempre hay algo pasando cerca tuyo.",
-              },
-              {
-                icon: Heart,
-                title: "Afinidad Pura",
-                description:
-                  "Nuestro sistema te muestra personas compatibles para poder compartir la experiencia juntos.",
-              },
-            ].map((feature, index) => {
-              const FeatureIcon = feature.icon;
+            {[Users2, Calendar, Heart].map((FeatureIcon, index) => {
+              const feature = t.queEs.cards[index];
               return (
                 <motion.article
                   key={feature.title}
@@ -531,10 +741,10 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                  ¿Qué tipos de eventos podés encontrar?
+                  {t.eventos.title}
                 </h2>
                 <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl">
-                  Explorá categorías diseñadas para que encuentres tu lugar, sin importar tu mood.
+                  {t.eventos.description}
                 </p>
               </div>
             </div>
@@ -581,10 +791,10 @@ export default function Home() {
             className="text-center mb-10 sm:mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-              Así de simple. Así de real.
+              {t.comoFunciona.title}
             </h2>
             <p className="text-lg sm:text-2xl text-white/80">
-              Tres pasos para salir de tu zona de confort digital.
+              {t.comoFunciona.subtitle}
             </p>
           </motion.div>
 
@@ -592,23 +802,7 @@ export default function Home() {
             <div className="hidden md:block absolute left-0 right-0 top-[52px] h-px bg-white/20" />
 
             <div className="grid md:grid-cols-3 gap-10 md:gap-8">
-              {[
-                {
-                  step: "1",
-                  title: "Elegí tu plan",
-                  description: "Encontrá el evento o actividad que se ajustan a tus intereses.",
-                },
-                {
-                  step: "2",
-                  title: "Conectá con personas",
-                  description: "Busca a tu compañer@ para compartir la experiencia.",
-                },
-                {
-                  step: "3",
-                  title: "Rompe el hielo",
-                  description: "Envia un mensaje antes del evento.",
-                },
-              ].map((step, index) => (
+              {t.comoFunciona.steps.map((step, index) => (
                 <motion.div
                   key={step.step}
                   initial={{ opacity: 0, y: 24 }}
@@ -644,13 +838,12 @@ export default function Home() {
 
             <div className="relative z-10 text-center max-w-3xl mx-auto">
               <h2 className="text-4xl sm:text-5xl font-bold leading-tight text-white mb-6">
-                Lo digital te acerca,
-                <span className="block text-[#fcd517]">Wit Ü te encuentra.</span>
+                {t.waitlist.titleStart}
+                <span className="block text-[#fcd517]">{t.waitlist.titleHighlight}</span>
               </h2>
               
               <p className="text-lg sm:text-2xl text-white/75 mb-9">
-                Sumate a los miles de jóvenes que ya están cambiando su forma de socializar.
-                Registrate para recibir acceso anticipado.
+                {t.waitlist.description}
               </p>
               
               {!isSubmitted ? (
@@ -660,7 +853,7 @@ export default function Home() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Tu email"
+                      placeholder={t.waitlist.emailPlaceholder}
                       required
                       className="flex-1 px-6 py-4 bg-white text-[#231f20] placeholder:text-[#231f20]/50 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent"
                     />
@@ -669,7 +862,7 @@ export default function Home() {
                       disabled={isLoading}
                       className="bg-gradient-yellow text-[#231f20] px-8 py-4 rounded-2xl font-semibold hover:bg-gradient-yellow-reverse transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isLoading ? "Enviando..." : "Unite a la Waitlist"}
+                      {isLoading ? t.waitlist.sending : t.waitlist.submit}
                     </button>
                   </div>
                 </form>
@@ -729,24 +922,24 @@ export default function Home() {
           
           <div className="flex justify-center space-x-6 mb-4 text-sm">
             <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Política de privacidad
+              {t.footer.privacy}
             </Link>
             <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Términos y condiciones
+              {t.footer.terms}
             </Link>
             <Link href="/safety" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Seguridad
+              {t.footer.safety}
             </Link>
             <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Eliminar cuenta
+              {t.footer.deleteAccount}
             </Link>
             <a href="mailto:wituapp@gmail.com" className="text-gray-600 hover:text-gray-900 transition-colors">
-              Contacto
+              {t.footer.contact}
             </a>
           </div>
           
           <p className="text-gray-600 text-sm">
-            © 2026 Wit Ü. Todos los derechos reservados.
+            {t.footer.copyright}
           </p>
         </div>
       </footer>
