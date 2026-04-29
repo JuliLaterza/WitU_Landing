@@ -97,6 +97,7 @@ const copy = {
       appStoreAlt: "Descargar en App Store",
       playStoreAlt: "Descargar en Google Play",
       sending: "Enviando...",
+      socialProof: "personas ya en la lista",
     },
     queEs: {
       titleStart: "Somos la red social que se vive en la",
@@ -107,7 +108,7 @@ const copy = {
           description: "Conocé gente con tus mismos intereses en un entorno seguro y relajado.",
         },
         {
-          title: "Planes",
+          title: "Eventos",
           description: "Fiestas, recitales, juntadas, etc. Siempre hay algo pasando cerca tuyo.",
         },
         {
@@ -142,6 +143,7 @@ const copy = {
       emailPlaceholder: "Tu email",
       submit: "Unite a la Waitlist",
       sending: "Enviando...",
+      launchBadge: "🏙️ Buenos Aires · Ya disponible",
     },
     footer: {
       privacy: "Política de privacidad",
@@ -187,6 +189,7 @@ const copy = {
       appStoreAlt: "Download on the App Store",
       playStoreAlt: "Get it on Google Play",
       sending: "Sending...",
+      socialProof: "people already on the list",
     },
     queEs: {
       titleStart: "We are the social network lived in",
@@ -197,7 +200,7 @@ const copy = {
           description: "Meet people with similar interests in a safe and relaxed environment.",
         },
         {
-          title: "Plans",
+          title: "Events",
           description: "Parties, concerts, meetups and more. There's always something happening nearby.",
         },
         {
@@ -232,6 +235,7 @@ const copy = {
       emailPlaceholder: "Your email",
       submit: "Join the Waitlist",
       sending: "Sending...",
+      launchBadge: "🏙️ Buenos Aires · Available now",
     },
     footer: {
       privacy: "Privacy policy",
@@ -527,7 +531,11 @@ export default function Home() {
             className="grid lg:grid-cols-2 gap-10 xl:gap-14 items-center"
           >
             <div className="order-2 lg:order-1">
-              <div className="inline-flex items-center rounded-full bg-yellow-100 text-yellow-900 px-4 py-1.5 text-sm font-semibold mb-6 border border-yellow-200">
+              <div className="inline-flex items-center gap-2 rounded-full bg-yellow-100 text-yellow-900 px-4 py-1.5 text-sm font-semibold mb-6 border border-yellow-200 shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-600" />
+                </span>
                 {t.hero.badge}
               </div>
 
@@ -538,12 +546,21 @@ export default function Home() {
                 </span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-2 max-w-xl">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-7 max-w-xl">
                 {t.hero.subtitle}
               </p>
-              <p className="text-base sm:text-lg text-gray-500 leading-relaxed mb-8 max-w-xl">
-                
-              </p>
+
+              <div className="flex items-center gap-3 mb-5">
+                <div className="flex -space-x-2.5">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 border-2 border-white" />
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-500 to-gray-800 border-2 border-white" />
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 border-2 border-white" />
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#fcd517] to-orange-500 border-2 border-white flex items-center justify-center text-[#231f20] text-[9px] font-black">+</div>
+                </div>
+                <p className="text-sm text-gray-500">
+                  <span className="font-semibold text-gray-900">+300</span> {t.hero.socialProof}
+                </p>
+              </div>
 
               {!isSubmitted ? (
                 <motion.div
@@ -712,12 +729,13 @@ export default function Home() {
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="rounded-[20px] sm:rounded-[28px] border border-gray-200/80 bg-white p-4 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
+                  className="rounded-[20px] sm:rounded-[28px] border border-gray-200/80 bg-white p-4 sm:p-8 shadow-sm hover:shadow-xl hover:border-[#fcd517]/50 transition-all cursor-default"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#fcd517]/20 flex items-center justify-center mb-3 sm:mb-6">
-                    <FeatureIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#231f20]" />
+                  <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#fcd517]/30 to-[#fcd517]/10 flex items-center justify-center mb-3 sm:mb-6 border border-[#fcd517]/30">
+                    <FeatureIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#231f20]" />
                   </div>
                   <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 leading-tight">{feature.title}</h3>
                   <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature.description}</p>
@@ -756,9 +774,10 @@ export default function Home() {
                 key={category.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
                 viewport={{ once: true }}
-                className={`group relative overflow-hidden rounded-[22px] sm:rounded-[28px] h-[220px] sm:h-[360px] shadow-lg ${
+                className={`group relative overflow-hidden rounded-[22px] sm:rounded-[28px] h-[220px] sm:h-[360px] shadow-lg cursor-pointer ${
                   index % 2 === 1 ? "sm:mt-8 lg:mt-10" : ""
                 }`}
               >
@@ -811,11 +830,11 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <div className="w-16 h-16 mx-auto rounded-full bg-[#fcd517] text-[#231f20] font-semibold flex items-center justify-center mb-6 relative z-10 shadow-md">
+                  <div className="w-16 h-16 mx-auto rounded-full bg-[#fcd517] text-[#231f20] text-2xl font-black flex items-center justify-center mb-6 relative z-10 shadow-lg">
                     {step.step}
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-lg text-white/80 leading-relaxed max-w-sm mx-auto">{step.description}</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">{step.title}</h3>
+                  <p className="text-base sm:text-lg text-white/75 leading-relaxed max-w-sm mx-auto">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -837,6 +856,9 @@ export default function Home() {
             <div className="absolute -bottom-20 -left-16 w-72 h-72 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
             <div className="relative z-10 text-center max-w-3xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-[#fcd517]/15 text-[#fcd517] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-[#fcd517]/25">
+                {t.waitlist.launchBadge}
+              </div>
               <h2 className="text-4xl sm:text-5xl font-bold leading-tight text-white mb-6">
                 {t.waitlist.titleStart}
                 <span className="block text-[#fcd517]">{t.waitlist.titleHighlight}</span>
@@ -877,16 +899,19 @@ export default function Home() {
       </section>
 
       {/* 7. Footer */}
-      <footer className="py-12 px-4 border-t border-gray-200">
+      <footer className="py-14 px-4 border-t border-gray-100 bg-[#FFFCF4]">
         <div className="container mx-auto text-center">
-          <div className="flex items-center justify-center space-x-2 mb-6">
-            <Image 
-              src="/assets/images/logo_witu.png" 
-              alt="Wit Ü Logo" 
+          <div className="flex flex-col items-center mb-6">
+            <Image
+              src="/assets/images/logo_witu.png"
+              alt="Wit Ü Logo"
               width={96}
               height={32}
-              className="w-24 h-8"
+              className="w-24 h-8 mb-2"
             />
+            <p className="text-sm text-gray-400 font-medium tracking-wide">
+              {language === "es" ? "La vida pasa afuera" : "Life happens outside"}
+            </p>
           </div>
           
           <div className="flex justify-center space-x-6 mb-6">
