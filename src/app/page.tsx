@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import tramaPattern from "../../assets/images/trama.png";
 import { 
   Heart, 
   CheckCircle,
@@ -14,8 +15,6 @@ import {
   X as CloseIcon,
   Calendar,
   Users2,
-  Globe,
-  Star
 } from "lucide-react";
 
 // Custom TikTok Icon Component
@@ -68,10 +67,6 @@ export default function Home() {
             <li className="flex items-center">
               <span className="mr-2">🚀</span>
               Acceso temprano a la app
-            </li>
-            <li className="flex items-center">
-              <span className="mr-2">🎁</span>
-              Beneficios exclusivos para early users
             </li>
           </ul>
         </div>
@@ -192,13 +187,6 @@ export default function Home() {
               >
                 ¿Cómo funciona?
               </a>
-              <a 
-                href="#por-que" 
-                className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
-              >
-                ¿Por qué Wit Ü?
-              </a>
-              
               <Link
                 href="/sumar-evento"
                 className="bg-gray-900 text-white px-3 lg:px-5 py-2 rounded-full font-semibold shadow-md hover:bg-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300 text-sm lg:text-base whitespace-nowrap"
@@ -264,13 +252,6 @@ export default function Home() {
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
                     ¿Cómo funciona?
-                  </a>
-                  <a 
-                    href="#por-que" 
-                    onClick={closeMobileMenu}
-                    className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
-                  >
-                    ¿Por qué Wit Ü?
                   </a>
                   <Link 
                     href="/safety" 
@@ -363,9 +344,6 @@ export default function Home() {
                       {isLoading ? "Enviando..." : "Unite a la comunidad"}
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500 mt-3 px-1">
-                    Acceso anticipado, eventos curados y beneficios para early users.
-                  </p>
                 </motion.div>
               ) : (
                 <motion.div
@@ -409,80 +387,62 @@ export default function Home() {
             </div>
 
             <div className="order-1 lg:order-2">
-              <div className="relative max-w-[560px] mx-auto">
-                <div className="grid grid-cols-2 gap-4">
+              <div className="relative max-w-[220px] sm:max-w-[240px] lg:max-w-[260px] mx-auto">
+                <div>
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, x: -14 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.7, delay: 0.15 }}
-                    className="col-span-2 relative rounded-3xl overflow-hidden shadow-2xl border border-white/70"
+                    className="relative"
                   >
                     <Image
-                      src="/assets/images/amigos-boliches.jpg"
-                      alt="Amigos brindando en una fiesta"
-                      width={820}
-                      height={520}
-                      className="w-full h-52 sm:h-64 object-cover"
+                      src="/assets/images/events-screensinfondo.png"
+                      alt="Pantalla de eventos de Wit Ü"
+                      width={520}
+                      height={980}
+                      className="w-full h-auto drop-shadow-2xl"
                       priority
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-black/65 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                        Fiestas
-                      </span>
-                    </div>
                   </motion.div>
+
                   <motion.div
-                    initial={{ opacity: 0, y: 18 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.25 }}
-                    className="relative rounded-3xl overflow-hidden shadow-xl border border-white/70"
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    className="mt-4 flex items-center gap-2"
                   >
-                    <Image
-                      src="/assets/images/juntadas_parque.jpeg"
-                      alt="Personas en un encuentro al aire libre"
-                      width={420}
-                      height={420}
-                      className="w-full h-44 sm:h-52 object-cover"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-white/85 text-gray-900 text-xs font-semibold px-2.5 py-1 rounded-full">
-                        Juntadas
-                      </span>
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.35 }}
-                    className="relative rounded-3xl overflow-hidden shadow-xl border border-white/70"
-                  >
-                    <Image
-                      src="/assets/images/recitales.jpg"
-                      alt="Personas disfrutando un recital"
-                      width={420}
-                      height={420}
-                      className="w-full h-44 sm:h-52 object-cover"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-white/85 text-gray-900 text-xs font-semibold px-2.5 py-1 rounded-full">
-                        Recitales
-                      </span>
-                    </div>
+                    <a
+                      href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block flex-[5]"
+                      aria-label="Descargar en App Store"
+                    >
+                      <Image
+                        src="/assets/images/AppStore.png"
+                        alt="Disponible en App Store"
+                        width={500}
+                        height={150}
+                        className="w-full h-auto"
+                      />
+                    </a>
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.witu.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block flex-[6]"
+                      aria-label="Descargar en Google Play"
+                    >
+                      <Image
+                        src="/assets/images/playstore.png"
+                        alt="Disponible en Google Play"
+                        width={500}
+                        height={150}
+                        className="w-full h-auto"
+                      />
+                    </a>
                   </motion.div>
                 </div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.45 }}
-                  className="absolute -bottom-7 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-md border border-gray-200 rounded-2xl px-4 py-3 shadow-xl"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                    <p className="text-sm font-semibold text-gray-900">Recital</p>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-1">150 personas asistiendo ahora</p>
-                </motion.div>
               </div>
             </div>
           </motion.div>
@@ -490,8 +450,16 @@ export default function Home() {
       </section>
 
       {/* 2. ¿Qué es Wit Ü? */}
-      <section id="que-es" className="py-14 sm:py-16 md:py-20 px-4 bg-[#F8F8F6]">
-        <div className="container mx-auto max-w-6xl">
+      <section id="que-es" className="relative overflow-hidden py-14 sm:py-16 md:py-20 px-4 bg-black">
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.35] brightness-10 contrast-1000"
+          style={{
+            backgroundImage: `url(${tramaPattern.src})`,
+            backgroundRepeat: "repeat",
+            backgroundSize: "2000px",
+          }}
+        />
+        <div className="container mx-auto max-w-6xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -499,9 +467,12 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-10 sm:mb-12 md:mb-14"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Somos la red social que se vive en la vida real
-            </h2>
+            <div className="inline-block bg-black rounded-[48px] px-5 py-3 sm:px-7 sm:py-4 mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+                Somos la red social que se vive en la{" "}
+                <span className="italic text-[#fcd517]">vida real</span>
+              </h2>
+            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
@@ -535,8 +506,8 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="rounded-[28px] border border-gray-200/80 bg-white p-7 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-[#FFF3D4] flex items-center justify-center mb-6">
-                    <FeatureIcon className="w-5 h-5 text-gray-900" />
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-6">
+                    <FeatureIcon className="w-5 h-5 text-[#fcd517]" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{feature.title}</h3>
                   <p className="text-base text-gray-600 leading-relaxed">{feature.description}</p>
@@ -548,7 +519,7 @@ export default function Home() {
       </section>
 
       {/* 3. Tipos de eventos */}
-      <section id="eventos" className="py-14 sm:py-16 md:py-20 px-4 bg-[#F7F2E9]">
+      <section id="eventos" className="py-14 sm:py-16 md:py-20 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -600,260 +571,113 @@ export default function Home() {
       </section>
 
       {/* 4. ¿Cómo funciona? */}
-      <section id="como-funciona" className="py-12 sm:py-16 md:py-20 px-4 bg-yellow-light">
-        <div className="container mx-auto max-w-5xl">
+      <section id="como-funciona" className="py-14 sm:py-16 md:py-20 px-4 bg-[#231f20]">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-8 sm:mb-12 md:mb-16"
+            className="text-center mb-10 sm:mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
               Así de simple. Así de real.
             </h2>
-          </motion.div>
-
-          {/* ALTERNATIVA A: Diseño centrado sin línea */}
-          <div className="max-w-4xl mx-auto">
-            <div className="grid gap-8 sm:gap-12">
-              {[
-                {
-                  step: "1️⃣",
-                  title: "Elegí un evento que te interese",
-                  description: "Una fiesta, un recital, una salida o un lugar que te guste."
-                },
-                {
-                  step: "2️⃣",
-                  title: "Conectá con personas que también van",
-                  description: "Descubrí a quienes comparten tus intereses y van al mismo lugar."
-                },
-                {
-                  step: "3️⃣",
-                  title: "Viví el encuentro",
-                  description: "Después de todo, salir del chat es donde empieza lo bueno."
-                }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  {/* Línea conectora entre pasos */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 top-16 sm:top-20 w-0.5 h-8 sm:h-12 bg-gradient-to-b from-yellow-300 to-yellow-500 z-0"></div>
-                  
-                  <div className="text-center relative z-10">
-                    {/* Número de paso grande centrado */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-yellow rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mx-auto mb-4 sm:mb-6 shadow-lg">
-                      {step.step}
-                    </div>
-                    
-                    {/* Contenido del paso */}
-                    <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 max-w-2xl mx-auto">
-                      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-                        {step.title}
-                      </h3>
-                      <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* ALTERNATIVA B: Diseño original con línea lateral (comentado) */}
-          {/* 
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-px top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600 hidden lg:block"></div>
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-yellow-400 to-yellow-600 lg:hidden"></div>
-            
-            <div className="space-y-6 sm:space-y-8 lg:space-y-12">
-              {[
-                {
-                  step: "1️⃣",
-                  title: "Elegí un plan que te interese",
-                  description: "Un evento, una salida, un lugar que te guste."
-                },
-                {
-                  step: "2️⃣",
-                  title: "Conectá con personas que también van",
-                  description: "Descubrí a quienes comparten tus intereses y van al mismo plan."
-                },
-                {
-                  step: "3️⃣",
-                  title: "Viví el encuentro",
-                  description: "Después de todo, salir del chat es donde empieza lo bueno."
-                }
-              ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  className="relative flex flex-col lg:flex-row items-center gap-4 lg:gap-8"
-                >
-                  <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:mr-auto' : 'lg:ml-auto'}`}>
-                    <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg border border-gray-100 relative">
-                      <div className="absolute -left-4 lg:relative lg:left-0 -top-4 lg:top-0 w-8 h-8 lg:w-12 lg:h-12 bg-gradient-yellow rounded-lg lg:rounded-xl flex items-center justify-center text-lg lg:text-2xl mb-4 lg:mb-0 lg:flex-shrink-0">
-                        {step.step}
-                      </div>
-                      
-                      <div className="lg:flex lg:items-start lg:gap-4 lg:ml-0 ml-6">
-                        <div className="flex-1">
-                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">
-                            {step.title}
-                          </h3>
-                          <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                            {step.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="hidden lg:flex w-16 h-16 bg-gradient-yellow rounded-full items-center justify-center text-2xl font-bold text-gray-900 relative z-10 flex-shrink-0">
-                  </div>
-                  
-                  <div className="hidden lg:block lg:w-5/12"></div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-          */}
-        </div>
-      </section>
-
-      {/* 5. ¿Por qué elegir Wit Ü? */}
-      <section id="por-que" className="py-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              ¿Todavía no te sumaste a Wit Ü?
-            </h2>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto mb-12">
-              Somos la evolución de las conexiones sociales, donde la tecnología se encuentra con experiencias reales.
+            <p className="text-lg sm:text-2xl text-white/80">
+              Tres pasos para salir de tu zona de confort digital.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                icon: Heart,
-                title: "Conexiones auténticas",
-                description: "Conexiones genuinas basadas en afinidades reales",
-                features: ["Perfiles verificados", "Afinidades reales", "Intereses compartidos"]
-              },
-              {
-                icon: Star,
-                title: "Experiencias únicas",
-                description: "Cada evento es una oportunidad de vivir algo nuevo",
-                features: ["Eventos exclusivos", "Experiencias memorables", "Comunidad activa"]
-              },
-              {
-                icon: Globe,
-                title: "Compromiso social",
-                description: "Estamos comprometidos con la problemática social: menos scroll, más miradas",
-                features: ["Encuentros cara a cara", "Menos tiempo en pantalla", "Más experiencias auténticas"]
-              }
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 bg-gradient-yellow rounded-full flex items-center justify-center mb-6 mx-auto">
-                  <benefit.icon className="w-8 h-8 text-gray-900" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {benefit.description}
-                </p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  {benefit.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center justify-center">
-                      <span className="mr-2">•</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+          <div className="relative">
+            <div className="hidden md:block absolute left-0 right-0 top-[52px] h-px bg-white/20" />
+
+            <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+              {[
+                {
+                  step: "1",
+                  title: "Elegí tu plan",
+                  description: "Encontrá el evento o actividad que se ajustan a tus intereses.",
+                },
+                {
+                  step: "2",
+                  title: "Conectá con personas",
+                  description: "Busca a tu compañer@ para compartir la experiencia.",
+                },
+                {
+                  step: "3",
+                  title: "Rompe el hielo",
+                  description: "Envia un mensaje antes del evento.",
+                },
+              ].map((step, index) => (
+                <motion.div
+                  key={step.step}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.12 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <div className="w-16 h-16 mx-auto rounded-full bg-[#fcd517] text-[#231f20] font-semibold flex items-center justify-center mb-6 relative z-10 shadow-md">
+                    {step.step}
+                  </div>
+                  <h3 className="text-3xl font-bold text-white mb-3">{step.title}</h3>
+                  <p className="text-lg text-white/80 leading-relaxed max-w-sm mx-auto">{step.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
-
 
       {/* 7. Llamado a la acción final */}
-      <section id="waitlist" className="py-20 px-4 bg-yellow-light">
-        <div className="container mx-auto max-w-2xl">
+      <section id="waitlist" className="py-16 sm:py-20 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="relative overflow-hidden rounded-[36px] px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16 bg-[#231f20]"
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">
-              Lo digital te acerca, Wit Ü te encuentra.
-            </h2>
-            
-            <p className="text-xl text-gray-600 mb-8">
-              Sumate a la comunidad que está cambiando la forma de conocer gente.<br />
-              Los planes te esperan afuera.
-            </p>
-            
-            {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Tu email"
-                    required
-                    className="flex-1 px-6 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent"
-                  />
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="bg-gradient-yellow text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gradient-yellow-reverse hover:shadow-lg transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? "Enviando..." : "Unite a la Waitlist"}
-                  </button>
-                </div>
-              </form>
-            ) : (
-              <ThankYouWidget className="max-w-2xl mx-auto" />
-            )}
+            <div className="absolute -top-20 -right-16 w-72 h-72 rounded-full bg-[#fcd517]/12 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-20 -left-16 w-72 h-72 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
-            <div className="flex flex-wrap justify-center gap-8 mt-8">
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
-                <span>🚀 Lanzamiento estimado: Próximas semanas</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
-                <span>📧 Te enviaremos actualizaciones importantes</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
-                <span>🔒 Tu información está completamente segura</span>
-              </div>
+            <div className="relative z-10 text-center max-w-3xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-bold leading-tight text-white mb-6">
+                Lo digital te acerca,
+                <span className="block text-[#fcd517]">Wit Ü te encuentra.</span>
+              </h2>
+              
+              <p className="text-lg sm:text-2xl text-white/75 mb-9">
+                Sumate a los miles de jóvenes que ya están cambiando su forma de socializar.
+                Registrate para recibir acceso anticipado.
+              </p>
+              
+              {!isSubmitted ? (
+                <form onSubmit={handleSubmit}>
+                  <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Tu email"
+                      required
+                      className="flex-1 px-6 py-4 bg-white text-[#231f20] placeholder:text-[#231f20]/50 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent"
+                    />
+                    <button
+                      type="submit"
+                      disabled={isLoading}
+                      className="bg-gradient-yellow text-[#231f20] px-8 py-4 rounded-2xl font-semibold hover:bg-gradient-yellow-reverse transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isLoading ? "Enviando..." : "Unite a la Waitlist"}
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="max-w-2xl mx-auto">
+                  <ThankYouWidget />
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
