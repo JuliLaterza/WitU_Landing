@@ -586,10 +586,10 @@ export default function Home() {
               )}
 
               <div className="mt-7 bg-white/90 backdrop-blur-md border border-gray-100 rounded-2xl p-4 sm:p-5 shadow-lg max-w-2xl">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center mb-4">
                   {t.hero.support}
                 </p>
-                <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+                <div className="flex flex-wrap items-center justify-around w-full gap-6 sm:gap-8">
                   <Image
                     src="/assets/images/sponsors/uade-logo.svg-2.png"
                     alt="UADE"
@@ -616,7 +616,7 @@ export default function Home() {
             </div>
 
             <div className="order-1 lg:order-2">
-              <div className="relative max-w-[220px] sm:max-w-[240px] lg:max-w-[260px] mx-auto">
+              <div className="relative max-w-[320px] sm:max-w-[360px] lg:max-w-[400px] mx-auto">
                 <div>
                   <motion.div
                     initial={{ opacity: 0, x: -14 }}
@@ -629,7 +629,7 @@ export default function Home() {
                       alt="Pantalla de eventos de Wit Ü"
                       width={520}
                       height={980}
-                      className="w-full h-auto drop-shadow-2xl"
+                      className="w-[62%] sm:w-[60%] lg:w-[58%] h-auto drop-shadow-2xl mx-auto"
                       priority
                     />
                   </motion.div>
@@ -644,7 +644,7 @@ export default function Home() {
                       href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block flex-[5]"
+                      className="block flex-[5.2]"
                       aria-label={t.hero.appStoreAria}
                     >
                       <Image
@@ -704,7 +704,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {[Users2, Calendar, Heart].map((FeatureIcon, index) => {
               const feature = t.queEs.cards[index];
               return (
@@ -714,13 +714,13 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="rounded-[28px] border border-gray-200/80 bg-white p-7 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
+                  className="rounded-[20px] sm:rounded-[28px] border border-gray-200/80 bg-white p-4 sm:p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-6">
-                    <FeatureIcon className="w-5 h-5 text-[#fcd517]" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#fcd517]/20 flex items-center justify-center mb-3 sm:mb-6">
+                    <FeatureIcon className="w-4 h-4 sm:w-5 sm:h-5 text-[#231f20]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{feature.title}</h3>
-                  <p className="text-base text-gray-600 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-4 leading-tight">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{feature.description}</p>
                 </motion.article>
               );
             })}
@@ -750,7 +750,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
             {eventCategories.map((category, index) => (
               <motion.article
                 key={category.title}
@@ -758,7 +758,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
                 viewport={{ once: true }}
-                className={`group relative overflow-hidden rounded-[28px] h-[330px] sm:h-[360px] shadow-lg ${
+                className={`group relative overflow-hidden rounded-[22px] sm:rounded-[28px] h-[220px] sm:h-[360px] shadow-lg ${
                   index % 2 === 1 ? "sm:mt-8 lg:mt-10" : ""
                 }`}
               >
@@ -770,9 +770,9 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <p className="text-white/90 text-sm mb-1">{category.category}</p>
-                  <h3 className="text-white text-3xl font-semibold leading-tight">{category.title}</h3>
+                <div className="absolute inset-x-0 bottom-0 p-3 sm:p-6">
+                  <p className="text-white/90 text-xs sm:text-sm mb-1">{category.category}</p>
+                  <h3 className="text-white text-lg sm:text-3xl font-semibold leading-tight">{category.title}</h3>
                 </div>
               </motion.article>
             ))}
