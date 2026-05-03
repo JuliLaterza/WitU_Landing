@@ -123,7 +123,7 @@ const copy = {
         { category: "Fiestas", title: "Boliches", image: "/assets/images/amigos-boliches.jpg" },
         { category: "Recitales", title: "Festivales y recitales musicales", image: "/assets/images/recitales.jpg" },
         { category: "Plazas", title: "Naturaleza y aire libre", image: "/assets/images/juntadas_parque.jpeg" },
-        { category: "Deportes", title: "Clubes de running", image: "/assets/images/runningclub.jpg" },
+        { category: "Deportes", title: "Clubes de running", image: "/assets/images/running2.jpg" },
       ],
     },
     comoFunciona: {

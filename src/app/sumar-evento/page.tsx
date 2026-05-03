@@ -4,7 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { ArrowLeft, CheckCircle } from "lucide-react";
+import { db } from "@/lib/firebase";
 import { useAppLanguage } from "@/lib/language";
 
 const copy = {
@@ -15,15 +17,15 @@ const copy = {
     sub1: "Aumentá la asistencia y conocé a tu público como nunca antes.",
     sub2: "Wit Ü conecta personas y potencia tus resultados.",
     sub3: "Unite a nosotros para transformar eventos en oportunidades de conexión real.",
-    formTitle: "Dejanos tu mail o tu Whatsapp",
-    formSubtitle: "Te contactamos para contarte cómo funciona",
-    emailPlaceholder: "Tu email",
+    formTitle: "Dejanos tu WhatsApp",
+    formSubtitle: "Te contactamos para contarte cómo funciona Wit Ü",
     whatsappPlaceholder: "Tu WhatsApp (ej: 1123456789)",
     submit: "¡Quiero sumar mi evento!",
     sending: "Enviando...",
     thanks: "¡Gracias!",
     thanksBody: "Nos ponemos en contacto a la brevedad.",
     networkError: "Error de red",
+    invalidWhatsapp: "Ingresá un WhatsApp válido.",
   },
   en: {
     back: "Back",
@@ -32,50 +34,44 @@ const copy = {
     sub1: "Increase attendance and understand your audience like never before.",
     sub2: "Wit Ü connects people and boosts your results.",
     sub3: "Join us to transform events into real connection opportunities.",
-    formTitle: "Leave your email or WhatsApp",
+    formTitle: "Leave your WhatsApp",
     formSubtitle: "We'll contact you and explain how it works",
-    emailPlaceholder: "Your email",
     whatsappPlaceholder: "Your WhatsApp (e.g. 1123456789)",
     submit: "I want to add my event!",
     sending: "Sending...",
     thanks: "Thank you!",
     thanksBody: "We'll get in touch shortly.",
     networkError: "Network error",
+    invalidWhatsapp: "Enter a valid WhatsApp number.",
   },
 } as const;
 
 export default function SumarEvento() {
   const { language, toggleLanguage } = useAppLanguage();
   const t = copy[language];
-  const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const numero = whatsapp.replace(/\D/g, "");
+
+    if (numero.length < 8 || numero.length > 15) {
+      alert(t.invalidWhatsapp);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        "https://sheetdb.io/api/v1/v931bf4afoyd7",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ mail: email, telefono: whatsapp }),
-        }
-      );
-
-      const responseText = await response.text();
-      console.log("SheetDB response:", response.status, responseText);
-
-      if (!response.ok) {
-        alert(`Error ${response.status}: ${responseText}`);
-        return;
-      }
+      await setDoc(doc(db, "organizadores", numero), {
+        numero,
+        createdAt: serverTimestamp(),
+      });
 
       setIsSubmitted(true);
-      setEmail("");
       setWhatsapp("");
     } catch (error) {
       console.error("Network error:", error);
@@ -178,14 +174,6 @@ export default function SumarEvento() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t.emailPlaceholder}
-                required
-                className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-base placeholder:text-gray-400 transition-shadow"
-              />
               <input
                 type="tel"
                 value={whatsapp}
