@@ -4,7 +4,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAppLanguage } from "@/lib/language";
 
-const copy = {
+type SafetySection = {
+  title: string;
+  id?: string;
+  body?: string;
+  items: readonly string[];
+  warning?: string;
+};
+
+type SafetyCopy = {
+  back: string;
+  switch: string;
+  title: string;
+  subtitle: string;
+  intro: string;
+  sections: readonly SafetySection[];
+  contactTitle: string;
+  contactBody: string;
+  contactNote: string;
+  footer: {
+    privacy: string;
+    terms: string;
+    safety: string;
+    age: string;
+    delete: string;
+    copyright: string;
+  };
+};
+
+const copy: Record<"es" | "en", SafetyCopy> = {
   es: {
     back: "Volver al inicio",
     switch: "🇺🇸 EN",
@@ -151,7 +179,7 @@ const copy = {
       copyright: "© 2025 Wit Ü. All rights reserved.",
     },
   },
-} as const;
+};
 
 export default function SafetyPage() {
   const { language, toggleLanguage } = useAppLanguage();
