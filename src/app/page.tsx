@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import tramaPattern from "../../assets/images/trama.png";
 import { 
   Heart, 
   CheckCircle,
@@ -530,7 +529,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="grid lg:grid-cols-2 gap-10 xl:gap-14 items-center"
           >
-            <div className="order-2 lg:order-1">
+            <div className="order-1 lg:order-1">
               <div className="inline-flex items-center gap-2 rounded-full bg-yellow-100 text-yellow-900 px-4 py-1.5 text-sm font-semibold mb-6 border border-yellow-200 shadow-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-500 opacity-75" />
@@ -632,7 +631,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="order-1 lg:order-2">
+            <div className="order-2 lg:order-2">
               <div className="relative max-w-[320px] sm:max-w-[360px] lg:max-w-[400px] mx-auto">
                 <div>
                   <motion.div
@@ -655,38 +654,43 @@ export default function Home() {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    className="mt-4 flex items-center gap-2"
+                    className="mt-4"
                   >
-                    <a
-                      href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block flex-[5.2]"
-                      aria-label={t.hero.appStoreAria}
-                    >
-                      <Image
-                        src="/assets/images/AppStore.png"
-                        alt={t.hero.appStoreAlt}
-                        width={500}
-                        height={150}
-                        className="w-full h-auto"
-                      />
-                    </a>
-                    <a
-                      href="https://play.google.com/store/apps/details?id=com.witu.app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block flex-[6]"
-                      aria-label={t.hero.playStoreAria}
-                    >
-                      <Image
-                        src="/assets/images/playstore.png"
-                        alt={t.hero.playStoreAlt}
-                        width={500}
-                        height={150}
-                        className="w-full h-auto"
-                      />
-                    </a>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center mb-2">
+                      {language === "es" ? "Pronto en:" : "Coming soon:"}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block flex-[5.2] transition-transform hover:scale-[1.02]"
+                        aria-label={t.hero.appStoreAria}
+                      >
+                        <Image
+                          src="/assets/images/AppStore.png"
+                          alt={t.hero.appStoreAlt}
+                          width={500}
+                          height={150}
+                          className="w-full h-auto"
+                        />
+                      </a>
+                      <a
+                        href="https://play.google.com/store/apps/details?id=com.witu.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block flex-[6] transition-transform hover:scale-[1.02]"
+                        aria-label={t.hero.playStoreAria}
+                      >
+                        <Image
+                          src="/assets/images/playstore.png"
+                          alt={t.hero.playStoreAlt}
+                          width={500}
+                          height={150}
+                          className="w-full h-auto"
+                        />
+                      </a>
+                    </div>
                   </motion.div>
                 </div>
               </div>
@@ -696,16 +700,8 @@ export default function Home() {
       </section>
 
       {/* 2. ¿Qué es Wit Ü? */}
-      <section id="que-es" className="relative overflow-hidden py-14 sm:py-16 md:py-20 px-4 bg-black">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.35] brightness-10 contrast-1000"
-          style={{
-            backgroundImage: `url(${tramaPattern.src})`,
-            backgroundRepeat: "repeat",
-            backgroundSize: "2000px",
-          }}
-        />
-        <div className="container mx-auto max-w-6xl relative z-10">
+      <section id="que-es" className="py-14 sm:py-16 md:py-20 px-4 bg-[#231f20]">
+        <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -713,7 +709,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-10 sm:mb-12 md:mb-14"
           >
-            <div className="inline-block bg-black rounded-[48px] px-5 py-3 sm:px-7 sm:py-4 mb-4">
+            <div className="inline-block bg-[#231f20] rounded-[48px] px-5 py-3 sm:px-7 sm:py-4 mb-4">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
                 {t.queEs.titleStart}{" "}
                 <span className="italic text-[#fcd517]">{t.queEs.titleHighlight}</span>
