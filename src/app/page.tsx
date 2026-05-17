@@ -4,9 +4,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  Heart, 
-  CheckCircle,
+import {
+  Heart,
   Instagram,
   Linkedin,
   Mail,
@@ -71,7 +70,7 @@ const copy = {
       howItWorks: "¿Cómo funciona?",
       safety: "Seguridad",
       addEvent: "Quiero sumar mi evento",
-      waitlist: "Unite a la Waitlist",
+      waitlist: "Descargar",
       switchLabel: "Cambiar idioma a inglés",
       switchButton: "🇺🇸 EN",
     },
@@ -138,10 +137,7 @@ const copy = {
     waitlist: {
       titleStart: "Lo digital te acerca,",
       titleHighlight: "Wit Ü te encuentra.",
-      description: "Sumate a los miles de jóvenes que ya están cambiando su forma de socializar. Registrate para recibir acceso anticipado.",
-      emailPlaceholder: "Tu email",
-      submit: "Unite a la Waitlist",
-      sending: "Enviando...",
+      description: "Sumate a los miles de jóvenes que ya están cambiando su forma de socializar. Descargá la app ahora y empezá a conectar en la vida real.",
       launchBadge: "🏙️ Buenos Aires · Ya disponible",
     },
     footer: {
@@ -163,7 +159,7 @@ const copy = {
       howItWorks: "How it works",
       safety: "Safety",
       addEvent: "Add my event",
-      waitlist: "Join the Waitlist",
+      waitlist: "Download",
       switchLabel: "Switch language to Spanish",
       switchButton: "🇪🇸 ES",
     },
@@ -230,10 +226,7 @@ const copy = {
     waitlist: {
       titleStart: "Digital brings you closer,",
       titleHighlight: "Wit Ü brings you together.",
-      description: "Join thousands of young people already changing how they socialize. Sign up for early access.",
-      emailPlaceholder: "Your email",
-      submit: "Join the Waitlist",
-      sending: "Sending...",
+      description: "Join thousands of young people already changing how they socialize. Download the app now and start connecting in real life.",
       launchBadge: "🏙️ Buenos Aires · Available now",
     },
     footer: {
@@ -252,9 +245,6 @@ const copy = {
 
 export default function Home() {
   const [language, setLanguage] = useState<Language>("es");
-  const [email, setEmail] = useState("");
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = copy[language];
 
@@ -271,88 +261,6 @@ export default function Home() {
     const nextLanguage: Language = language === "es" ? "en" : "es";
     setLanguage(nextLanguage);
     window.localStorage.setItem("witu-language", nextLanguage);
-  };
-
-  // Componente widget de agradecimiento reutilizable
-  const ThankYouWidget = ({ className = "" }: { className?: string }) => (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className={`bg-white border-2 border-green-200 rounded-2xl p-6 sm:p-8 shadow-xl ${className}`}
-    >
-      <div className="text-center">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-          <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
-        </div>
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-          {t.thankYou.title}
-        </h3>
-        <div className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4 sm:mb-6 inline-block">
-          {t.thankYou.badge}
-        </div>
-        <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-          {t.thankYou.description}
-        </p>
-        <div className="bg-green-50 rounded-xl p-4 sm:p-5">
-          <p className="text-sm sm:text-base text-green-800 font-medium mb-2">
-            {t.thankYou.next}
-          </p>
-          <ul className="text-sm text-green-700 space-y-1 text-left max-w-sm mx-auto">
-            <li className="flex items-center">
-              <span className="mr-2">📧</span>
-              {t.thankYou.updates}
-            </li>
-            <li className="flex items-center">
-              <span className="mr-2">🚀</span>
-              {t.thankYou.earlyAccess}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </motion.div>
-  );
-
-  const handleSubmit = async (e?: React.FormEvent) => {
-    e?.preventDefault();
-    
-    if (!email.trim()) {
-      return;
-    }
-    
-    setIsLoading(true);
-    
-    try {
-      const dataToSend = {
-        Customers: email,
-        Fecha: new Date().toLocaleDateString(language === "en" ? "en-US" : "es-ES", {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric'
-        }) // Formato DD/MM/YYYY
-      };
-      
-      console.log('Enviando datos:', dataToSend);
-      
-      const response = await fetch('https://sheetdb.io/api/v1/gcv8c1517k9ow', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSend)
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        setEmail("");
-      } else {
-        throw new Error('Error al enviar datos');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert(t.errors.submitFailed);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   const toggleMobileMenu = () => {
@@ -549,86 +457,41 @@ export default function Home() {
                 {t.hero.subtitle}
               </p>
 
-              <div className="flex items-center gap-3 mb-5">
-                <div className="flex -space-x-2.5">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 border-2 border-white" />
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-500 to-gray-800 border-2 border-white" />
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 border-2 border-white" />
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#fcd517] to-orange-500 border-2 border-white flex items-center justify-center text-[#231f20] text-[9px] font-black">+</div>
-                </div>
-                <p className="text-sm text-gray-500">
-                  <span className="font-semibold text-gray-900">+300</span> {t.hero.socialProof}
-                </p>
+              
+
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition-transform hover:scale-[1.02]"
+                  aria-label={t.hero.appStoreAria}
+                >
+                  <Image
+                    src="/assets/images/AppStore.png"
+                    alt={t.hero.appStoreAlt}
+                    width={500}
+                    height={150}
+                    className="h-[55px] w-auto"
+                  />
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.witu.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition-transform hover:scale-[1.02]"
+                  aria-label={t.hero.playStoreAria}
+                >
+                  <Image
+                    src="/assets/images/playstore.png"
+                    alt={t.hero.playStoreAlt}
+                    width={500}
+                    height={150}
+                    className="h-[85px] w-auto"
+                  />
+                </a>
               </div>
 
-              {!isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-white/85 backdrop-blur-md border border-gray-100 rounded-2xl p-3 sm:p-4 shadow-xl max-w-2xl"
-                >
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      onKeyPress={(e) => {
-                        if (e.key === "Enter") {
-                          handleSubmit();
-                        }
-                      }}
-                      placeholder={t.hero.emailPlaceholder}
-                      className="flex-1 px-5 py-3.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent text-base placeholder:text-gray-400 bg-white"
-                    />
-                    <button
-                      onClick={handleSubmit}
-                      disabled={isLoading}
-                      className="bg-gradient-yellow text-gray-900 px-6 py-3.5 rounded-xl font-semibold text-base hover:bg-gradient-yellow-reverse shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-                    >
-                      {isLoading ? t.hero.sending : t.hero.submit}
-                    </button>
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="max-w-2xl"
-                >
-                  <ThankYouWidget />
-                </motion.div>
-              )}
-
-              <div className="mt-7 bg-white/90 backdrop-blur-md border border-gray-100 rounded-2xl p-4 sm:p-5 shadow-lg max-w-2xl">
-                <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center mb-4">
-                  {t.hero.support}
-                </p>
-                <div className="flex flex-wrap items-center justify-around w-full gap-6 sm:gap-8">
-                  <Image
-                    src="/assets/images/sponsors/uade-logo.svg-2.png"
-                    alt="UADE"
-                    width={120}
-                    height={40}
-                    className="h-7 sm:h-8 w-auto opacity-80"
-                  />
-                  <Image
-                    src="/assets/images/sponsors/Emprelatam-logo-azul.png"
-                    alt="Emprelatam"
-                    width={150}
-                    height={40}
-                    className="h-8 sm:h-9 w-auto opacity-80"
-                  />
-                  <Image
-                    src="/assets/images/sponsors/aws-startups.png"
-                    alt="AWS Startup Programs"
-                    width={130}
-                    height={40}
-                    className="h-7 sm:h-8 w-auto opacity-80"
-                  />
-                </div>
-              </div>
             </div>
 
             <div className="order-2 lg:order-2">
@@ -649,53 +512,39 @@ export default function Home() {
                       priority
                     />
                   </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="mt-4"
-                  >
-                    <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center mb-2">
-                      {language === "es" ? "Pronto en:" : "Coming soon:"}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <a
-                        href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block flex-[5.2] transition-transform hover:scale-[1.02]"
-                        aria-label={t.hero.appStoreAria}
-                      >
-                        <Image
-                          src="/assets/images/AppStore.png"
-                          alt={t.hero.appStoreAlt}
-                          width={500}
-                          height={150}
-                          className="w-full h-auto"
-                        />
-                      </a>
-                      <a
-                        href="https://play.google.com/store/apps/details?id=com.witu.app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block flex-[6] transition-transform hover:scale-[1.02]"
-                        aria-label={t.hero.playStoreAria}
-                      >
-                        <Image
-                          src="/assets/images/playstore.png"
-                          alt={t.hero.playStoreAlt}
-                          width={500}
-                          height={150}
-                          className="w-full h-auto"
-                        />
-                      </a>
-                    </div>
-                  </motion.div>
                 </div>
               </div>
             </div>
           </motion.div>
+
+          <div className="mt-7 bg-white/90 backdrop-blur-md border border-gray-100 rounded-2xl p-4 sm:p-5 shadow-lg">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center mb-4">
+              {t.hero.support}
+            </p>
+            <div className="flex flex-wrap items-center justify-around w-full gap-6 sm:gap-8">
+              <Image
+                src="/assets/images/sponsors/uade-logo.svg-2.png"
+                alt="UADE"
+                width={120}
+                height={40}
+                className="h-7 sm:h-8 w-auto opacity-80"
+              />
+              <Image
+                src="/assets/images/sponsors/Emprelatam-logo-azul.png"
+                alt="Emprelatam"
+                width={150}
+                height={40}
+                className="h-8 sm:h-9 w-auto opacity-80"
+              />
+              <Image
+                src="/assets/images/sponsors/aws-startups.png"
+                alt="AWS Startup Programs"
+                width={130}
+                height={40}
+                className="h-7 sm:h-8 w-auto opacity-80"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -864,31 +713,38 @@ export default function Home() {
                 {t.waitlist.description}
               </p>
               
-              {!isSubmitted ? (
-                <form onSubmit={handleSubmit}>
-                  <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder={t.waitlist.emailPlaceholder}
-                      required
-                      className="flex-1 px-6 py-4 bg-white text-[#231f20] placeholder:text-[#231f20]/50 border border-white/30 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-dark focus:border-transparent"
-                    />
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className="bg-gradient-yellow text-[#231f20] px-8 py-4 rounded-2xl font-semibold hover:bg-gradient-yellow-reverse transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {isLoading ? t.waitlist.sending : t.waitlist.submit}
-                    </button>
-                  </div>
-                </form>
-              ) : (
-                <div className="max-w-2xl mx-auto">
-                  <ThankYouWidget />
-                </div>
-              )}
+              <div className="flex items-center justify-center gap-3">
+                <a
+                  href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition-transform hover:scale-[1.02]"
+                  aria-label={t.hero.appStoreAria}
+                >
+                  <Image
+                    src="/assets/images/AppStore.png"
+                    alt={t.hero.appStoreAlt}
+                    width={500}
+                    height={150}
+                    className="h-[55px] w-auto"
+                  />
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.witu.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition-transform hover:scale-[1.02]"
+                  aria-label={t.hero.playStoreAria}
+                >
+                  <Image
+                    src="/assets/images/playstore.png"
+                    alt={t.hero.playStoreAlt}
+                    width={500}
+                    height={150}
+                    className="h-[80px] w-auto"
+                  />
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
