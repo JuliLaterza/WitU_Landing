@@ -23,7 +23,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.59c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
+    <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.59c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" />
   </svg>
 );
 
@@ -70,23 +70,23 @@ const copy = {
       howItWorks: "¿Cómo funciona?",
       safety: "Seguridad",
       addEvent: "Quiero sumar mi evento",
-      waitlist: "Descargar",
+      download: "Descargar",
       switchLabel: "Cambiar idioma a inglés",
       switchButton: "🇺🇸 EN",
     },
     thankYou: {
-      title: "¡Ya estás en lista! 🎉",
-      badge: "✅ Estás en la waitlist de Wit Ü",
-      description: "Serás de los primeros en conocer la app cuando la lancemos.",
+      title: "¡Gracias por sumarte! 🎉",
+      badge: "✅ Ya sos parte de Wit Ü",
+      description: "Descargá la app y empezá a conectar en la vida real.",
       next: "¿Qué sigue ahora?",
       updates: "Te enviaremos actualizaciones importantes",
-      earlyAccess: "Acceso temprano a la app",
+      earlyAccess: "Acceso a la app",
     },
     hero: {
-      badge: "✨ La vida pasa afuera",
-      titleStart: "Conectá con personas que viven",
-      titleHighlight: "lo mismo que vos",
-      subtitle: "Volvé a conectar en la vida real. Porque los mejores planes no pasan online.",
+      badge: "✨ Planes, eventos y gente nueva",
+      titleStart: "Encontrá dónde salir y conocé",
+      titleHighlight: "gente como vos",
+      subtitle: "Wit Ü es la app para descubrir planes, eventos y actividades, conocer gente nueva y conectar en la vida real.",
       emailPlaceholder: "Tu email principal",
       submit: "Unite a la comunidad",
       support: "Nos apoyan",
@@ -94,30 +94,31 @@ const copy = {
       playStoreAria: "Descargar en Google Play",
       appStoreAlt: "Descargar en App Store",
       playStoreAlt: "Descargar en Google Play",
+      downloadLabel: "DESCARGALA EN:",
       sending: "Enviando...",
-      socialProof: "personas ya en la lista",
+      socialProof: "personas en la comunidad",
     },
     queEs: {
-      titleStart: "Somos la red social que se vive en la",
+      titleStart: "La app para hacer planes y conocer gente en la",
       titleHighlight: "vida real",
       cards: [
         {
-          title: "Conexiones Reales",
-          description: "Conocé gente con tus mismos intereses en un entorno seguro y relajado.",
+          title: "Conocer gente",
+          description: "Encontrá personas con intereses parecidos para hacer amigos, compartir salidas y romper el hielo antes del plan.",
         },
         {
-          title: "Eventos",
-          description: "Fiestas, recitales, juntadas, etc. Siempre hay algo pasando cerca tuyo.",
+          title: "Planes y eventos",
+          description: "Descubrí fiestas, recitales, juntadas, actividades al aire libre y experiencias para saber dónde salir.",
         },
         {
-          title: "Afinidad Pura",
-          description: "Nuestro sistema te muestra personas compatibles para poder compartir la experiencia juntos.",
+          title: "Afinidad real",
+          description: "La app te acerca a personas compatibles para que compartir una experiencia sea más natural y seguro.",
         },
       ],
     },
     eventos: {
-      title: "¿Qué tipos de eventos podés encontrar?",
-      description: "Explorá categorías diseñadas para que encuentres tu lugar, sin importar tu mood.",
+      title: "Planes para salir, eventos y actividades",
+      description: "Si te preguntás dónde salir, qué hacer hoy o cómo conocer gente nueva, Wit Ü te muestra experiencias para compartir en la vida real.",
       categories: [
         { category: "Fiestas", title: "Boliches", image: "/assets/images/amigos-boliches.jpg" },
         { category: "Recitales", title: "Festivales y recitales musicales", image: "/assets/images/recitales.jpg" },
@@ -127,14 +128,44 @@ const copy = {
     },
     comoFunciona: {
       title: "Así de simple. Así de real.",
-      subtitle: "Tres pasos para salir de tu zona de confort digital.",
+      subtitle: "Tres pasos para pasar de buscar planes a vivirlos con otras personas.",
       steps: [
-        { step: "1", title: "Elegí tu plan", description: "Encontrá el evento o actividad que se ajustan a tus intereses." },
-        { step: "2", title: "Conectá con personas", description: "Busca a tu compañer@ para compartir la experiencia." },
-        { step: "3", title: "Rompe el hielo", description: "Envia un mensaje antes del evento." },
+        { step: "1", title: "Elegí tu plan", description: "Encontrá eventos, salidas o actividades que se ajusten a tus intereses." },
+        { step: "2", title: "Conectá con personas", description: "Conocé gente que también quiere ir y compartir la experiencia." },
+        { step: "3", title: "Rompé el hielo", description: "Enviá un mensaje antes del evento y llegá con una conexión previa." },
       ],
     },
-    waitlist: {
+    faq: {
+      title: "Preguntas frecuentes",
+      subtitle: "Respuestas rápidas para quienes buscan planes, dónde salir o conocer gente nueva.",
+      questions: [
+        {
+          question: "¿Cómo puedo conocer gente nueva sin que sea incómodo?",
+          answer: "La app usa planes y eventos como punto de encuentro, así ya tenés una excusa natural para conversar y romper el hielo.",
+        },
+        {
+          question: "¿Qué puedo hacer si no sé dónde salir?",
+          answer: "Podés entrar a Wit Ü para descubrir eventos, salidas y actividades según tus intereses, y encontrar personas que también quieran ir.",
+        },
+        {
+          question: "¿Wit Ü es una app de citas?",
+          answer: "No es una app de citas tradicional. Wit Ü pone primero los planes y eventos para que las conexiones nazcan en contextos reales.",
+        },
+        {
+          question: "¿Puedo usar Wit Ü aunque vaya sin grupo?",
+          answer: "Sí. La idea es que puedas sumarte a planes y conectar antes con otras personas para no llegar sin conocer a nadie.",
+        },
+      ],
+    },
+    nosotros: {
+      title: "Equipo",
+      team: [
+        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-emprelatam2.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
+        { name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
+        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-emprelatam2.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
+      ],
+    },
+    download: {
       titleStart: "Lo digital te acerca,",
       titleHighlight: "Wit Ü te encuentra.",
       description: "Sumate a los miles de jóvenes que ya están cambiando su forma de socializar. Descargá la app ahora y empezá a conectar en la vida real.",
@@ -159,23 +190,23 @@ const copy = {
       howItWorks: "How it works",
       safety: "Safety",
       addEvent: "Add my event",
-      waitlist: "Download",
+      download: "Download",
       switchLabel: "Switch language to Spanish",
       switchButton: "🇪🇸 ES",
     },
     thankYou: {
-      title: "You're on the list! 🎉",
-      badge: "✅ You're on the Wit Ü waitlist",
-      description: "You'll be among the first to know when we launch.",
+      title: "Thanks for joining! 🎉",
+      badge: "✅ You're part of Wit Ü",
+      description: "Download the app and start connecting in real life.",
       next: "What's next?",
       updates: "We'll send you important updates",
-      earlyAccess: "Early access to the app",
+      earlyAccess: "Access to the app",
     },
     hero: {
-      badge: "✨ Life happens outside",
-      titleStart: "Connect with people who live",
-      titleHighlight: "the same vibe as you",
-      subtitle: "Reconnect in real life. The best plans don't happen online.",
+      badge: "✨ Plans, events and new people",
+      titleStart: "Find where to go out and meet",
+      titleHighlight: "people like you",
+      subtitle: "Wit Ü is the app to discover plans, events and activities, meet new people and connect in real life.",
       emailPlaceholder: "Your main email",
       submit: "Join the community",
       support: "Supported by",
@@ -183,30 +214,31 @@ const copy = {
       playStoreAria: "Download on Google Play",
       appStoreAlt: "Download on the App Store",
       playStoreAlt: "Get it on Google Play",
+      downloadLabel: "DOWNLOAD IT ON:",
       sending: "Sending...",
-      socialProof: "people already on the list",
+      socialProof: "people in the community",
     },
     queEs: {
-      titleStart: "We are the social network lived in",
+      titleStart: "The app to make plans and meet people in",
       titleHighlight: "real life",
       cards: [
         {
-          title: "Real Connections",
-          description: "Meet people with similar interests in a safe and relaxed environment.",
+          title: "Meet people",
+          description: "Find people with similar interests to make friends, share plans and break the ice before going out.",
         },
         {
-          title: "Events",
-          description: "Parties, concerts, meetups and more. There's always something happening nearby.",
+          title: "Plans and events",
+          description: "Discover parties, concerts, meetups, outdoor activities and experiences when you are wondering where to go out.",
         },
         {
-          title: "Pure Affinity",
-          description: "Our system shows compatible people so you can share experiences together.",
+          title: "Real affinity",
+          description: "The app connects you with compatible people so sharing an experience feels more natural and safe.",
         },
       ],
     },
     eventos: {
-      title: "What kind of events can you find?",
-      description: "Explore categories designed to help you find your place, no matter your mood.",
+      title: "Plans to go out, events and activities",
+      description: "If you are wondering where to go out, what to do today or how to meet new people, Wit Ü shows experiences to share in real life.",
       categories: [
         { category: "Parties", title: "Clubs", image: "/assets/images/amigos-boliches.jpg" },
         { category: "Concerts", title: "Festivals and live concerts", image: "/assets/images/recitales.jpg" },
@@ -216,14 +248,44 @@ const copy = {
     },
     comoFunciona: {
       title: "Simple. Real.",
-      subtitle: "Three steps to leave your digital comfort zone.",
+      subtitle: "Three steps to go from searching for plans to living them with other people.",
       steps: [
-        { step: "1", title: "Choose your plan", description: "Find the event or activity that matches your interests." },
-        { step: "2", title: "Connect with people", description: "Find your mate to share the experience." },
-        { step: "3", title: "Break the ice", description: "Send a message before the event." },
+        { step: "1", title: "Choose your plan", description: "Find events, outings or activities that match your interests." },
+        { step: "2", title: "Connect with people", description: "Meet people who also want to go and share the experience." },
+        { step: "3", title: "Break the ice", description: "Send a message before the event and arrive with a connection already started." },
       ],
     },
-    waitlist: {
+    faq: {
+      title: "Frequently asked questions",
+      subtitle: "Quick answers for people looking for plans, where to go out or how to meet new people.",
+      questions: [
+        {
+          question: "How can I meet new people without it feeling awkward?",
+          answer: "The app uses plans and events as the meeting point, so you already have a natural reason to talk and break the ice.",
+        },
+        {
+          question: "What can I do if I don't know where to go out?",
+          answer: "You can open Wit Ü to discover events, outings and activities based on your interests, and find people who also want to go.",
+        },
+        {
+          question: "Is Wit Ü a dating app?",
+          answer: "It is not a traditional dating app. Wit Ü puts plans and events first so connections can start in real-life contexts.",
+        },
+        {
+          question: "Can I use Wit Ü if I don't have a group to go with?",
+          answer: "Yes. The idea is that you can join plans and connect with other people beforehand, so you don't arrive without knowing anyone.",
+        },
+      ],
+    },
+    nosotros: {
+      title: "Team",
+      team: [
+        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-emprelatam2.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
+        { name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
+        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-emprelatam2.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
+      ],
+    },
+    download: {
       titleStart: "Digital brings you closer,",
       titleHighlight: "Wit Ü brings you together.",
       description: "Join thousands of young people already changing how they socialize. Download the app now and start connecting in real life.",
@@ -282,9 +344,9 @@ export default function Home() {
           <nav className="flex items-center justify-between w-full">
             {/* Logo */}
             <div className="flex items-center space-x-2 flex-shrink-0">
-              <Image 
-                src="/assets/images/logo_witu.png" 
-                alt="Wit Ü Logo" 
+              <Image
+                src="/assets/images/logo_witu.png"
+                alt="Wit Ü Logo"
                 width={96}
                 height={32}
                 className="w-20 sm:w-24 h-6 sm:h-8"
@@ -293,20 +355,20 @@ export default function Home() {
 
             {/* Navegación desktop */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-8 flex-shrink-0">
-              <a 
-                href="#que-es" 
+              <a
+                href="#que-es"
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
                 {t.nav.whatIs}
               </a>
-              <a 
-                href="#eventos" 
+              <a
+                href="#eventos"
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
                 {t.nav.events}
               </a>
-              <a 
-                href="#como-funciona" 
+              <a
+                href="#como-funciona"
                 className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm lg:text-base whitespace-nowrap"
               >
                 {t.nav.howItWorks}
@@ -318,14 +380,14 @@ export default function Home() {
                 {t.nav.addEvent}
               </Link>
               <a
-                href="#waitlist"
+                href="#download"
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
+                  document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="bg-gradient-yellow text-gray-900 px-3 lg:px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 cursor-pointer text-sm lg:text-base whitespace-nowrap"
               >
-                {t.nav.waitlist}
+                {t.nav.download}
               </a>
               <button
                 onClick={toggleLanguage}
@@ -338,7 +400,7 @@ export default function Home() {
 
             {/* Botón menú móvil */}
             <div className="md:hidden">
-              <button 
+              <button
                 onClick={toggleMobileMenu}
                 className="text-gray-600 hover:text-gray-900 transition-colors p-2"
                 aria-label="Toggle menu"
@@ -363,29 +425,29 @@ export default function Home() {
                 className="md:hidden mt-4 pb-4"
               >
                 <div className="flex flex-col space-y-4">
-                  <a 
-                    href="#que-es" 
+                  <a
+                    href="#que-es"
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
                     {t.nav.whatIs}
                   </a>
-                  <a 
-                    href="#eventos" 
+                  <a
+                    href="#eventos"
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
                     {t.nav.events}
                   </a>
-                  <a 
-                    href="#como-funciona" 
+                  <a
+                    href="#como-funciona"
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
                     {t.nav.howItWorks}
                   </a>
-                  <Link 
-                    href="/safety" 
+                  <Link
+                    href="/safety"
                     onClick={closeMobileMenu}
                     className="text-gray-600 hover:text-gray-900 transition-colors font-medium py-2"
                   >
@@ -399,15 +461,15 @@ export default function Home() {
                     {t.nav.addEvent}
                   </Link>
                   <a
-                    href="#waitlist"
+                    href="#download"
                     onClick={(e) => {
                       e.preventDefault();
                       closeMobileMenu();
-                      document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' });
+                      document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     className="bg-gradient-yellow text-gray-900 px-4 py-2 rounded-full font-medium hover:bg-gradient-yellow-reverse transition-all duration-300 text-center cursor-pointer"
                   >
-                    {t.nav.waitlist}
+                    {t.nav.download}
                   </a>
                   <button
                     onClick={() => {
@@ -446,9 +508,9 @@ export default function Home() {
                 {t.hero.badge}
               </div>
 
-              <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold text-gray-900 leading-[1.03] mb-6">
+              <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold text-gray-900 leading-[1.12] mb-6">
                 {t.hero.titleStart}
-                <span className="block italic bg-gradient-to-r from-gray-900 via-gray-800 to-yellow-700 bg-clip-text text-transparent">
+                <span className="block italic bg-gradient-to-r from-gray-900 via-gray-800 to-yellow-700 bg-clip-text text-transparent pb-1">
                   {t.hero.titleHighlight}
                 </span>
               </h1>
@@ -457,39 +519,44 @@ export default function Home() {
                 {t.hero.subtitle}
               </p>
 
-              
 
-              <div className="flex items-center gap-3">
-                <a
-                  href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block transition-transform hover:scale-[1.02]"
-                  aria-label={t.hero.appStoreAria}
-                >
-                  <Image
-                    src="/assets/images/AppStore.png"
-                    alt={t.hero.appStoreAlt}
-                    width={500}
-                    height={150}
-                    className="h-[55px] w-auto"
-                  />
-                </a>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.witu.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block transition-transform hover:scale-[1.02]"
-                  aria-label={t.hero.playStoreAria}
-                >
-                  <Image
-                    src="/assets/images/playstore.png"
-                    alt={t.hero.playStoreAlt}
-                    width={500}
-                    height={150}
-                    className="h-[85px] w-auto"
-                  />
-                </a>
+
+              <div>
+                <p className="mb-3 text-xs sm:text-sm font-black tracking-[0.22em] text-gray-500">
+                  {t.hero.downloadLabel}
+                </p>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block transition-transform hover:scale-[1.02]"
+                    aria-label={t.hero.appStoreAria}
+                  >
+                    <Image
+                      src="/assets/images/AppStore.png"
+                      alt={t.hero.appStoreAlt}
+                      width={500}
+                      height={150}
+                      className="h-[55px] w-auto"
+                    />
+                  </a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.witu.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block transition-transform hover:scale-[1.02]"
+                    aria-label={t.hero.playStoreAria}
+                  >
+                    <Image
+                      src="/assets/images/playstore.png"
+                      alt={t.hero.playStoreAlt}
+                      width={500}
+                      height={150}
+                      className="h-[85px] w-auto"
+                    />
+                  </a>
+                </div>
               </div>
 
             </div>
@@ -622,9 +689,8 @@ export default function Home() {
                 whileHover={{ scale: 1.02, transition: { duration: 0.25 } }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
                 viewport={{ once: true }}
-                className={`group relative overflow-hidden rounded-[22px] sm:rounded-[28px] h-[220px] sm:h-[360px] shadow-lg cursor-pointer ${
-                  index % 2 === 1 ? "sm:mt-8 lg:mt-10" : ""
-                }`}
+                className={`group relative overflow-hidden rounded-[22px] sm:rounded-[28px] h-[220px] sm:h-[360px] shadow-lg cursor-pointer ${index % 2 === 1 ? "sm:mt-8 lg:mt-10" : ""
+                  }`}
               >
                 <Image
                   src={category.image}
@@ -662,11 +728,14 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="relative">
-            <div className="hidden md:block absolute left-0 right-0 top-[52px] h-px bg-white/20" />
-
-            <div className="grid md:grid-cols-3 gap-10 md:gap-8">
-              {t.comoFunciona.steps.map((step, index) => (
+          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+            {[
+              "/assets/images/elegis_plan1.png",
+              "/assets/images/conectar1.png",
+              "/assets/images/mensajes1.png",
+            ].map((img, index) => {
+              const step = t.comoFunciona.steps[index];
+              return (
                 <motion.div
                   key={step.step}
                   initial={{ opacity: 0, y: 24 }}
@@ -678,17 +747,118 @@ export default function Home() {
                   <div className="w-16 h-16 mx-auto rounded-full bg-[#fcd517] text-[#231f20] text-2xl font-black flex items-center justify-center mb-6 relative z-10 shadow-lg">
                     {step.step}
                   </div>
+                  <div className="mb-6">
+                    <Image
+                      src={img}
+                      alt={step.title}
+                      width={400}
+                      height={400}
+                      className="w-48 sm:w-56 h-auto mx-auto rounded-[45px]"
+                    />
+                  </div>
                   <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">{step.title}</h3>
                   <p className="text-base sm:text-lg text-white/75 leading-relaxed max-w-sm mx-auto">{step.description}</p>
                 </motion.div>
-              ))}
-            </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Nosotros */}
+      <section id="nosotros" className="py-14 sm:py-16 md:py-20 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 sm:mb-12"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+              {t.nosotros.title}
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+            {t.nosotros.team.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center"
+              >
+                <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden mb-5 shadow-lg border-4 border-gray-100">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{member.name}</h3>
+                  <a 
+                    href={member.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[#0a66c2] hover:text-[#004182] transition-colors"
+                    aria-label={`LinkedIn de ${member.name}`}
+                  >
+                    <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </a>
+                </div>
+                <p className="text-gray-600 font-medium sm:text-lg">{member.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Preguntas frecuentes */}
+      <section className="py-14 sm:py-16 md:py-20 px-4 bg-[#FFFCF4]">
+        <div className="container mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 sm:mb-12"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+              {t.faq.title}
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+              {t.faq.subtitle}
+            </p>
+          </motion.div>
+
+          <div className="space-y-4">
+            {t.faq.questions.map((faq, index) => (
+              <motion.details
+                key={faq.question}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                viewport={{ once: true }}
+                className="group rounded-[24px] border border-gray-200 bg-white p-5 sm:p-6 shadow-sm"
+              >
+                <summary className="cursor-pointer list-none text-lg sm:text-xl font-bold text-gray-900">
+                  {faq.question}
+                </summary>
+                <p className="mt-3 text-base sm:text-lg text-gray-600 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </motion.details>
+            ))}
           </div>
         </div>
       </section>
 
       {/* 7. Llamado a la acción final */}
-      <section id="waitlist" className="py-16 sm:py-20 px-4 bg-white">
+      <section id="download" className="py-16 sm:py-20 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -701,49 +871,51 @@ export default function Home() {
             <div className="absolute -bottom-20 -left-16 w-72 h-72 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
             <div className="relative z-10 text-center max-w-3xl mx-auto">
-              <div className="inline-flex items-center gap-2 bg-[#fcd517]/15 text-[#fcd517] px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-[#fcd517]/25">
-                {t.waitlist.launchBadge}
-              </div>
-              <h2 className="text-4xl sm:text-5xl font-bold leading-tight text-white mb-6">
-                {t.waitlist.titleStart}
-                <span className="block text-[#fcd517]">{t.waitlist.titleHighlight}</span>
+              <h2 className="text-4xl sm:text-5xl font-bold leading-[1.18] text-white mb-6">
+                {t.download.titleStart}
+                <span className="block text-[#fcd517] py-3">{t.download.titleHighlight}</span>
               </h2>
-              
+
               <p className="text-lg sm:text-2xl text-white/75 mb-9">
-                {t.waitlist.description}
+                {t.download.description}
               </p>
-              
-              <div className="flex items-center justify-center gap-3">
-                <a
-                  href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block transition-transform hover:scale-[1.02]"
-                  aria-label={t.hero.appStoreAria}
-                >
-                  <Image
-                    src="/assets/images/AppStore.png"
-                    alt={t.hero.appStoreAlt}
-                    width={500}
-                    height={150}
-                    className="h-[55px] w-auto"
-                  />
-                </a>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.witu.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block transition-transform hover:scale-[1.02]"
-                  aria-label={t.hero.playStoreAria}
-                >
-                  <Image
-                    src="/assets/images/playstore.png"
-                    alt={t.hero.playStoreAlt}
-                    width={500}
-                    height={150}
-                    className="h-[80px] w-auto"
-                  />
-                </a>
+
+              <div>
+                <p className="mb-3 text-xs sm:text-sm font-black tracking-[0.22em] text-[#fcd517]">
+                  {t.hero.downloadLabel}
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  <a
+                    href="https://apps.apple.com/ar/app/wit-%C3%BC/id6753308292"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block transition-transform hover:scale-[1.02]"
+                    aria-label={t.hero.appStoreAria}
+                  >
+                    <Image
+                      src="/assets/images/AppStore.png"
+                      alt={t.hero.appStoreAlt}
+                      width={500}
+                      height={150}
+                      className="h-[55px] w-auto"
+                    />
+                  </a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.witu.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block transition-transform hover:scale-[1.02]"
+                    aria-label={t.hero.playStoreAria}
+                  >
+                    <Image
+                      src="/assets/images/playstore.png"
+                      alt={t.hero.playStoreAlt}
+                      width={500}
+                      height={150}
+                      className="h-[80px] w-auto"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -765,38 +937,38 @@ export default function Home() {
               {language === "es" ? "La vida pasa afuera" : "Life happens outside"}
             </p>
           </div>
-          
+
           <div className="flex justify-center space-x-6 mb-6">
-            <a 
-              href="https://www.instagram.com/witu.app/" 
+            <a
+              href="https://www.instagram.com/witu.app/"
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="Instagram"
             >
               <Instagram className="w-6 h-6" />
             </a>
-            <a 
-              href="https://www.tiktok.com/@witu.app" 
+            <a
+              href="https://www.tiktok.com/@witu.app"
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="TikTok"
             >
               <TikTokIcon className="w-6 h-6" />
             </a>
-            <a 
-              href="https://linkedin.com/company/witu-app" 
+            <a
+              href="https://linkedin.com/company/witu-app"
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
             </a>
-            <a 
-              href="mailto:wituapp@gmail.com" 
+            <a
+              href="mailto:wituapp@gmail.com"
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="Email"
             >
               <Mail className="w-6 h-6" />
             </a>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-x-6 mb-4 px-2 text-sm text-center">
             <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.footer.privacy}
@@ -814,7 +986,7 @@ export default function Home() {
               {t.footer.contact}
             </a>
           </div>
-          
+
           <p className="text-gray-600 text-sm">
             {t.footer.copyright}
           </p>

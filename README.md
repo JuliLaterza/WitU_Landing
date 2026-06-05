@@ -15,7 +15,7 @@ Una landing page moderna para Wit Ü, la app que conecta personas a través de e
 - ✅ Landing page moderna y responsive
 - ✅ Sección hero con call-to-action
 - ✅ Sección de características con animaciones
-- ✅ Formulario de waitlist funcional
+- ✅ Links de descarga a App Store y Google Play
 - ✅ Diseño optimizado para móviles
 - ✅ Animaciones suaves con Framer Motion
 - ✅ Gradientes y efectos visuales modernos
