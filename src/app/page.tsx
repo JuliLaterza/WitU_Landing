@@ -601,7 +601,7 @@ export default function Home() {
                 alt="Emprelatam"
                 width={150}
                 height={40}
-                className="h-8 sm:h-9 w-auto opacity-80"
+                className="h-9 sm:h-10 w-auto opacity-80"
               />
               <Image
                 src="/assets/images/sponsors/aws-startups.png"
@@ -609,6 +609,13 @@ export default function Home() {
                 width={130}
                 height={40}
                 className="h-7 sm:h-8 w-auto opacity-80"
+              />
+              <Image
+                src="/assets/images/sponsors/logo.png"
+                alt="IAE"
+                width={180}
+                height={120}
+                className="h-13 sm:h-14 w-auto opacity-80"
               />
             </div>
           </div>
