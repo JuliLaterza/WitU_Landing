@@ -161,7 +161,7 @@ const copy = {
       title: "Equipo",
       team: [
         { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-emprelatam2.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
-        { name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
+        //{ name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
         { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-emprelatam2.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
       ],
     },
@@ -281,7 +281,7 @@ const copy = {
       title: "Team",
       team: [
         { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-emprelatam2.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
-        { name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
+        //{ name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
         { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-emprelatam2.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
       ],
     },
@@ -787,7 +787,7 @@ export default function Home() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div className="flex flex-wrap justify-center gap-8 text-center">
             {t.nosotros.team.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -795,7 +795,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center"
+                className="flex flex-col items-center w-full sm:w-64"
               >
                 <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden mb-5 shadow-lg border-4 border-gray-100">
                   <Image
