@@ -4,42 +4,78 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { ArrowLeft, CheckCircle } from "lucide-react";
+import { db } from "@/lib/firebase";
+import { useAppLanguage } from "@/lib/language";
+
+const copy = {
+  es: {
+    back: "Volver",
+    switch: "🇺🇸 EN",
+    heading: "Convertí tu evento en una experiencia que empieza antes.",
+    sub1: "Aumentá la asistencia y conocé a tu público como nunca antes.",
+    sub2: "Wit Ü conecta personas y potencia tus resultados.",
+    sub3: "Unite a nosotros para transformar eventos en oportunidades de conexión real.",
+    formTitle: "Dejanos tu WhatsApp",
+    formSubtitle: "Te contactamos para contarte cómo funciona Wit Ü",
+    whatsappPlaceholder: "Tu WhatsApp (ej: 1123456789)",
+    submit: "¡Quiero sumar mi evento!",
+    sending: "Enviando...",
+    thanks: "¡Gracias!",
+    thanksBody: "Nos ponemos en contacto a la brevedad.",
+    networkError: "Error de red",
+    invalidWhatsapp: "Ingresá un WhatsApp válido.",
+  },
+  en: {
+    back: "Back",
+    switch: "🇪🇸 ES",
+    heading: "Turn your event into an experience that starts before it begins.",
+    sub1: "Increase attendance and understand your audience like never before.",
+    sub2: "Wit Ü connects people and boosts your results.",
+    sub3: "Join us to transform events into real connection opportunities.",
+    formTitle: "Leave your WhatsApp",
+    formSubtitle: "We'll contact you and explain how it works",
+    whatsappPlaceholder: "Your WhatsApp (e.g. 1123456789)",
+    submit: "I want to add my event!",
+    sending: "Sending...",
+    thanks: "Thank you!",
+    thanksBody: "We'll get in touch shortly.",
+    networkError: "Network error",
+    invalidWhatsapp: "Enter a valid WhatsApp number.",
+  },
+} as const;
 
 export default function SumarEvento() {
-  const [email, setEmail] = useState("");
+  const { language, toggleLanguage } = useAppLanguage();
+  const t = copy[language];
   const [whatsapp, setWhatsapp] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    const numero = whatsapp.replace(/\D/g, "");
+
+    if (numero.length < 8 || numero.length > 15) {
+      alert(t.invalidWhatsapp);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        "https://sheetdb.io/api/v1/v931bf4afoyd7",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ mail: email, telefono: whatsapp }),
-        }
-      );
-
-      const responseText = await response.text();
-      console.log("SheetDB response:", response.status, responseText);
-
-      if (!response.ok) {
-        alert(`Error ${response.status}: ${responseText}`);
-        return;
-      }
+      await setDoc(doc(db, "organizadores", numero), {
+        numero,
+        createdAt: serverTimestamp(),
+      });
 
       setIsSubmitted(true);
-      setEmail("");
       setWhatsapp("");
     } catch (error) {
       console.error("Network error:", error);
-      alert(`Error de red: ${error instanceof Error ? error.message : String(error)}`);
+      alert(`${t.networkError}: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
       setIsLoading(false);
     }
@@ -77,8 +113,14 @@ export default function SumarEvento() {
           className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
-          Volver
+          {t.back}
         </Link>
+        <button
+          onClick={toggleLanguage}
+          className="ml-3 px-3 py-1.5 rounded-full border border-white/25 text-xs font-semibold text-white/85 hover:bg-white/10 transition-colors"
+        >
+          {t.switch}
+        </button>
       </header>
 
       {/* Contenido principal */}
@@ -91,15 +133,15 @@ export default function SumarEvento() {
           className="text-center mb-10 max-w-3xl"
         >
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
-            Convertí tu evento en una experiencia que empieza antes.
+            {t.heading}
           </h1>
           <p className="text-lg sm:text-xl text-white/70 leading-relaxed mb-2">
-            Aumentá la asistencia y conocé a tu público como nunca antes.
-Wit Ü conecta personas… y potencia tus resultados.
+            {t.sub1}
           </p>
           <p className="text-lg sm:text-xl text-white/70 leading-relaxed">
-            Unite a nosotros para transformar eventos en oportunidades de conexión real.
+            {t.sub2}
           </p>
+          <p className="text-lg sm:text-xl text-white/70 leading-relaxed mt-1">{t.sub3}</p>
         </motion.div>
 
         {/* Tarjeta del formulario */}
@@ -110,10 +152,10 @@ Wit Ü conecta personas… y potencia tus resultados.
           className="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl w-full max-w-md"
         >
           <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
-            Dejanos tu mail o tu Whatsapp
+            {t.formTitle}
           </h2>
           <p className="text-gray-500 text-center mb-8 text-sm">
-            Te contactamos para contarte cómo funciona
+            {t.formSubtitle}
           </p>
 
           {isSubmitted ? (
@@ -125,26 +167,18 @@ Wit Ü conecta personas… y potencia tus resultados.
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">¡Gracias!</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{t.thanks}</h3>
               <p className="text-gray-500 text-sm">
-                Nos ponemos en contacto a la brevedad.
+                {t.thanksBody}
               </p>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Tu email"
-                required
-                className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-base placeholder:text-gray-400 transition-shadow"
-              />
-              <input
                 type="tel"
                 value={whatsapp}
                 onChange={(e) => setWhatsapp(e.target.value)}
-                placeholder="Tu WhatsApp (ej: 1123456789)"
+                placeholder={t.whatsappPlaceholder}
                 required
                 className="w-full px-5 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent text-base placeholder:text-gray-400 transition-shadow"
               />
@@ -153,7 +187,7 @@ Wit Ü conecta personas… y potencia tus resultados.
                 disabled={isLoading}
                 className="w-full bg-gray-900 text-white py-4 rounded-2xl font-semibold text-base hover:bg-gray-700 transition-colors cursor-pointer mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isLoading ? "Enviando..." : "¡Quiero sumar mi evento!"}
+                {isLoading ? t.sending : t.submit}
               </button>
             </form>
           )}
