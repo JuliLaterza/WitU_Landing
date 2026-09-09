@@ -160,9 +160,9 @@ const copy = {
     nosotros: {
       title: "Equipo",
       team: [
-        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-emprelatam2.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
+        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-foto.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
         //{ name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
-        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-emprelatam2.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
+        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-foto.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
       ],
     },
     download: {
@@ -280,9 +280,9 @@ const copy = {
     nosotros: {
       title: "Team",
       team: [
-        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-emprelatam2.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
+        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-foto.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
         //{ name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
-        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-emprelatam2.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
+        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-foto.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
       ],
     },
     download: {
