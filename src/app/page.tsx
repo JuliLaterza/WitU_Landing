@@ -157,14 +157,6 @@ const copy = {
         },
       ],
     },
-    nosotros: {
-      title: "Equipo",
-      team: [
-        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-foto.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
-        //{ name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
-        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-foto.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
-      ],
-    },
     download: {
       titleStart: "Lo digital te acerca,",
       titleHighlight: "Wit Ü te encuentra.",
@@ -275,14 +267,6 @@ const copy = {
           question: "Can I use Wit Ü if I don't have a group to go with?",
           answer: "Yes. The idea is that you can join plans and connect with other people beforehand, so you don't arrive without knowing anyone.",
         },
-      ],
-    },
-    nosotros: {
-      title: "Team",
-      team: [
-        { name: "Catalina Barcic", role: "CMO", image: "/assets/images/cata-foto.png", linkedin: "https://www.linkedin.com/in/catalinabarciczupan/" },
-        //{ name: "Alfredo Calvelo", role: "CTO", image: "/assets/images/alf-emprelatam2.png", linkedin: "https://www.linkedin.com/in/alfredo-calvelo/" },
-        { name: "Julián Laterza", role: "CEO", image: "/assets/images/juli-foto.png", linkedin: "https://www.linkedin.com/in/jlaterza/" },
       ],
     },
     download: {
@@ -768,58 +752,6 @@ export default function Home() {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Nosotros */}
-      <section id="nosotros" className="py-14 sm:py-16 md:py-20 px-4 bg-white">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-              {t.nosotros.title}
-            </h2>
-          </motion.div>
-
-          <div className="flex flex-wrap justify-center gap-8 text-center">
-            {t.nosotros.team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex flex-col items-center w-full sm:w-64"
-              >
-                <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full overflow-hidden mb-5 shadow-lg border-4 border-gray-100">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">{member.name}</h3>
-                  <a 
-                    href={member.linkedin} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-[#0a66c2] hover:text-[#004182] transition-colors"
-                    aria-label={`LinkedIn de ${member.name}`}
-                  >
-                    <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </a>
-                </div>
-                <p className="text-gray-600 font-medium sm:text-lg">{member.role}</p>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
