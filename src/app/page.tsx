@@ -599,7 +599,7 @@ export default function Home() {
                 alt="IAE"
                 width={180}
                 height={120}
-                className="h-13 sm:h-14 w-auto opacity-80"
+                className="h-9 sm:h-10 w-auto opacity-80"
               />
             </div>
           </div>
