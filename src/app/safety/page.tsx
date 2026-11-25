@@ -163,7 +163,7 @@ const copy: Record<"es" | "en", SafetyCopy> = {
         items: [
           "Report profiles or messages from the app.",
           "Block users instantly.",
-          "Contact us at support@witu.me.",
+          "Contact us at staff@witu.me.",
         ],
       },
     ],
@@ -238,7 +238,7 @@ export default function SafetyPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">{t.contactTitle}</h2>
               <p className="text-gray-700 leading-relaxed text-lg mb-4">{t.contactBody}</p>
               <p className="text-gray-700 leading-relaxed text-lg">
-                <a href="mailto:support@witu.me" className="text-yellow-600 hover:text-yellow-700 font-semibold text-xl">📧 support@witu.me</a>
+                <a href="mailto:staff@witu.me" className="text-yellow-600 hover:text-yellow-700 font-semibold text-xl">📧 staff@witu.me</a>
               </p>
               <p className="text-gray-700 leading-relaxed text-lg mt-4">{t.contactNote}</p>
             </section>
