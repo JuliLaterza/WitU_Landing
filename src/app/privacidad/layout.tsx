@@ -4,7 +4,7 @@ import { buildSeoMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildSeoMetadata({
   title: "Política de Privacidad",
   description:
-    "Política de privacidad de Wit Ü: cómo recopilamos, usamos, almacenamos y protegemos los datos de usuarios de la plataforma.",
+    "Política de privacidad: cómo recopilamos, usamos, almacenamos y protegemos los datos de usuarios de Wit Ü.",
   path: "/privacidad",
   keywords: ["política de privacidad", "privacidad Wit Ü", "datos personales"],
 });

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAppLanguage } from "@/lib/language";
+import { LEGAL_EMAIL } from "@/lib/legal";
 
 const copy = {
   es: {
@@ -220,7 +221,7 @@ export default function DeleteAccountPage() {
               </p>
               <div className="mt-4 p-4 bg-gray-50 rounded-lg">
                 <p className="text-gray-700">
-                  <strong>Email:</strong> wituapp@gmail.com
+                  <strong>Email:</strong> {LEGAL_EMAIL}
                 </p>
                 <p className="text-gray-700 mt-2">
                   {t.helpNote}

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { LEGAL_EMAIL } from "@/lib/legal";
 import {
   Heart,
   Instagram,
@@ -900,7 +901,7 @@ export default function Home() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="mailto:wituapp@gmail.com"
+              href={`mailto:${LEGAL_EMAIL}`}
               className="text-gray-600 hover:text-gray-900 transition-colors"
               aria-label="Email"
             >
@@ -921,7 +922,7 @@ export default function Home() {
             <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.footer.deleteAccount}
             </Link>
-            <a href="mailto:wituapp@gmail.com" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a href={`mailto:${LEGAL_EMAIL}`} className="text-gray-600 hover:text-gray-900 transition-colors">
               {t.footer.contact}
             </a>
           </div>

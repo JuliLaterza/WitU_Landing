@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useAppLanguage, type Language } from "@/lib/language";
+import { CHILD_SAFETY_PATH, LEGAL_EMAIL, LEGAL_LAST_UPDATED } from "@/lib/legal";
 
 const copy = {
   es: {
@@ -14,9 +15,9 @@ const copy = {
       {
         title: "1. Introducción",
         paragraphs: [
-          "La presente Política de Privacidad describe cómo Wit Ü (en adelante, “Wit Ü”, “la Plataforma” o “el responsable”) recopila, utiliza, almacena, comparte y protege la información personal de los usuarios de la aplicación móvil y/o web Wit Ü.",
+          "La presente Política de Privacidad describe cómo Wit Ü (en adelante, también “el responsable”) recopila, utiliza, almacena, comparte y protege la información personal de los usuarios de la aplicación móvil y/o web Wit Ü.",
           "Wit Ü es una plataforma digital que permite a los usuarios descubrir planes, eventos y actividades, así como conectarse e interactuar con otras personas.",
-          "Al registrarte, acceder o utilizar la Plataforma, aceptás esta Política de Privacidad. Si no estás de acuerdo con alguno de sus términos, debés abstenerte de utilizarla.",
+          "Al registrarte, acceder o utilizar Wit Ü, aceptás esta Política de Privacidad. Si no estás de acuerdo con alguno de sus términos, debés abstenerte de utilizar Wit Ü.",
           "Esta Política se encuentra alineada con la Ley N.° 25.326 de Protección de los Datos Personales de la República Argentina y su normativa complementaria.",
         ],
       },
@@ -29,6 +30,7 @@ const copy = {
             items: [
               "Nombre, alias o nombre de usuario",
               "Dirección de correo electrónico",
+              "Número de teléfono (para verificar la cuenta)",
               "Fecha de nacimiento o edad (para verificar mayoría de edad)",
               "Género (opcional)",
               "Fotos de perfil y contenido multimedia",
@@ -39,16 +41,16 @@ const copy = {
           },
           {
             title: "2.2 Datos de interacción social",
-            paragraphs: ["En función del uso de la Plataforma, podemos recopilar:"],
+            paragraphs: ["En función del uso de Wit Ü, podemos recopilar:"],
             items: [
               "Perfiles visualizados",
               "Conexiones generadas",
               "Interacciones con otros usuarios",
               "Mensajes enviados y recibidos (incluyendo contenido y metadatos como fecha y hora)",
               "Participación en eventos o planes",
-              "Acciones dentro de la Plataforma (likes, rechazos, conexiones)",
+              "Acciones dentro de Wit Ü (likes, rechazos, conexiones)",
             ],
-            note: "Importante: si bien Wit Ü puede procesar mensajes con fines operativos o de seguridad, no realiza monitoreo activo de conversaciones privadas, salvo en casos de denuncias o requerimientos legales.",
+            note: "Importante: si bien Wit Ü puede procesar mensajes con fines operativos o de seguridad, no realiza monitoreo activo de conversaciones privadas, salvo en casos de denuncias (incluidas las de seguridad infantil) o requerimientos legales.",
           },
           {
             title: "2.3 Datos de ubicación",
@@ -68,7 +70,7 @@ const copy = {
           },
           {
             title: "2.4 Datos técnicos y de uso",
-            paragraphs: ["Para garantizar el correcto funcionamiento de la Plataforma, podemos recopilar:"],
+            paragraphs: ["Para garantizar el correcto funcionamiento de Wit Ü, podemos recopilar:"],
             items: [
               "Dirección IP",
               "Tipo de dispositivo y sistema operativo",
@@ -88,7 +90,17 @@ const copy = {
             ],
           },
           {
-            title: "2.6 Datos que NO recopilamos",
+            title: "2.6 Datos de seguridad",
+            paragraphs: ["Para proteger a la comunidad, podemos recopilar:"],
+            items: [
+              "Reportes enviados o recibidos, su motivo y el perfil o contenido reportado",
+              "Usuarios bloqueados",
+              "Nombre y teléfono del contacto de emergencia que el usuario configure",
+              "Registro de las activaciones del botón de emergencia (fecha y hora, mensaje, contacto y datos técnicos básicos)",
+            ],
+          },
+          {
+            title: "2.7 Datos que NO recopilamos",
             paragraphs: ["Wit Ü no recopila ni almacena:"],
             items: [
               "Datos biométricos",
@@ -106,8 +118,9 @@ const copy = {
           "Crear y administrar cuentas de usuario.",
           "Facilitar conexiones entre usuarios.",
           "Permitir interacciones (conexiones, chat, eventos).",
-          "Personalizar la experiencia dentro de la Plataforma.",
+          "Personalizar la experiencia dentro de Wit Ü.",
           "Detectar y prevenir fraude o conductas indebidas.",
+          "Proteger a las personas menores de edad y prevenir, detectar, investigar y denunciar la explotación y el abuso sexual infantil (EASI / CSAE).",
           "Mejorar el servicio y desarrollar nuevas funcionalidades.",
           "Cumplir obligaciones legales.",
         ],
@@ -132,7 +145,7 @@ const copy = {
           {
             title: "4.2 Organizadores de eventos",
             paragraphs: [
-              "En el caso de eventos, planes o actividades disponibles dentro de la Plataforma, Wit Ü podrá compartir con los organizadores de dichos eventos cierta información limitada de los usuarios que participen o se registren, con el único fin de mejorar la experiencia del evento.",
+              "En el caso de eventos, planes o actividades disponibles en la app, Wit Ü podrá compartir con los organizadores de dichos eventos cierta información limitada de los usuarios que participen o se registren, con el único fin de mejorar la experiencia del evento.",
               "Dicha información podrá incluir:",
             ],
             items: [
@@ -165,6 +178,12 @@ const copy = {
               "Proteger la seguridad de usuarios o terceros.",
             ],
           },
+          {
+            title: "4.5 Protección infantil",
+            paragraphs: [
+              "Podremos conservar y compartir información, incluidos datos de la cuenta y contenido reportado, con el National Center for Missing & Exploited Children (NCMEC), autoridades judiciales, fuerzas de seguridad u otros organismos competentes, para denunciar casos de explotación y abuso sexual infantil y colaborar en su investigación.",
+            ],
+          },
         ],
       },
       {
@@ -191,15 +210,19 @@ const copy = {
         items: [
           "Mientras la cuenta esté activa",
           "Durante el tiempo necesario para cumplir obligaciones legales",
+          "Durante el tiempo necesario para investigar y denunciar casos de seguridad infantil o fraude, o resolver disputas",
         ],
-        closing: "Al eliminar la cuenta, los datos serán eliminados instantáneamente.",
+        closing: `Al eliminar la cuenta se eliminan el perfil, las fotos y los datos asociados. Los mensajes en chats de eventos o grupos y las publicaciones en foros pueden conservarse de forma anonimizada. Los reportes de moderación y la información necesaria para los fines anteriores pueden conservarse después de la eliminación. Para confirmar la eliminación o pedir el borrado de datos restantes, escribinos a ${LEGAL_EMAIL}.`,
       },
       {
         title: "8. Menores de edad",
         paragraphs: [
           "Wit Ü está destinada exclusivamente a mayores de 18 años.",
           "No recopilamos intencionalmente datos de menores. En caso de detectar un incumplimiento, eliminaremos la cuenta.",
+          "Wit Ü prohíbe de forma explícita la explotación y el abuso sexual infantil (EASI / CSAE).",
+          `Si creés que una persona menor de edad está usando la app o está en riesgo, reportalo desde la app o escribinos a ${LEGAL_EMAIL}.`,
         ],
+        link: { label: "Ver los Estándares de seguridad infantil de Wit Ü", href: CHILD_SAFETY_PATH },
       },
       {
         title: "9. Seguridad de la Información",
@@ -224,7 +247,13 @@ const copy = {
       {
         title: "11. Modificaciones a esta Política",
         paragraphs: [
-          "Podremos modificar esta Política de Privacidad en cualquier momento. En caso de hacerlo, actualizaremos la fecha de vigencia al comienzo del documento y, si los cambios son relevantes, te lo informaremos a través de la Aplicación o por correo electrónico. Al continuar utilizándola, se entenderá que aceptás la versión actualizada de la política.",
+          "Podremos modificar esta Política de Privacidad en cualquier momento. En caso de hacerlo, actualizaremos la fecha de vigencia al comienzo del documento y, si los cambios son relevantes, te lo informaremos a través de la app o por correo electrónico. Al continuar utilizando Wit Ü, se entenderá que aceptás la versión actualizada de la política.",
+        ],
+      },
+      {
+        title: "12. Contacto",
+        paragraphs: [
+          `Para consultas sobre esta Política o para solicitar el acceso, la rectificación, la actualización o la supresión de tus datos personales, escribinos a ${LEGAL_EMAIL}.`,
         ],
       },
     ],
@@ -232,6 +261,7 @@ const copy = {
       privacy: "Política de privacidad",
       terms: "Términos y condiciones",
       delete: "Eliminar cuenta",
+      childSafety: "Seguridad infantil",
       copyright: "© 2026 Wit Ü. Todos los derechos reservados.",
     },
   },
@@ -244,9 +274,9 @@ const copy = {
       {
         title: "1. Introduction",
         paragraphs: [
-          "This Privacy Policy describes how Wit Ü (“Wit Ü”, “the Platform” or “the controller”) collects, uses, stores, shares and protects the personal information of users of the Wit Ü mobile and/or web application.",
+          "This Privacy Policy describes how Wit Ü (also referred to as “the controller”) collects, uses, stores, shares and protects the personal information of users of the Wit Ü mobile and/or web application.",
           "Wit Ü is a digital platform that allows users to discover plans, events and activities, as well as connect and interact with other people.",
-          "By registering, accessing or using the Platform, you accept this Privacy Policy. If you do not agree with any of its terms, you must refrain from using it.",
+          "By registering, accessing or using Wit Ü, you accept this Privacy Policy. If you do not agree with any of its terms, you must refrain from using it.",
           "This Policy is aligned with Law No. 25,326 on Personal Data Protection of the Argentine Republic and its complementary regulations.",
         ],
       },
@@ -259,6 +289,7 @@ const copy = {
             items: [
               "Name, alias or username",
               "Email address",
+              "Phone number (to verify the account)",
               "Date of birth or age (to verify legal age)",
               "Gender (optional)",
               "Profile photos and multimedia content",
@@ -269,16 +300,16 @@ const copy = {
           },
           {
             title: "2.2 Social interaction data",
-            paragraphs: ["Depending on Platform usage, we may collect:"],
+            paragraphs: ["Depending on your use of Wit Ü, we may collect:"],
             items: [
               "Viewed profiles",
               "Generated connections",
               "Interactions with other users",
               "Messages sent and received (including content and metadata such as date and time)",
               "Participation in events or plans",
-              "Actions within the Platform (likes, rejections, connections)",
+              "Actions within Wit Ü (likes, rejections, connections)",
             ],
-            note: "Important: while Wit Ü may process messages for operational or security purposes, it does not actively monitor private conversations except in cases of reports or legal requirements.",
+            note: "Important: while Wit Ü may process messages for operational or security purposes, it does not actively monitor private conversations except in cases of reports (including child safety reports) or legal requirements.",
           },
           {
             title: "2.3 Location data",
@@ -298,7 +329,7 @@ const copy = {
           },
           {
             title: "2.4 Technical and usage data",
-            paragraphs: ["To ensure the proper functioning of the Platform, we may collect:"],
+            paragraphs: ["To ensure the proper functioning of Wit Ü, we may collect:"],
             items: [
               "IP address",
               "Device type and operating system",
@@ -318,7 +349,17 @@ const copy = {
             ],
           },
           {
-            title: "2.6 Data We Do NOT Collect",
+            title: "2.6 Safety data",
+            paragraphs: ["To protect the community, we may collect:"],
+            items: [
+              "Reports sent or received, their reason and the reported profile or content",
+              "Blocked users",
+              "Name and phone number of the emergency contact configured by the user",
+              "A record of emergency button activations (date and time, message, contact and basic technical data)",
+            ],
+          },
+          {
+            title: "2.7 Data We Do NOT Collect",
             paragraphs: ["Wit Ü does not collect or store:"],
             items: [
               "Biometric data",
@@ -336,8 +377,9 @@ const copy = {
           "Create and manage user accounts.",
           "Facilitate connections between users.",
           "Enable interactions (connections, chat, events).",
-          "Personalize the experience within the Platform.",
+          "Personalize the experience within Wit Ü.",
           "Detect and prevent fraud or improper conduct.",
+          "Protect minors and prevent, detect, investigate and report Child Sexual Abuse and Exploitation (CSAE).",
           "Improve the service and develop new features.",
           "Comply with legal obligations.",
         ],
@@ -362,7 +404,7 @@ const copy = {
           {
             title: "4.2 Event organizers",
             paragraphs: [
-              "For events, plans or activities available within the Platform, Wit Ü may share limited information about participating or registered users with event organizers solely to improve the event experience.",
+              "For events, plans or activities available in the app, Wit Ü may share limited information about participating or registered users with event organizers solely to improve the event experience.",
               "Such information may include:",
             ],
             items: [
@@ -395,6 +437,12 @@ const copy = {
               "Protect the safety of users or third parties.",
             ],
           },
+          {
+            title: "4.5 Child protection",
+            paragraphs: [
+              "We may preserve and share information, including account data and reported content, with the National Center for Missing & Exploited Children (NCMEC), judicial authorities, law enforcement or other competent bodies, to report cases of child sexual abuse and exploitation and cooperate with their investigation.",
+            ],
+          },
         ],
       },
       {
@@ -421,15 +469,19 @@ const copy = {
         items: [
           "While the account is active",
           "For the time necessary to comply with legal obligations",
+          "For the time necessary to investigate and report child safety or fraud cases, or to resolve disputes",
         ],
-        closing: "When the account is deleted, the data will be deleted immediately.",
+        closing: `When the account is deleted, the profile, photos and associated data are deleted. Messages in event or group chats and forum posts may be kept in anonymized form. Moderation reports and information needed for the purposes above may be retained after deletion. To confirm deletion or request removal of any remaining data, write to ${LEGAL_EMAIL}.`,
       },
       {
         title: "8. Minors",
         paragraphs: [
           "Wit Ü is intended exclusively for users over 18 years of age.",
           "We do not intentionally collect data from minors. If we detect a breach, we will delete the account.",
+          "Wit Ü explicitly prohibits Child Sexual Abuse and Exploitation (CSAE).",
+          `If you believe a minor is using the app or is at risk, report it in the app or write to ${LEGAL_EMAIL}.`,
         ],
+        link: { label: "Read the Wit Ü Child Safety Standards", href: CHILD_SAFETY_PATH },
       },
       {
         title: "9. Information Security",
@@ -454,7 +506,13 @@ const copy = {
       {
         title: "11. Changes to this Policy",
         paragraphs: [
-          "We may modify this Privacy Policy at any time. If we do so, we will update the effective date at the beginning of the document and, if the changes are relevant, inform you through the Application or by email. By continuing to use it, you will be deemed to accept the updated version of the policy.",
+          "We may modify this Privacy Policy at any time. If we do so, we will update the effective date at the beginning of the document and, if the changes are relevant, inform you through the app or by email. By continuing to use Wit Ü, you will be deemed to accept the updated version of the policy.",
+        ],
+      },
+      {
+        title: "12. Contact",
+        paragraphs: [
+          `For questions about this Policy, or to request access to, correction, update or deletion of your personal data, write to ${LEGAL_EMAIL}.`,
         ],
       },
     ],
@@ -462,6 +520,7 @@ const copy = {
       privacy: "Privacy policy",
       terms: "Terms and conditions",
       delete: "Delete account",
+      childSafety: "Child safety",
       copyright: "© 2025 Wit Ü. All rights reserved.",
     },
   },
@@ -511,6 +570,13 @@ const renderLegalBlock = (block: LegalBlock, headingLevel: 2 | 3 = 2) => {
       {"closing" in block ? (
         <p className="text-gray-700 leading-relaxed">{block.closing}</p>
       ) : null}
+      {"link" in block ? (
+        <p>
+          <Link href={block.link.href} className="text-yellow-700 hover:text-yellow-800 underline font-semibold">
+            {block.link.label}
+          </Link>
+        </p>
+      ) : null}
       {"subsections" in block ? (
         <div className="space-y-5">
           {block.subsections.map((subsection) => (
@@ -525,12 +591,6 @@ const renderLegalBlock = (block: LegalBlock, headingLevel: 2 | 3 = 2) => {
 export default function PrivacidadPage() {
   const { language, toggleLanguage } = useAppLanguage();
   const t = copy[language];
-
-  const formattedDate = new Date().toLocaleDateString(language === "en" ? "en-US" : "es-ES", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -568,7 +628,7 @@ export default function PrivacidadPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-8">{t.title}</h1>
           
           <div className="text-sm text-gray-600 mb-8">
-            <p>{t.updated}: {formattedDate}</p>
+            <p>{t.updated}: {LEGAL_LAST_UPDATED[language]}</p>
           </div>
 
           <div className="space-y-8">
@@ -594,6 +654,7 @@ export default function PrivacidadPage() {
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
                 <Link href="/privacidad" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.privacy}</Link>
                 <Link href="/terminos" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.terms}</Link>
+                <Link href={CHILD_SAFETY_PATH} className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.childSafety}</Link>
                 <Link href="/delete-account" className="text-gray-600 hover:text-gray-900 transition-colors">{t.footer.delete}</Link>
               </div>
             </div>
