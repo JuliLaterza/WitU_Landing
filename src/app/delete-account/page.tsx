@@ -48,6 +48,18 @@ const copy = {
     subscriptionNote:
       "Eliminar la cuenta no cancela las suscripciones activas. Si tenés una, cancelala desde Google Play o App Store.",
     privacyIntro: "Para más información sobre cómo manejamos tus datos, consultá nuestra",
+    partialLink: "¿Querés borrar algunos datos sin eliminar tu cuenta?",
+    partialTitle: "Borrar algunos datos sin eliminar tu cuenta",
+    partialBody: "Podés borrar o pedir que borremos algunos datos y seguir usando Wit Ü.",
+    partialItems: [
+      "Desde la app: editá tu perfil para cambiar o quitar fotos y modificar tu información.",
+      "Ubicación: si desactivás el permiso en tu dispositivo, deja de actualizarse. Para borrar la zona guardada, pedilo por correo.",
+      `Por correo: escribí a ${LEGAL_EMAIL} con el asunto «Borrar datos» e indicá qué querés borrar (por ejemplo, la ubicación guardada, fotos o una publicación) y el correo o teléfono de tu cuenta.`,
+    ],
+    partialNote:
+      "Podemos pedirte que verifiques que la cuenta es tuya. Te confirmamos por correo qué borramos y qué tenemos que conservar.",
+    partialButton: "Pedir el borrado de datos",
+    partialSubject: "Borrar datos",
     helpTitle: "¿Necesitás ayuda?",
     helpBody: "Si tenés dudas sobre la eliminación de tu cuenta o sobre tus datos, escribinos y te ayudamos.",
     footer: {
@@ -99,6 +111,18 @@ const copy = {
     subscriptionNote:
       "Deleting your account does not cancel active subscriptions. If you have one, cancel it in Google Play or the App Store.",
     privacyIntro: "For more details on data handling, see our",
+    partialLink: "Want to delete some data without deleting your account?",
+    partialTitle: "Delete some data without deleting your account",
+    partialBody: "You can delete, or ask us to delete, some of your data and keep using Wit Ü.",
+    partialItems: [
+      "In the app: edit your profile to change or remove photos and update your information.",
+      "Location: if you turn off the permission on your device, it stops being updated. To delete the stored area, request it by email.",
+      `By email: write to ${LEGAL_EMAIL} with the subject “Delete data” and tell us what you want deleted (for example, the stored location, photos or a post) and the email address or phone number of your account.`,
+    ],
+    partialNote:
+      "We may ask you to verify that the account is yours. We will confirm by email what we deleted and what we have to keep.",
+    partialButton: "Request data deletion",
+    partialSubject: "Delete data",
     helpTitle: "Need help?",
     helpBody: "If you have questions about deleting your account or about your data, write to us and we will help.",
     footer: {
@@ -114,6 +138,7 @@ export default function DeleteAccountPage() {
   const { language, toggleLanguage } = useAppLanguage();
   const t = copy[language];
   const mailHref = `mailto:${LEGAL_EMAIL}?subject=${encodeURIComponent(t.mailSubject)}`;
+  const dataMailHref = `mailto:${LEGAL_EMAIL}?subject=${encodeURIComponent(t.partialSubject)}`;
 
   return (
     <div className="min-h-screen bg-white">
@@ -161,6 +186,11 @@ export default function DeleteAccountPage() {
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 {t.introBody}
+              </p>
+              <p>
+                <a href="#delete-data" className="text-yellow-600 hover:text-yellow-700 underline">
+                  {t.partialLink}
+                </a>
               </p>
             </section>
 
@@ -229,6 +259,29 @@ export default function DeleteAccountPage() {
                   {t.footer.privacy}
                 </Link>.
               </p>
+            </section>
+
+            <section id="delete-data" className="scroll-mt-4">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+                {t.partialTitle}
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                {t.partialBody}
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 space-y-2">
+                {t.partialItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="text-gray-700 leading-relaxed my-4">
+                {t.partialNote}
+              </p>
+              <a
+                href={dataMailHref}
+                className="inline-block px-5 py-3 rounded-full bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-500 transition-colors"
+              >
+                {t.partialButton}
+              </a>
             </section>
 
             <section>

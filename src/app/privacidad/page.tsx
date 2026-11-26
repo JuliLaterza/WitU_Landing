@@ -54,18 +54,20 @@ const copy = {
           },
           {
             title: "2.3 Datos de ubicación",
-            paragraphs: ["Wit Ü podrá solicitar acceso a la ubicación aproximada o precisa del usuario con las siguientes finalidades:"],
+            paragraphs: ["La ubicación es opcional. Si das permiso, Wit Ü la usa únicamente para funciones de la propia app:"],
             items: [
-              "Mostrar eventos, planes o usuarios cercanos.",
-              "Ordenar contenido según proximidad.",
-              "Mejorar la relevancia de las recomendaciones.",
+              "Mostrar eventos y planes cercanos.",
+              "Filtrar eventos por distancia y mostrar a cuántos kilómetros están.",
             ],
             noteTitle: "Condiciones:",
             noteItems: [
               "La ubicación se utiliza únicamente cuando la app está en uso.",
-              "No se mantiene un historial detallado de ubicaciones.",
+              "La ubicación exacta se procesa en tu dispositivo.",
+              "En tu perfil guardamos solo una zona aproximada (unos 5 km) y la fecha en que se actualizó.",
+              "No se mantiene un historial de ubicaciones.",
+              "No se usa para otros fines.",
               "Puede ser procesada en tiempo real por proveedores tecnológicos (ej. mapas).",
-              "Puede desactivarse en cualquier momento desde el dispositivo.",
+              "Podés desactivar el permiso en cualquier momento desde el dispositivo.",
             ],
           },
           {
@@ -78,6 +80,7 @@ const copy = {
               "Datos de sesión",
               "Logs de actividad",
               "Tokens de notificaciones push",
+              "Informes de errores y diagnóstico de la app, asociados al identificador de tu cuenta",
             ],
           },
           {
@@ -313,18 +316,20 @@ const copy = {
           },
           {
             title: "2.3 Location data",
-            paragraphs: ["Wit Ü may request access to the user’s approximate or precise location for the following purposes:"],
+            paragraphs: ["Location is optional. If you grant permission, Wit Ü uses it only for features of the app itself:"],
             items: [
-              "Show nearby events, plans or users.",
-              "Sort content by proximity.",
-              "Improve recommendation relevance.",
+              "Show nearby events and plans.",
+              "Filter events by distance and show how many kilometers away they are.",
             ],
             noteTitle: "Conditions:",
             noteItems: [
               "Location is used only while the app is in use.",
-              "A detailed location history is not maintained.",
+              "Your exact location is processed on your device.",
+              "Your profile stores only an approximate area (about 5 km) and the date it was updated.",
+              "A location history is not maintained.",
+              "It is not used for any other purpose.",
               "It may be processed in real time by technology providers (e.g. maps).",
-              "It can be disabled at any time from the device.",
+              "You can turn off the permission at any time from your device.",
             ],
           },
           {
@@ -337,6 +342,7 @@ const copy = {
               "Session data",
               "Activity logs",
               "Push notification tokens",
+              "Crash and diagnostic reports from the app, linked to your account identifier",
             ],
           },
           {
